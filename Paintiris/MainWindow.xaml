@@ -1,0 +1,42 @@
+﻿<Window x:Class="Paintiris.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Paintiris"
+        mc:Ignorable="d"
+              Title="Paintiris" Height="800" Width="1500" WindowStartupLocation="CenterScreen"
+        MinHeight="600" MinWidth="800" FontFamily="Verdana">
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Name="menu" Background="MistyRose">
+            <TabControl>
+                <TabItem Header="Archivo">
+                    <Grid Background="MistyRose">
+                        <Button Content="Nuevo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Inicio">
+                    <Grid Background="MistyRose" >
+                        <Button Content="Inicio" HorizontalAlignment="Left" Margin="93,37,0,0" VerticalAlignment="Top" Width="553" Background="#FFAC7D7D"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Estudio">
+                    <Grid Background="MistyRose"/>
+                </TabItem>
+                <TabItem Header="Ver">
+                    <Grid Background="MistyRose"/>
+                </TabItem>
+            </TabControl>
+        </Grid>
+        <Grid Grid.Row="1" Name="folio" Background="Gainsboro">
+
+        </Grid>
+        <Grid Grid.Row="2" Name="menuInferior" Background="RosyBrown"></Grid>
+    </Grid>
+</Window>
