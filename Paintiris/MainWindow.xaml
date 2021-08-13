@@ -14,29 +14,34 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Name="menu" Background="MistyRose">
-            <TabControl>
-                <TabItem Header="Archivo">
+        <Grid Grid.Row="0" Name="gr_menu">
+            <TabControl Name="tc_menuPestanhas" Background="MistyRose" SelectionChanged="menuPestanhas_SelectionChanged" Style="{DynamicResource TabControlStyle1}">
+                <TabItem Style="{DynamicResource TabItemStyle1}" Header="Archivo" Name="ti_archivo">
                     <Grid Background="MistyRose">
-                        <Button Content="Nuevo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="136*"/>
+                            <ColumnDefinition Width="0*"/>
+                            <ColumnDefinition Width="611*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{DynamicResource ButtonStyle1}" Content="Nuevo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Button_Click" Height="39" Width="82"/>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Inicio">
+                <TabItem Style="{DynamicResource TabItemStyle1}" Header="Inicio" Name="ti_inicio">
                     <Grid Background="MistyRose" >
                         <Button Content="Inicio" HorizontalAlignment="Left" Margin="93,37,0,0" VerticalAlignment="Top" Width="553" Background="#FFAC7D7D"/>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Estudio">
+                <TabItem Style="{DynamicResource TabItemStyle1}" Header="Estudio" Name="ti_estudio">
                     <Grid Background="MistyRose"/>
                 </TabItem>
-                <TabItem Header="Ver">
+                <TabItem Style="{DynamicResource TabItemStyle1}" Header="Ver" Name="ti_ver">
                     <Grid Background="MistyRose"/>
                 </TabItem>
             </TabControl>
         </Grid>
-        <Grid Grid.Row="1" Name="folio" Background="Gainsboro">
+        <Grid Grid.Row="1" Name="gr_folio" Background="Gainsboro">
 
         </Grid>
-        <Grid Grid.Row="2" Name="menuInferior" Background="RosyBrown"></Grid>
+        <Grid Grid.Row="2" Name="gr_menuInferior" Background="RosyBrown"></Grid>
     </Grid>
 </Window>

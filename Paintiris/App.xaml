@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:Paintiris"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Dictionaries\TabControl.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Dictionaries\TabItem.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Dictionaries\Boton.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
