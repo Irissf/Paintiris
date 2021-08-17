@@ -13,3 +13,7 @@
   - TabControl
   - TabItem
 - Realización de los cambios de estílo definitivos para TabControl y TabItem
+
+## Día 3
+> 17/08/2021
+- Colocación de los componentes del formulario para nuevo documento de Paintiris
