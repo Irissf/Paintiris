@@ -17,3 +17,8 @@
 ## Día 3
 > 17/08/2021
 - Colocación de los componentes del formulario para nuevo documento de Paintiris
+
+## Día 4
+> 18/08/2021
+- Colocación de los componentes para seleccionar el color del nuevo formulario.
+- Cambio de la pagina wpf de nuveoDocumento por una ventana wpf
