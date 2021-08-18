@@ -34,12 +34,14 @@ namespace Paintiris
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            Canvas lienzo = new Canvas();
-            lienzo.Background = Brushes.White;
-            lienzo.Height = altoLienzo;
-            lienzo.Width = anchoLienzo;
-            gr_folio.Children.Add(lienzo);
+  
+            NuevoDoc win = new NuevoDoc();
+            win.ShowDialog();
+            //Canvas lienzo = new Canvas();
+            //lienzo.Background = Brushes.White;
+            //lienzo.Height = altoLienzo;
+            //lienzo.Width = anchoLienzo;
+            //gr_folio.Children.Add(lienzo);
         }
 
         /// <summary>
@@ -70,5 +72,6 @@ namespace Paintiris
                 Trace.WriteLine("ver");
             }
         }
+
     }
 }
