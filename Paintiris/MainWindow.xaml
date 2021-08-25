@@ -11,8 +11,8 @@
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition/>
+            <RowDefinition Height="27.04"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Name="gr_menu">
             <TabControl Name="tc_menuPestanhas" Background="MistyRose" SelectionChanged="menuPestanhas_SelectionChanged" Style="{DynamicResource TabControlStyle1}">
@@ -42,6 +42,8 @@
         <Grid Grid.Row="1" Name="gr_folio" Background="Gainsboro">
 
         </Grid>
-        <Grid Grid.Row="2" Name="gr_menuInferior" Background="RosyBrown"></Grid>
+        <Grid Grid.Row="2" Name="gr_menuInferior" Background="RosyBrown">
+            <Label x:Name="lblInfo" Content="Label" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="White"/>
+        </Grid>
     </Grid>
 </Window>

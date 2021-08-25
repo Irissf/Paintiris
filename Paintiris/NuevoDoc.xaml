@@ -12,20 +12,16 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition>
                 <ColumnDefinition.Width>
-                    <GridLength>425.069</GridLength>
+                    <GridLength>450</GridLength>
                 </ColumnDefinition.Width>
             </ColumnDefinition>
-            <ColumnDefinition Width="24.931"/>
-            <ColumnDefinition>
-                <ColumnDefinition.Width>
-                    <GridLength>*</GridLength>
-                </ColumnDefinition.Width>
-            </ColumnDefinition>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <!--Panel de la derecha con los cambios del nuevo documento-->
-        <Grid Grid.Column="0" Grid.ColumnSpan="2">
-            <Border BorderThickness="1" BorderBrush="#ECB7B7" HorizontalAlignment="Left" Height="180" Margin="33,200,0,0" VerticalAlignment="Top" Width="391"/>
+        <Grid Grid.Column="0">
+            <Border BorderThickness="1" BorderBrush="#ECB7B7" HorizontalAlignment="Left" Height="180" Margin="33,223,0,0" VerticalAlignment="Top" Width="391"/>
 
             <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="20" Margin="100,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300
                      " Text="sin titulo-1" Foreground="#FFBDB7B7"/>
@@ -40,8 +36,8 @@
             <TextBox x:Name="txtResolucion" HorizontalAlignment="Left" Height="20" Margin="100,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100                     " Text="300" Foreground="#FFBDB7B7"/>
             <Label x:Name="lblAcho_Copy" Content="Resolución:" HorizontalAlignment="Left" Margin="30,118,0,0" VerticalAlignment="Top"/>
 
-            <ComboBox x:Name="cbAncho" HorizontalAlignment="Left" Margin="225,62,0,0" VerticalAlignment="Top" Width="175" Height="20"/>
-            <ComboBox x:Name="cbAlto" HorizontalAlignment="Left" Margin="225,92,0,0" VerticalAlignment="Top" Width="175" Height="20"/>
+            <ComboBox x:Name="cbAncho" HorizontalAlignment="Left" Margin="225,62,0,0" VerticalAlignment="Top" Width="175" Height="20" SelectionChanged="cb_SelectionChanged"/>
+            <ComboBox x:Name="cbAlto" HorizontalAlignment="Left" Margin="225,92,0,0" VerticalAlignment="Top" Width="175" Height="20" SelectionChanged="cb_SelectionChanged"/>
             <ComboBox x:Name="cbResolucion" HorizontalAlignment="Left" Margin="225,122,0,0" VerticalAlignment="Top" Width="175" Height="20"/>
 
             <!--Color-->
@@ -49,29 +45,36 @@
             Slider nos da la barrita deslizadora, isSnapTickEnabled = true es para ajustar a los valores enteros
             TickFrecuency = 1, para que se ajuste a ellos de uno en uno, podemos poner 5 por ejemplo e iría de 5 en 5
             En el textBox pillamos el valor de la barra que le indicamos dentro del {Binding(puente)}-->
-            <Label Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,172">Rojo</Label>
-            <Slider x:Name="slColorRojo" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Center" Margin="0,237,0,0" VerticalAlignment="Top" Width="250" ValueChanged="slColorRojo_ValueChanged" />
-            <TextBox x:Name="txtColorRojo" Height="20" Width="40" HorizontalAlignment="Left" Margin="370,237,0,0" VerticalAlignment="Top" Text="{Binding ElementName=slColorRojo, Path=Value, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Label Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,149">Rojo</Label>
+            <Slider x:Name="slColorRojo" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" Width="250" ValueChanged="slColorRojo_ValueChanged" IsEnabled="False" />
+            <TextBox x:Name="txtColorRojo" Height="20" Width="40" HorizontalAlignment="Left" Margin="370,260,0,0" VerticalAlignment="Top" Text="{Binding ElementName=slColorRojo, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtColor_TextChanged" IsEnabled="False"></TextBox>
 
-            <Label Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,122">Verde</Label>
-            <Slider x:Name="slColorVerde" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Center" Margin="0,287,0,0" VerticalAlignment="Top" Width="250" ValueChanged="slColorRojo_ValueChanged" />
-            <TextBox x:Name="txtColorVerde" Height="20" Width="40" HorizontalAlignment="Left" Margin="370,287,0,0" VerticalAlignment="Top" Text="{Binding ElementName=slColorVerde, Path=Value, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+            <Label Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,99">Verde</Label>
+            <Slider x:Name="slColorVerde" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Center" Margin="0,310,0,0" VerticalAlignment="Top" Width="250" ValueChanged="slColorRojo_ValueChanged" IsEnabled="False" />
+            <TextBox x:Name="txtColorVerde" Height="20" Width="40" HorizontalAlignment="Left" Margin="370,310,0,0" VerticalAlignment="Top" Text="{Binding ElementName=slColorVerde, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtColor_TextChanged" IsEnabled="False"></TextBox>
 
-            <Label Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,72">Azul</Label>
-            <Slider x:Name="slColorAzul" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Center" Margin="0,337,0,0" VerticalAlignment="Top" Width="250" ValueChanged="slColorRojo_ValueChanged" />
-            <TextBox x:Name="txtColorAzul" Height="20" Width="40" HorizontalAlignment="Left" Margin="370,337,0,0" VerticalAlignment="Top" Text="{Binding ElementName=slColorAzul, Path=Value, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Label Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,49">Azul</Label>
+            <Slider x:Name="slColorAzul" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Center" Margin="0,360,0,0" VerticalAlignment="Top" Width="250" ValueChanged="slColorRojo_ValueChanged" IsEnabled="False" />
+            <TextBox x:Name="txtColorAzul" Height="20" Width="40" HorizontalAlignment="Left" Margin="370,360,0,0" VerticalAlignment="Top" Text="{Binding ElementName=slColorAzul, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtColor_TextChanged" IsEnabled="False"></TextBox>
 
-            <Label Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,179,0,0">Color:</Label>
-            <Canvas x:Name="cvColor" HorizontalAlignment="Left" Height="26" Margin="100,189,0,0" VerticalAlignment="Top" Width="300" Background="White"/>
+            <Label Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">Color:</Label>
+            <Border BorderThickness="1" BorderBrush="#ECB7B7" HorizontalAlignment="Left" Height="26" Margin="100,209,0,0" VerticalAlignment="Top" Width="300" Background="MistyRose"></Border>
+            <Canvas x:Name="cvColor" HorizontalAlignment="Left" Height="26" Margin="100,209,0,0" VerticalAlignment="Top" Width="300" Background="Transparent" />
+            <CheckBox x:Name="chColor" Content="Color Personalizado" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+
 
         </Grid>
 
         <!--Panel de la izquierda con los botones-->
         <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="85*"/>
+                <RowDefinition Height="132*"/>
+            </Grid.RowDefinitions>
             <Button Content="Ok" Margin="0,10,20,0" 
-                HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="130"/>
+                HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="130" Click="Button_Click_1"/>
             <Button Content="Cancelar" Margin="0,50,20,0"
-                HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="130"/>
+                HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="130" Click="Button_Click"/>
         </Grid>
     </Grid>
 </Window>

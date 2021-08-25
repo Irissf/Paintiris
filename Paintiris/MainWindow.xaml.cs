@@ -21,10 +21,6 @@ namespace Paintiris
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        //*********** Variables **********************
-        private int anchoLienzo = 500;
-        private int altoLienzo = 500;
         
         public MainWindow()
         {
@@ -37,11 +33,20 @@ namespace Paintiris
   
             NuevoDoc win = new NuevoDoc();
             win.ShowDialog();
-            //Canvas lienzo = new Canvas();
-            //lienzo.Background = Brushes.White;
-            //lienzo.Height = altoLienzo;
-            //lienzo.Width = anchoLienzo;
-            //gr_folio.Children.Add(lienzo);
+            if (win.DialogResult == true)
+            {
+                Canvas lienzo = new Canvas();
+
+                //pasamos de color a brush
+                SolidColorBrush brush = new SolidColorBrush(win.colorCanvas);
+                lienzo.Background = brush;
+                lienzo.Height = win.altoCanvas;
+                lienzo.Width = win.anchoCanvas;
+                lblInfo.Content = "Nombre del documento: "+win.nombreCanvas;
+
+                gr_folio.Children.Add(lienzo);
+            }
+
         }
 
         /// <summary>
