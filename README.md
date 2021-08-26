@@ -22,3 +22,9 @@
 > 18/08/2021
 - Colocación de los componentes para seleccionar el color del nuevo formulario.
 - Cambio de la pagina wpf de nuveoDocumento por una ventana wpf
+
+## Día 5
+> 25/08/2021
+- Creación del canvas con los ajustes establecidos
+- Añadido un check para habilitar o deshabilitar la elección del color del canvas
+- DialogResult para los botones de aceptar y cancelar
