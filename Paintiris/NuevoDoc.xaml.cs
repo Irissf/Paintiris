@@ -92,6 +92,12 @@ namespace Paintiris
             cvColor.Background = new SolidColorBrush(color);
         }
 
+
+        /// <summary>
+        /// Para que cambien a la vez los dos combobox de las medidas del canvas.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox combito = (ComboBox)sender;
@@ -106,6 +112,11 @@ namespace Paintiris
             }
         }
 
+        /// <summary>
+        /// Botón de cancelar, cierra la ventana y pone el valor para el resultado del DialogResult a false
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //Le indicamos el resultado del formulario modal, para actuar en consonancia con él
@@ -114,6 +125,12 @@ namespace Paintiris
             this.Close();
         }
 
+        /// <summary>
+        /// Botón de aceptar, pone el valor para el resultado del DialogResult a true, y guarda todos los ajustes del lienzo
+        /// que ha puesto el usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             //Le indicamos el resultado del formulario modal, para actuar en consonancia con él
@@ -132,10 +149,14 @@ namespace Paintiris
             this.Close();
         }
 
+        /// <summary>
+        /// Para controlar que en los textbox de los colores el usuario no ponga letras
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtColor_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox colores = (TextBox)sender;
-            string numero = "";
             try
             {
                 byte colorcito = Convert.ToByte(colores.Text);
@@ -147,6 +168,11 @@ namespace Paintiris
             }
         }
 
+        /// <summary>
+        /// Cuando el checkbox de color personalizado es activado, habilitamos todos los componentes necesarios
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             slColorAzul.IsEnabled = true;
@@ -157,6 +183,11 @@ namespace Paintiris
             txtColorVerde.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Cuando el checkbox es deshabilitado, deshabilitamos los componentes para cambiar el color del canvas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             slColorAzul.IsEnabled = false;

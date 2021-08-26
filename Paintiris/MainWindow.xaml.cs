@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Paintiris.Inicio;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -21,33 +22,72 @@ namespace Paintiris
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
+        //**************************************** PROPIEDADES ****************************************************
+
+        //Control del dibujo por parte de la clase pincel
+        public Canvas lienzo;
+        public bool dibujar;
+        Pincel pincel;
+
+        //**************************************** CONSTRUCTOR ****************************************************
+
         public MainWindow()
         {
             InitializeComponent();
-           
+            lienzo = lienzoPorDefecto;
         }
 
+        //**************************************** EVENTOS DE COMPONENTES *******************************************
+
+        /// <summary>
+        /// Click de los elementos de archivo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-  
-            NuevoDoc win = new NuevoDoc();
-            win.ShowDialog();
-            if (win.DialogResult == true)
+            Button btn = (Button)sender;
+
+            if (btn.Name == "btnNuevo")
             {
-                Canvas lienzo = new Canvas();
+                NuevoDoc win = new NuevoDoc();
+                win.ShowDialog();
+                if (win.DialogResult == true)
+                {
+                    lienzo = new Canvas();
 
-                //pasamos de color a brush
-                SolidColorBrush brush = new SolidColorBrush(win.colorCanvas);
-                lienzo.Background = brush;
-                lienzo.Height = win.altoCanvas;
-                lienzo.Width = win.anchoCanvas;
-                lblInfo.Content = "Nombre del documento: "+win.nombreCanvas;
+                    //pasamos de color a brush
+                    SolidColorBrush brush = new SolidColorBrush(win.colorCanvas);
+                    lienzo.Background = brush;
+                    lienzo.Height = win.altoCanvas;
+                    lienzo.Width = win.anchoCanvas;
+                    lblInfo.Content = "Nombre del documento: " + win.nombreCanvas;
 
-                gr_folio.Children.Add(lienzo);
+                    gr_folio.Children.Add(lienzo);
+                }
+            }
+            else
+            {
+                pincel = new Pincel(this);
+                
+                Trace.WriteLine("dibujar: "+dibujar);
+            }
+          
+
+        }
+
+        private void lienzo_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dibujar)
+            {
+                Point posisicionRaton = e.GetPosition(lienzo);
+                pincel.CrearEllipsePincel(posisicionRaton);
             }
 
         }
+
+        //****************************************** PRUEBAS *******************************************************
 
         /// <summary>
         /// Cada vez que se cambia una de las pestañas del menú
@@ -78,5 +118,14 @@ namespace Paintiris
             }
         }
 
+        private void lienzo_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            dibujar = true;
+        }
+
+        private void lienzo_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            dibujar = false;
+        }
     }
 }
