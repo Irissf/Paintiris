@@ -10,7 +10,7 @@ using System.Windows.Shapes;
 
 namespace Paintiris.Inicio
 {
-    class Pincel
+    class Pinceles
     {
         MainWindow main;
 
@@ -18,7 +18,7 @@ namespace Paintiris.Inicio
         private int diametro = 5;
         private Brush color = Brushes.Black;
 
-        public Pincel(MainWindow main)
+        public Pinceles(MainWindow main)
         {
             //TODO en un futuo le llegarán otras propiedades como serian el tamaño color etc
             this.main = main;

@@ -19,11 +19,13 @@
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Archivo" Name="ti_archivo">
                     <Grid Background="MistyRose">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="136*"/>
+                            <ColumnDefinition Width="79*"/>
+                            <ColumnDefinition Width="193*"/>
                             <ColumnDefinition Width="0*"/>
-                            <ColumnDefinition Width="611*"/>
+                            <ColumnDefinition Width="1222*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btnNuevo" Style="{DynamicResource ButtonStyle1}" Content="Nuevo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Button_Click" Height="39" Width="82"/>
+                        <Button x:Name="btnNuevo" Style="{DynamicResource ButtonStyle1}" Content="Nuevo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Button_Click" Height="39" Width="82" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btnGuardar" Style="{DynamicResource ButtonStyle1}" Content="Guardar" HorizontalAlignment="Left" Margin="57,10,0,0" VerticalAlignment="Top" Click="Button_Click" Height="39" Width="82" Grid.Column="1"/>
                     </Grid>
                 </TabItem>
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Inicio" Name="ti_inicio">
@@ -45,6 +47,7 @@
         </Grid>
         <Grid Grid.Row="1" Name="gr_folio" Background="Gainsboro">
             <Canvas x:Name="lienzoPorDefecto" HorizontalAlignment="Left" Height="616" Margin="120,0,0,0" VerticalAlignment="Center" Width="1298" Background="White" MouseMove="lienzo_MouseMove" MouseDown="lienzo_MouseDown" MouseUp="lienzo_MouseUp"/>
+
 
         </Grid>
         <Grid Grid.Row="2" Name="gr_menuInferior" Background="RosyBrown">

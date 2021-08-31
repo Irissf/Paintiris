@@ -28,7 +28,7 @@ namespace Paintiris
         //Control del dibujo por parte de la clase pincel
         public Canvas lienzo;
         public bool dibujar;
-        Pincel pincel;
+        Pinceles pinceles;
 
         //**************************************** CONSTRUCTOR ****************************************************
 
@@ -40,6 +40,8 @@ namespace Paintiris
 
         //**************************************** EVENTOS DE COMPONENTES *******************************************
 
+        //BOTONES__________________________________________________________________
+
         /// <summary>
         /// Click de los elementos de archivo
         /// </summary>
@@ -49,42 +51,59 @@ namespace Paintiris
         {
             Button btn = (Button)sender;
 
-            if (btn.Name == "btnNuevo")
+            //Gestionamos el evento de los click de los botones mediande un switch ya que son muchos
+            switch (btn.Name)
             {
-                NuevoDoc win = new NuevoDoc();
-                win.ShowDialog();
-                if (win.DialogResult == true)
-                {
-                    lienzo = new Canvas();
+                case "btnNuevo":
+                    NuevoDoc win = new NuevoDoc();
+                    win.ShowDialog();
+                    if (win.DialogResult == true)
+                    {
 
-                    //pasamos de color a brush
-                    SolidColorBrush brush = new SolidColorBrush(win.colorCanvas);
-                    lienzo.Background = brush;
-                    lienzo.Height = win.altoCanvas;
-                    lienzo.Width = win.anchoCanvas;
-                    lblInfo.Content = "Nombre del documento: " + win.nombreCanvas;
+                        //pasamos de color a brush
+                        SolidColorBrush brush = new SolidColorBrush(win.colorCanvas);
+                        lienzo.Background = brush;
+                        lienzo.Height = win.altoCanvas;
+                        lienzo.Width = win.anchoCanvas;
+                        lblInfo.Content = "Nombre del documento: " + win.nombreCanvas;
 
-                    gr_folio.Children.Add(lienzo);
-                }
-            }
-            else
-            {
-                pincel = new Pincel(this);
-                
-                Trace.WriteLine("dibujar: "+dibujar);
+                    }
+                    break;
+                case "btnGuardar":
+                    Archivo archi = new Archivo(this.lienzo);
+                    break;
+                case "btnPincel":
+                    pinceles = new Pinceles(this);
+
+                    Trace.WriteLine("dibujar: " + dibujar);
+                    break;
+                default:
+                    break;
             }
           
 
         }
+
+        //CANVAS_____________________________________________________________________
 
         private void lienzo_MouseMove(object sender, MouseEventArgs e)
         {
             if (dibujar)
             {
                 Point posisicionRaton = e.GetPosition(lienzo);
-                pincel.CrearEllipsePincel(posisicionRaton);
+                pinceles.CrearEllipsePincel(posisicionRaton);
             }
 
+        }
+
+        private void lienzo_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            dibujar = true;
+        }
+
+        private void lienzo_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            dibujar = false;
         }
 
         //****************************************** PRUEBAS *******************************************************
@@ -118,14 +137,6 @@ namespace Paintiris
             }
         }
 
-        private void lienzo_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            dibujar = true;
-        }
-
-        private void lienzo_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            dibujar = false;
-        }
+   
     }
 }
