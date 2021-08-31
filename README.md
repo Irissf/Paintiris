@@ -34,3 +34,8 @@
 - Comentarios de algunas funciones
 - Cración de la calse Pincel para no tener tanto código en el principal
 - Prueba del pincel en el canvas, exitosa, pendiente de algunos ajustes de fluided
+
+## Día 7
+> 31/08/2021
+- Arreglado que cuando abramos un lienzo nuevo se ponga sobre el anterior.
+- Guardar la imagen de un canvas en un archivo png o jpg
