@@ -39,3 +39,11 @@
 > 31/08/2021
 - Arreglado que cuando abramos un lienzo nuevo se ponga sobre el anterior.
 - Guardar la imagen de un canvas en un archivo png o jpg
+
+## Día 8
+> 2/09/2021
+- Cambiado el Canvas para dibujar por un InkCanvas 
+- Borrado de la mayor parte del código que no era útil para este nuevo componente
+- Nueva función de guardar
+- Creada también la de Cargar
+- Arreglado el fallo de que se mantenga lo pintado al abrir imagen o nuevo lienzo
