@@ -26,9 +26,14 @@ namespace Paintiris
         //**************************************** PROPIEDADES ****************************************************
 
         //Control del dibujo por parte de la clase pincel
-        public Canvas lienzo;
+        public InkCanvas lienzo;
         public bool dibujar;
+
+        //Clase gestión pinceles
         Pinceles pinceles;
+
+        //Clase gestión de los archivos
+        Archivo archi;
 
         //**************************************** CONSTRUCTOR ****************************************************
 
@@ -36,6 +41,8 @@ namespace Paintiris
         {
             InitializeComponent();
             lienzo = lienzoPorDefecto;
+            archi = new Archivo(this.lienzo);
+
         }
 
         //**************************************** EVENTOS DE COMPONENTES *******************************************
@@ -62,6 +69,7 @@ namespace Paintiris
 
                         //pasamos de color a brush
                         SolidColorBrush brush = new SolidColorBrush(win.colorCanvas);
+                        lienzo.Strokes.Clear();
                         lienzo.Background = brush;
                         lienzo.Height = win.altoCanvas;
                         lienzo.Width = win.anchoCanvas;
@@ -70,12 +78,14 @@ namespace Paintiris
                     }
                     break;
                 case "btnGuardar":
-                    Archivo archi = new Archivo(this.lienzo);
+                    archi.CrearImagenInkCanvas(this.lienzo, "D:/Users/Usuario/Desktop/logo.png");
                     break;
-                case "btnPincel":
-                    pinceles = new Pinceles(this);
-
-                    Trace.WriteLine("dibujar: " + dibujar);
+                case "btnAbrir":
+                    ImageBrush imagen = archi.CargarImagenIncKanvas();
+                    lienzo.Strokes.Clear();
+                    lienzo.Height = imagen.ImageSource.Height;
+                    lienzo.Width = imagen.ImageSource.Height;
+                    lienzo.Background = imagen;
                     break;
                 default:
                     break;
@@ -86,15 +96,7 @@ namespace Paintiris
 
         //CANVAS_____________________________________________________________________
 
-        private void lienzo_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (dibujar)
-            {
-                Point posisicionRaton = e.GetPosition(lienzo);
-                pinceles.CrearEllipsePincel(posisicionRaton);
-            }
-
-        }
+      
 
         private void lienzo_MouseDown(object sender, MouseButtonEventArgs e)
         {

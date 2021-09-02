@@ -12,30 +12,6 @@ namespace Paintiris.Inicio
 {
     class Pinceles
     {
-        MainWindow main;
-
-        //Ajustes del pincel
-        private int diametro = 5;
-        private Brush color = Brushes.Black;
-
-        public Pinceles(MainWindow main)
-        {
-            //TODO en un futuo le llegarán otras propiedades como serian el tamaño color etc
-            this.main = main;
-        }
-
-        public void CrearEllipsePincel(Point position)
-        {
-            Ellipse nuevaElipse = new Ellipse();
-
-            nuevaElipse.Fill = color;
-            nuevaElipse.Width = diametro;
-            nuevaElipse.Height = diametro;
-
-            Canvas.SetTop(nuevaElipse,position.Y);
-            Canvas.SetLeft(nuevaElipse, position.X);
-
-            main.lienzo.Children.Add(nuevaElipse);
-        }
+       
     }
 }

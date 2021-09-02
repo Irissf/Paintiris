@@ -26,6 +26,7 @@
                         </Grid.ColumnDefinitions>
                         <Button x:Name="btnNuevo" Style="{DynamicResource ButtonStyle1}" Content="Nuevo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Button_Click" Height="39" Width="82" Grid.ColumnSpan="2"/>
                         <Button x:Name="btnGuardar" Style="{DynamicResource ButtonStyle1}" Content="Guardar" HorizontalAlignment="Left" Margin="57,10,0,0" VerticalAlignment="Top" Click="Button_Click" Height="39" Width="82" Grid.Column="1"/>
+                        <Button x:Name="btnAbrir" Style="{DynamicResource ButtonStyle1}" Content="Abrir" HorizontalAlignment="Left" Margin="180,10,0,0" VerticalAlignment="Top" Click="Button_Click" Height="39" Width="82" Grid.Column="1" Grid.ColumnSpan="3"/>
                     </Grid>
                 </TabItem>
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Inicio" Name="ti_inicio">
@@ -34,7 +35,7 @@
                             <ColumnDefinition Width="8*"/>
                             <ColumnDefinition Width="241*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btnPincel" Content="Pincel" HorizontalAlignment="Left" Margin="45,0,0,0" VerticalAlignment="Center" Width="183" Background="#FFAC7D7D" Height="26" Grid.Column="1" MouseMove="lienzo_MouseMove" Click="Button_Click"/>
+                        <Button x:Name="btnPincel" Content="Pincel" HorizontalAlignment="Left" Margin="45,0,0,0" VerticalAlignment="Center" Width="183" Background="#FFAC7D7D" Height="26" Grid.Column="1"  Click="Button_Click"/>
                     </Grid>
                 </TabItem>
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Estudio" Name="ti_estudio">
@@ -46,8 +47,7 @@
             </TabControl>
         </Grid>
         <Grid Grid.Row="1" Name="gr_folio" Background="Gainsboro">
-            <Canvas x:Name="lienzoPorDefecto" HorizontalAlignment="Left" Height="616" Margin="120,0,0,0" VerticalAlignment="Center" Width="1298" Background="White" MouseMove="lienzo_MouseMove" MouseDown="lienzo_MouseDown" MouseUp="lienzo_MouseUp"/>
-
+            <InkCanvas  x:Name="lienzoPorDefecto" Width="1298" Height="616" Background="MistyRose"></InkCanvas>
 
         </Grid>
         <Grid Grid.Row="2" Name="gr_menuInferior" Background="RosyBrown">
