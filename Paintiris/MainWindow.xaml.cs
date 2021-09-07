@@ -116,6 +116,7 @@ namespace Paintiris
                     lienzo.EraserShape = new EllipseStylusShape(1, 1);
                     break;
                 case "btn_seleccionar":
+                    lienzo.EditingMode = InkCanvasEditingMode.Select;
                     break;
                 default:
                     break;
