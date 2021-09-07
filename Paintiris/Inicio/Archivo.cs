@@ -16,8 +16,8 @@ namespace Paintiris.Inicio
     class Archivo
     {
         InkCanvas lienzo;
-        private int ancho;
-        private int alto;
+        int alto;
+        int ancho;
 
         public Archivo(InkCanvas lienzo)
         {
@@ -31,23 +31,26 @@ namespace Paintiris.Inicio
 
         /*En el campo de la impresión, "DPI" es la abreviatura de "Puntos por pulgada".
         Este valor se refiere al número de puntos que se imprimen por pulgada. */
-        private float dpi = 96.0f;
+        private double dpi = 96.0;
 
-        public void CrearImagenInkCanvas(InkCanvas canvas, string filename)
+        public void GuardarImagenInkCanvas(InkCanvas canvas, string ruta)
         {
+            
+
             //RenderTargetBitmap Convierte un objeto Visual en un mapa de bits.
             RenderTargetBitmap renderBitmap = new RenderTargetBitmap(
-             (int)canvas.Width, (int)canvas.Height,
-             dpi, dpi, PixelFormats.Pbgra32);
+            (int)canvas.ActualWidth, (int)canvas.ActualHeight,
+             dpi, dpi, PixelFormats.Default);
+            //el fallo es que captura todo el programa, la zona que le digo, tengo que dirigirme hasta la zona......
 
-            renderBitmap.Render(canvas);
 
-            //JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-            PngBitmapEncoder encoder = new PngBitmapEncoder();
-            encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+            renderBitmap.Render(ModificarZonaVisualImagen(canvas));
 
-            using (FileStream file = File.Create(filename))
+            using (FileStream file = new FileStream(ruta, FileMode.Create))
             {
+                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                //PngBitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
                 encoder.Save(file);
             }
 
@@ -55,7 +58,6 @@ namespace Paintiris.Inicio
 
         public ImageBrush CargarImagenIncKanvas()
         {
-            InkCanvas lienzo = new InkCanvas();
             ImageBrush image = new ImageBrush(); 
 
             OpenFileDialog imagenCargar = new OpenFileDialog
@@ -72,6 +74,33 @@ namespace Paintiris.Inicio
             }
             return image;
         }
+
+
+        /// <summary>
+        /// Es necesario para poder guardar la imagen entera, puesto que wpf por defecto cuando le pasamos
+        /// al RangerTargetBitmap el tamaño del mismo, este toma como referencia al padre donde está
+        /// el inkCanvas por lo que guarda una captura de pantalla sonse igual solo sale un cacho del inkcanvas
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        private DrawingVisual ModificarZonaVisualImagen(Visual v)
+        {
+            Rect b = VisualTreeHelper.GetDescendantBounds(v);
+            /// new a drawing visual and get its context
+            DrawingVisual dv = new DrawingVisual();
+            DrawingContext dc = dv.RenderOpen();
+
+            /// generate a visual brush by input, and paint
+            VisualBrush vb = new VisualBrush(v);
+            dc.DrawRectangle(vb, null, b);
+            dc.Close();
+
+            return dv;
+        }
+
+
+
+
 
 
     }

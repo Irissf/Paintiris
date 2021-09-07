@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -28,9 +29,11 @@ namespace Paintiris
         //Control del dibujo por parte de la clase pincel
         public InkCanvas lienzo;
         public bool dibujar;
+        public bool borrar;
 
         //Clase gestión pinceles
         Pinceles pinceles;
+
 
         //Clase gestión de los archivos
         Archivo archi;
@@ -41,8 +44,11 @@ namespace Paintiris
         {
             InitializeComponent();
             lienzo = lienzoPorDefecto;
-            archi = new Archivo(this.lienzo);
+            lienzo.EditingMode = InkCanvasEditingMode.None;
 
+            //inicializar clases
+            archi = new Archivo(lienzo);
+            pinceles = new Pinceles();
         }
 
         //**************************************** EVENTOS DE COMPONENTES *******************************************
@@ -54,7 +60,7 @@ namespace Paintiris
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Archivo_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
 
@@ -62,23 +68,23 @@ namespace Paintiris
             switch (btn.Name)
             {
                 case "btnNuevo":
-                    NuevoDoc win = new NuevoDoc();
-                    win.ShowDialog();
-                    if (win.DialogResult == true)
+                    NuevoDoc nuevoCanvas = new NuevoDoc();
+                    nuevoCanvas.ShowDialog();
+                    if (nuevoCanvas.DialogResult == true)
                     {
 
                         //pasamos de color a brush
-                        SolidColorBrush brush = new SolidColorBrush(win.colorCanvas);
+                        SolidColorBrush brush = new SolidColorBrush(nuevoCanvas.colorCanvas);
                         lienzo.Strokes.Clear();
                         lienzo.Background = brush;
-                        lienzo.Height = win.altoCanvas;
-                        lienzo.Width = win.anchoCanvas;
-                        lblInfo.Content = "Nombre del documento: " + win.nombreCanvas;
+                        lienzo.Height = nuevoCanvas.altoCanvas;
+                        lienzo.Width = nuevoCanvas.anchoCanvas;
+                        lblInfo.Content = "Nombre del documento: " + nuevoCanvas.nombreCanvas;
 
                     }
                     break;
                 case "btnGuardar":
-                    archi.CrearImagenInkCanvas(this.lienzo, "D:/Users/Usuario/Desktop/logo.png");
+                    archi.GuardarImagenInkCanvas(lienzo,"D:/Users/Usuario/Desktop/logo1.png");
                     break;
                 case "btnAbrir":
                     ImageBrush imagen = archi.CargarImagenIncKanvas();
@@ -90,23 +96,32 @@ namespace Paintiris
                 default:
                     break;
             }
-          
-
         }
 
-        //CANVAS_____________________________________________________________________
-
-      
-
-        private void lienzo_MouseDown(object sender, MouseButtonEventArgs e)
+        private void HerramientasDibujo_Click(object sender, RoutedEventArgs e)
         {
-            dibujar = true;
+            Button btn = (Button)sender;
+
+            switch (btn.Name)
+            {
+                case "btn_dibujar":
+                    lienzo.EditingMode = InkCanvasEditingMode.Ink;
+                    //TODO pasarle las variables de las carácteristicas que elija la persona
+                    lienzo.DefaultDrawingAttributes = pinceles.PintarPincel(5,5, Color.FromArgb(255, 25, 47, 255));
+                    break;
+                case "btn_borrar":
+                    Trace.WriteLine("borrar");
+                    lienzo.EditingMode = InkCanvasEditingMode.EraseByPoint;
+                    //propiedades de la goma
+                    lienzo.EraserShape = new EllipseStylusShape(1, 1);
+                    break;
+                case "btn_seleccionar":
+                    break;
+                default:
+                    break;
+            }
         }
 
-        private void lienzo_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            dibujar = false;
-        }
 
         //****************************************** PRUEBAS *******************************************************
 

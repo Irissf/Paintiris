@@ -7,11 +7,21 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Windows.Ink;
 
 namespace Paintiris.Inicio
 {
     class Pinceles
     {
+        public DrawingAttributes PintarPincel(int alto, int ancho, Color color )
+        {
+            DrawingAttributes inkDA = new DrawingAttributes();
+            inkDA.Width = ancho;
+            inkDA.Height = alto;
+            inkDA.Color = color;
+            return inkDA;
+            //inkCanvas.DefaultDrawingAttributes = inkDA;
+        }
        
     }
 }
