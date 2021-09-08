@@ -69,3 +69,4 @@
 ## Día 11
 > 8/09/2021
 - Busqueda de como hacer una herramienta de relleno, por todo lo que encontré, no se puede hacer con InkCanvas, pero alguien hablaba de pasar la imagen a BitMap y trabajar con las coordenadas, lo dejaré entonces para más adelante y así avanzar con el proyecto
+- Inicio de una forma personalizada básica para ver como trabaja con ella el inkCanvas
