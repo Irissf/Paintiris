@@ -118,6 +118,18 @@ namespace Paintiris
                 case "btn_seleccionar":
                     lienzo.EditingMode = InkCanvasEditingMode.Select;
                     break;
+                case "btn_cuadrado":
+                    Trace.WriteLine("rectangulo");
+                    Rectangle myRect = new Rectangle();
+                    myRect.Stroke = Brushes.Black;
+                    //myRect.Fill = Brushes.SkyBlue;
+                    myRect.HorizontalAlignment = HorizontalAlignment.Left;
+                    myRect.VerticalAlignment = VerticalAlignment.Center;
+                    myRect.Height = 150;
+                    myRect.Width = 150;
+                    lienzo.Children.Add(myRect);
+
+                    break;
                 default:
                     break;
             }

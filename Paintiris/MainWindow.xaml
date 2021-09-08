@@ -19,14 +19,13 @@
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Archivo" Name="ti_archivo">
                     <Grid Background="MistyRose">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="79*"/>
-                            <ColumnDefinition Width="193*"/>
-                            <ColumnDefinition Width="0*"/>
-                            <ColumnDefinition Width="1222*"/>
+                            <ColumnDefinition Width="41*"/>
+                            <ColumnDefinition Width="706*"/>
                         </Grid.ColumnDefinitions>
+
                         <Button x:Name="btnNuevo" Style="{DynamicResource ButtonStyle1}" Content="Nuevo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Archivo_Click" Height="39" Width="82" Grid.ColumnSpan="2"/>
-                        <Button x:Name="btnGuardar" Style="{DynamicResource ButtonStyle1}" Content="Guardar" HorizontalAlignment="Left" Margin="57,10,0,0" VerticalAlignment="Top" Click="Archivo_Click" Height="39" Width="82" Grid.Column="1"/>
-                        <Button x:Name="btnAbrir" Style="{DynamicResource ButtonStyle1}" Content="Abrir" HorizontalAlignment="Left" Margin="180,10,0,0" VerticalAlignment="Top" Click="Archivo_Click" Height="39" Width="82" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <Button x:Name="btnGuardar" Style="{DynamicResource ButtonStyle1}" Content="Guardar" HorizontalAlignment="Left" Margin="40,10,0,0" VerticalAlignment="Top" Click="Archivo_Click" Height="39" Width="82" Grid.Column="1"/>
+                        <Button x:Name="btnAbrir" Style="{DynamicResource ButtonStyle1}" Content="Abrir" HorizontalAlignment="Left" Margin="150,10,0,0" VerticalAlignment="Top" Click="Archivo_Click" Height="39" Width="82" Grid.Column="1"/>
                     </Grid>
                 </TabItem>
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Inicio" Name="ti_inicio">
@@ -34,6 +33,7 @@
                         <Button x:Name="btn_dibujar" Content="Dibujar" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Click="HerramientasDibujo_Click"/>
                         <Button x:Name="btn_borrar" Content="Borrar" HorizontalAlignment="Left" Margin="80,20,0,0" VerticalAlignment="Top" Click="HerramientasDibujo_Click"/>
                         <Button x:Name="btn_seleccionar" Content="Seleccionar" HorizontalAlignment="Left" Margin="130,20,0,0" VerticalAlignment="Top" Click="HerramientasDibujo_Click"/>
+                        <Button x:Name="btn_cuadrado" Content="Cuadrado" HorizontalAlignment="Left" Margin="216,20,0,0" VerticalAlignment="Top" Click="HerramientasDibujo_Click"/>
                     </Grid>
                 </TabItem>
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Estudio" Name="ti_estudio">

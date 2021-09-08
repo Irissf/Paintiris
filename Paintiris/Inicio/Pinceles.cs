@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Ink;
+using System.Windows.Input;
 
 namespace Paintiris.Inicio
 {
@@ -22,6 +23,7 @@ namespace Paintiris.Inicio
             return inkDA;
             //inkCanvas.DefaultDrawingAttributes = inkDA;
         }
+
        
     }
 }
