@@ -49,7 +49,7 @@
 - Guardar la imagen de un canvas en un archivo png o jpg
 
 ## Día 9
-> 2/09/2021
+> 02/09/2021
 - Cambiado el Canvas para dibujar por un InkCanvas 
 - Borrado de la mayor parte del código que no era útil para este nuevo componente
 - Nueva función de guardar
@@ -57,16 +57,20 @@
 - Arreglado el fallo de que se mantenga lo pintado al abrir imagen o nuevo lienzo
 
 ## Día 10
-> 6/09/2021
+> 06/09/2021
 - Después de todo un día de búsqueda conseguí que al guardar el InkCanvas en una imagen, salga desplazado
 
 ## Día 11
-> 7/09/2021
+> 07/09/2021
 - Ajustes de pincel, y botón para el mismo
 - Goma de borrar funcionable
 - Herramienta de selección lista, todas estas herramientas vienen con el InkCanvas
 
 ## Día 11
-> 8/09/2021
+> 08/09/2021
 - Busqueda de como hacer una herramienta de relleno, por todo lo que encontré, no se puede hacer con InkCanvas, pero alguien hablaba de pasar la imagen a BitMap y trabajar con las coordenadas, lo dejaré entonces para más adelante y así avanzar con el proyecto
 - Inicio de una forma personalizada básica para ver como trabaja con ella el inkCanvas
+
+## Dia 12
+> 9/09/2021
+- Después de mucho buscar, no descubrí como hacer unas formas personalizadas de la manera que quiero, arrastrando y colocando la figura, solo consegui colocarlas en el inkCanvas, pero no elegir de forma holgada donde se colocan, a parte, una vez colocadas no se pueden borrar, por lo que entran al dibujo a molestar. Podría cambiar el InkCanvas por un Canvas, pero me interesa la funcionalidad que tiene inkCanvas para usar con tableta. Así que haré otras funciones del programa más útiles para dibujar.
