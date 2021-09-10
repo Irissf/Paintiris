@@ -48,7 +48,7 @@ namespace Paintiris
 
             //inicializar clases
             archi = new Archivo(lienzo);
-            pinceles = new Pinceles();
+            pinceles = new Pinceles(this);
         }
 
         //**************************************** EVENTOS DE COMPONENTES *******************************************
@@ -84,7 +84,7 @@ namespace Paintiris
                     }
                     break;
                 case "btnGuardar":
-                    archi.GuardarImagenInkCanvas(lienzo,"D:/Users/Usuario/Desktop/logo1.png");
+                    archi.GuardarImagenInkCanvas(lienzo, "D:/Users/Usuario/Desktop/logo1.png");
                     break;
                 case "btnAbrir":
                     ImageBrush imagen = archi.CargarImagenIncKanvas();
@@ -107,7 +107,7 @@ namespace Paintiris
                 case "btn_dibujar":
                     lienzo.EditingMode = InkCanvasEditingMode.Ink;
                     //TODO pasarle las variables de las carácteristicas que elija la persona
-                    lienzo.DefaultDrawingAttributes = pinceles.PintarPincel(5,5, Color.FromArgb(255, 25, 47, 255));
+                    lienzo.DefaultDrawingAttributes = pinceles.PintarPincel(5, 5, Color.FromArgb(255, 25, 47, 255));
                     break;
                 case "btn_borrar":
                     Trace.WriteLine("borrar");
@@ -118,55 +118,24 @@ namespace Paintiris
                 case "btn_seleccionar":
                     lienzo.EditingMode = InkCanvasEditingMode.Select;
                     break;
-                case "btn_cuadrado":
-                    Trace.WriteLine("rectangulo");
-                    Rectangle myRect = new Rectangle();
-                    myRect.Stroke = Brushes.Black;
-                    //myRect.Fill = Brushes.SkyBlue;
-                    myRect.HorizontalAlignment = HorizontalAlignment.Left;
-                    myRect.VerticalAlignment = VerticalAlignment.Center;
-                    myRect.Height = 150;
-                    myRect.Width = 150;
-                    lienzo.Children.Add(myRect);
 
-                    break;
                 default:
                     break;
             }
         }
 
 
-        //****************************************** PRUEBAS *******************************************************
-
-        /// <summary>
-        /// Cada vez que se cambia una de las pestañas del menú
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void menuPestanhas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Canvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //un switch con los diferentes menus, crearemos una clase por cada uno de ellos
-            /*averiguamos que pestañita tenemos marcada*/
-            
-            if (ti_inicio.IsSelected)
+            ColorDialog miColor = new ColorDialog();
+            miColor.ShowDialog();
+            if (miColor.DialogResult == true)
             {
-                //Trace es una alternativa a console.writeline
-                Trace.WriteLine("inicio");
-            }
-            if (ti_archivo.IsSelected)
-            {
-                Trace.WriteLine("archivo");
-            }
-            if (ti_estudio.IsSelected)
-            {
-                Trace.WriteLine("estudio");
-            }
-            if (ti_ver.IsSelected)
-            {
-                Trace.WriteLine("ver");
+
             }
         }
-
-   
     }
+
+
 }
+

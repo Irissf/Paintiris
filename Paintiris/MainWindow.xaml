@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Paintiris"
         mc:Ignorable="d"
               Title="Paintiris" Height="800" Width="1500" WindowStartupLocation="CenterScreen"
-        MinHeight="600" MinWidth="800" FontFamily="Verdana">
+        MinHeight="600" MinWidth="800" FontFamily="Verdana" >
 
     <Grid >
         <Grid.RowDefinitions>
@@ -15,7 +15,7 @@
             <RowDefinition Height="27.04"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Name="gr_menu">
-            <TabControl Name="tc_menuPestanhas" Background="MistyRose" SelectionChanged="menuPestanhas_SelectionChanged" Style="{DynamicResource TabControlStyle1}">
+            <TabControl Name="tc_menuPestanhas" Background="MistyRose" Style="{DynamicResource TabControlStyle1}">
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Archivo" Name="ti_archivo">
                     <Grid Background="MistyRose">
                         <Grid.ColumnDefinitions>
@@ -30,10 +30,15 @@
                 </TabItem>
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Inicio" Name="ti_inicio">
                     <Grid Background="MistyRose">
-                        <Button x:Name="btn_dibujar" Content="Dibujar" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Click="HerramientasDibujo_Click"/>
-                        <Button x:Name="btn_borrar" Content="Borrar" HorizontalAlignment="Left" Margin="80,20,0,0" VerticalAlignment="Top" Click="HerramientasDibujo_Click"/>
-                        <Button x:Name="btn_seleccionar" Content="Seleccionar" HorizontalAlignment="Left" Margin="130,20,0,0" VerticalAlignment="Top" Click="HerramientasDibujo_Click"/>
-                        <Button x:Name="btn_cuadrado" Content="Cuadrado" HorizontalAlignment="Left" Margin="216,20,0,0" VerticalAlignment="Top" Click="HerramientasDibujo_Click"/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="31*"/>
+                            <ColumnDefinition Width="1463*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btn_dibujar" Content="Dibujar" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Click="HerramientasDibujo_Click" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btn_borrar" Content="Borrar" HorizontalAlignment="Left" Margin="49,20,0,0" VerticalAlignment="Top" Click="HerramientasDibujo_Click" Grid.Column="1"/>
+                        <Button x:Name="btn_seleccionar" Content="Seleccionar" HorizontalAlignment="Left" Margin="99,20,0,0" VerticalAlignment="Top" Click="HerramientasDibujo_Click" Grid.Column="1"/>
+                        <Canvas Grid.Column="1" Width="40" Height="40" Background="White" HorizontalAlignment="Left" Margin="200,5,0,0" MouseDown="Canvas_MouseDown"/>
+                        
                     </Grid>
                 </TabItem>
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Estudio" Name="ti_estudio">
@@ -45,7 +50,7 @@
             </TabControl>
         </Grid>
         <Grid Grid.Row="1" Name="gr_folio" Background="Gainsboro">
-            <InkCanvas  x:Name="lienzoPorDefecto" Width="1298" Height="616" Background="MistyRose"></InkCanvas>
+            <InkCanvas  x:Name="lienzoPorDefecto" Width="1298" Height="616" Background="MistyRose" />
         </Grid>
         <Grid Grid.Row="2" Name="gr_menuInferior" Background="RosyBrown">
             <Label x:Name="lblInfo" Content="Label" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="White"/>

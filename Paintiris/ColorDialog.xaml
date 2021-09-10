@@ -1,0 +1,41 @@
+﻿<Window x:Class="Paintiris.ColorDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Paintiris"
+        mc:Ignorable="d"
+        Title="ColorDialog" Height="460" Width="330" Background="MistyRose" ResizeMode="NoResize">
+    <Grid>
+
+        <!--Los sliders--> 
+        
+        <Label Height="32" Width="39" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,82,0,0" Content="Rojo"/>
+        <Slider x:Name="slColorRojo" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Left" Margin="48,89,0,0" VerticalAlignment="Top" Width="170" ValueChanged="slColorRojo_ValueChanged" IsEnabled="False" Height="19" />
+        <TextBox x:Name="txtColorRojo" Height="21" Width="27" HorizontalAlignment="Left" Margin="232,88,0,0" VerticalAlignment="Top" Text="{Binding Value, ElementName=slColorRojo, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtColor_TextChanged" IsEnabled="False"/>
+
+        <Label Height="31" Width="39" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,133,0,0" Content="Verde"/>
+        <Slider x:Name="slColorVerde" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Left" Margin="48,141,0,0" VerticalAlignment="Top" Width="170" ValueChanged="slColorRojo_ValueChanged" IsEnabled="False" Height="19" />
+        <TextBox x:Name="txtColorVerde" Height="21" Width="27" HorizontalAlignment="Left" Margin="232,138,0,0" VerticalAlignment="Top" Text="{Binding Value, ElementName=slColorVerde, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtColor_TextChanged" IsEnabled="False"/>
+
+        <Label Height="30" Width="40" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,205" Content="Azul"/>
+        <Slider x:Name="slColorAzul" TickFrequency="1" Maximum="255" HorizontalAlignment="Left" Margin="50,0,0,205" VerticalAlignment="Bottom" Width="220" ValueChanged="slColorRojo_ValueChanged" Height="30" />
+        <TextBox x:Name="txtColorAzul"  Height="30" Width="30" HorizontalAlignment="Right" Margin="0,0,10,205" VerticalAlignment="Bottom" Text="{Binding Value, ElementName=slColorAzul, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtColor_TextChanged" IsEnabled="False"/>
+
+        <Label Height="30" Width="40" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,165" Content="Trans"/>
+        <Slider x:Name="sltransparencia" TickFrequency="1" Maximum="255" HorizontalAlignment="Left" Margin="50,0,0,165" VerticalAlignment="Bottom" Width="220" ValueChanged="slColorRojo_ValueChanged" Height="30" />
+        <TextBox x:Name="txttransparencia" Height="30" Width="30" HorizontalAlignment="Right" Margin="0,0,10,165" VerticalAlignment="Bottom" Text="{Binding Value, ElementName=slColorAzul, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtColor_TextChanged" IsEnabled="False"/>
+
+        <!--Para el código hex-->
+        <TextBox  Margin="0,0,10,130" Text="000000" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Height="25" FontSize="16" />
+        <Label Height="25" Width="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,70,130" Content="#" FontSize="16"/>
+        
+        <Canvas Margin="10,0,0,50" Height="70" Width="290" Background="black" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        
+        <Label Content="Color" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="70" Width="280" FontSize="50" FontFamily="Consolas" Margin="0,0,0,370" FontWeight="Black" HorizontalContentAlignment="Center"/>
+        
+        
+        <Button Content="Aceptar" Margin="10,0,0,10" Width="140" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <Button Content="Cancelar" Margin="160,0,0,10" Width="140" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+    </Grid>
+</Window>
