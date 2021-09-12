@@ -74,3 +74,8 @@
 ## Dia 12
 > 9/09/2021
 - Después de mucho buscar, no descubrí como hacer unas formas personalizadas de la manera que quiero, arrastrando y colocando la figura, solo consegui colocarlas en el inkCanvas, pero no elegir de forma holgada donde se colocan, a parte, una vez colocadas no se pueden borrar, por lo que entran al dibujo a molestar. Podría cambiar el InkCanvas por un Canvas, pero me interesa la funcionalidad que tiene inkCanvas para usar con tableta. Así que haré otras funciones del programa más útiles para dibujar.
+
+
+## Dia 13
+> 10/09/2021
+- Wpf no maneja como windows form el COlorDialog, vi varias formas de hacerlo, pero ninguna me funcionó, así que me decanté por crear el mio propio
