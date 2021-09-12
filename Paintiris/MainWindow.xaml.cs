@@ -30,6 +30,7 @@ namespace Paintiris
         public InkCanvas lienzo;
         public bool dibujar;
         public bool borrar;
+        SolidColorBrush colorPintar = new SolidColorBrush(Color.FromArgb(255,255,255,255));
 
         //Clase gestión pinceles
         Pinceles pinceles;
@@ -107,7 +108,7 @@ namespace Paintiris
                 case "btn_dibujar":
                     lienzo.EditingMode = InkCanvasEditingMode.Ink;
                     //TODO pasarle las variables de las carácteristicas que elija la persona
-                    lienzo.DefaultDrawingAttributes = pinceles.PintarPincel(5, 5, Color.FromArgb(255, 25, 47, 255));
+                    lienzo.DefaultDrawingAttributes = pinceles.PintarPincel(5, 5, colorPintar.Color);
                     break;
                 case "btn_borrar":
                     Trace.WriteLine("borrar");
@@ -131,7 +132,8 @@ namespace Paintiris
             miColor.ShowDialog();
             if (miColor.DialogResult == true)
             {
-
+                colorPintar = new SolidColorBrush(miColor.color);
+                cv_colorPintar.Background = colorPintar;
             }
         }
     }
