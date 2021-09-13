@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +21,16 @@ namespace Paintiris
     public partial class ColorDialog : Window
     {
         public Color color;
-        public ColorDialog()
+        public ColorDialog(Color color)
         {
             InitializeComponent();
-            sltransparencia.Value = 255;
-            txttransparencia.Text = "255";
+            this.color = color;
+            Trace.WriteLine(""+color.A);
+            txttransparencia.Text = "" + color.A;
+            txtColorAzul.Text = "" + color.B;
+            txtColorRojo.Text = "" + color.R;
+            txtColorVerde.Text = "" + color.G;
+
         }
 
         private void txtColor_TextChanged(object sender, TextChangedEventArgs e)

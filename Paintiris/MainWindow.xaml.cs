@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Ink;
@@ -30,7 +31,8 @@ namespace Paintiris
         public InkCanvas lienzo;
         public bool dibujar;
         public bool borrar;
-        SolidColorBrush colorPintar = new SolidColorBrush(Color.FromArgb(255,255,255,255));
+        SolidColorBrush colorPintar = new SolidColorBrush(Color.FromArgb(255,0,0,0));
+        Color colorPin;
 
         //Clase gestión pinceles
         Pinceles pinceles;
@@ -38,6 +40,12 @@ namespace Paintiris
 
         //Clase gestión de los archivos
         Archivo archi;
+
+        //Para guardar por grupos los ToggleButton
+        List<ToggleButton> prueba = new List<ToggleButton>();
+        List<ToggleButton> pincelTamano = new List<ToggleButton>();
+        List<ToggleButton> pincelColor = new List<ToggleButton>();
+        List<ToggleButton> herramienta = new List<ToggleButton>();
 
         //**************************************** CONSTRUCTOR ****************************************************
 
@@ -50,6 +58,16 @@ namespace Paintiris
             //inicializar clases
             archi = new Archivo(lienzo);
             pinceles = new Pinceles(this);
+
+            //llenamos colecciones
+            prueba.Add(tbtn_borrar);
+            prueba.Add(tbtn_pintar);
+            prueba.Add(tbtn_selec);
+
+            //ponemos color al inicio del pincel
+            colorPin = Color.FromArgb(255, 0, 0, 0);
+            cv_colorPintar.Background = colorPintar;
+
         }
 
         //**************************************** EVENTOS DE COMPONENTES *******************************************
@@ -99,41 +117,57 @@ namespace Paintiris
             }
         }
 
-        private void HerramientasDibujo_Click(object sender, RoutedEventArgs e)
-        {
-            Button btn = (Button)sender;
-
-            switch (btn.Name)
-            {
-                case "btn_dibujar":
-                    lienzo.EditingMode = InkCanvasEditingMode.Ink;
-                    //TODO pasarle las variables de las carácteristicas que elija la persona
-                    lienzo.DefaultDrawingAttributes = pinceles.PintarPincel(5, 5, colorPintar.Color);
-                    break;
-                case "btn_borrar":
-                    Trace.WriteLine("borrar");
-                    lienzo.EditingMode = InkCanvasEditingMode.EraseByPoint;
-                    //propiedades de la goma
-                    lienzo.EraserShape = new EllipseStylusShape(1, 1);
-                    break;
-                case "btn_seleccionar":
-                    lienzo.EditingMode = InkCanvasEditingMode.Select;
-                    break;
-
-                default:
-                    break;
-            }
-        }
 
 
         private void Canvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ColorDialog miColor = new ColorDialog();
+            //le mandamos al dialog el color que tenemos en el canvas al inicio
+            ColorDialog miColor = new ColorDialog(colorPintar.Color);
             miColor.ShowDialog();
             if (miColor.DialogResult == true)
             {
                 colorPintar = new SolidColorBrush(miColor.color);
                 cv_colorPintar.Background = colorPintar;
+                //si el pincel está seleccionado, volvemos a crearlo o no se actualizará el nuevo color
+                if (tbtn_pintar.IsChecked == true)
+                {
+                    lienzo.EditingMode = InkCanvasEditingMode.Ink;
+                    lienzo.DefaultDrawingAttributes = pinceles.PintarPincel(5, 5, colorPintar.Color);
+                }
+            }
+        }
+
+        //prueba a botonoes como radio button
+        private void tbs_Checked(object sender, RoutedEventArgs e)
+        {
+            ToggleButton tbtn = (ToggleButton)sender;
+            // si le da a uno los otros los desmarcamos
+            foreach (ToggleButton boton in prueba)
+            {
+                if (boton.Name != tbtn.Name)
+                {
+                    boton.IsChecked = false;
+                }
+            }
+
+            switch (tbtn.Name)
+            {
+                case "tbtn_pintar":
+                    lienzo.EditingMode = InkCanvasEditingMode.Ink;
+                    lienzo.DefaultDrawingAttributes = pinceles.PintarPincel(5, 5, colorPintar.Color);
+                    break;
+                case "tbtn_borrar":
+                    Trace.WriteLine("borrar");
+                    lienzo.EditingMode = InkCanvasEditingMode.EraseByPoint;
+                    //propiedades de la goma
+                    lienzo.EraserShape = new EllipseStylusShape(1, 1);
+                    break;
+                case "tbtn_selec":
+                    lienzo.EditingMode = InkCanvasEditingMode.Select;
+                    break;
+
+                default:
+                    break;
             }
         }
     }
