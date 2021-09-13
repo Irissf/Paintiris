@@ -83,3 +83,9 @@
 ## Dia 14
 > 12/09/2021
 - El ColorDialog personal frabricado, le quedan algunos detalles que arreglaré por la semana, pero en principio funciona, tuve problemas con las transparecencias ya que no me fijé donde se colocaba, pensando que era el último parámetro cuando en realidad era el primero.
+
+## Dia 15
+> 13/09/2021
+- Cambio de los botones normales por ToggleButton, para que quede seleccionado el botón elegido, y programado que cuando le demos a uno se desactiven los otros de manera que la goma y el pincel no estén a la vez activados.
+- Arreglado el fallo de que el pincel no actualice el color cuando se cambia de color.
+- Ahora cuando se le da al canvas del color para cambiarlo, manda al formulario modal es color que estaba para trabajar sobre él.
