@@ -79,3 +79,7 @@
 ## Dia 13
 > 10/09/2021
 - Wpf no maneja como windows form el COlorDialog, vi varias formas de hacerlo, pero ninguna me funcionó, así que me decanté por crear el mio propio
+
+## Dia 14
+> 12/09/2021
+- El ColorDialog personal frabricado, le quedan algunos detalles que arreglaré por la semana, pero en principio funciona, tuve problemas con las transparecencias ya que no me fijé donde se colocaba, pensando que era el último parámetro cuando en realidad era el primero.
