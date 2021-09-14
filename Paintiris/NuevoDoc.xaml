@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paintiris"
         mc:Ignorable="d"
-      Title="Nuevo" Height="450" Width="625" ResizeMode="NoResize">
+      Title="Nuevo" Height="450" Width="625" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Grid Background="MistyRose">
 

@@ -53,12 +53,12 @@
                 </TabItem>
             </TabControl>
         </Grid>
+
         <Grid Grid.Row="1" Name="gr_folio" Background="Gainsboro">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="59*"/>
-                <ColumnDefinition Width="1442*"/>
-            </Grid.ColumnDefinitions>
-            <InkCanvas  x:Name="lienzoPorDefecto" Width="1298" Height="616" Background="MistyRose" Grid.Column="1" Margin="42,20,101,21" />
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <InkCanvas x:Name="lienzoPorDefecto" Width="1200" Height="600" Background="White" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </ScrollViewer>
+            
 
         </Grid>
         <Grid Grid.Row="2" Name="gr_menuInferior" Background="RosyBrown">
