@@ -89,3 +89,7 @@
 - Cambio de los botones normales por ToggleButton, para que quede seleccionado el botón elegido, y programado que cuando le demos a uno se desactiven los otros de manera que la goma y el pincel no estén a la vez activados.
 - Arreglado el fallo de que el pincel no actualice el color cuando se cambia de color.
 - Ahora cuando se le da al canvas del color para cambiarlo, manda al formulario modal es color que estaba para trabajar sobre él.
+
+## Dia 15
+> 14/09/2021
+- Colocado un scroll para el canvas por si cambia el tamaño de la pantalla, y lo centre en pantalla adecuadamente mediante el código axml, a parte eliminé una división del grid donde está en inkcanvas que era innecesario.
