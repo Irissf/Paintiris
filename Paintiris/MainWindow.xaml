@@ -22,14 +22,26 @@
             <TabControl Name="tc_menuPestanhas" Background="MistyRose" Style="{DynamicResource TabControlStyle1}" Grid.ColumnSpan="2">
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Archivo" Name="ti_archivo">
                     <Grid Background="MistyRose">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="82*"/>
-                            <ColumnDefinition Width="37*"/>
-                            <ColumnDefinition Width="1376*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="btnNuevo" Style="{DynamicResource ButtonStyle1}" Content="Nuevo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Archivo_Click" Height="39" Width="82" Grid.ColumnSpan="2"/>
-                        <Button x:Name="btnGuardar" Style="{DynamicResource ButtonStyle1}" Content="Guardar" HorizontalAlignment="Left" Margin="4,10,0,0" VerticalAlignment="Top" Click="Archivo_Click" Height="39" Width="82" Grid.Column="2"/>
-                        <Button x:Name="btnAbrir" Style="{DynamicResource ButtonStyle1}" Content="Abrir" HorizontalAlignment="Left" Margin="114,10,0,0" VerticalAlignment="Top" Click="Archivo_Click" Height="39" Width="82" Grid.Column="2"/>
+                        <!--SI no tiene el nombre la imagen del botón, a la hora de compilar no aparece, a parte le ponemos a la imagen como acción de compilación: recurso-->
+                        <Button x:Name="btnNuevo" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Archivo_Click" Height="35" Width="35" >
+                            <!--RenderOptions es para la manera en que renderiza el icono-->
+                            <Image x:Name="img_nuevo" RenderOptions.BitmapScalingMode="HighQuality" Width="30" Height="30" Source="/Resources/nuevo.ico"/>
+                        </Button>
+                        <Button x:Name="btnGuardar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Click="Archivo_Click" Height="40" Width="82">
+                            <Image>
+                                <Image.Source>
+                                    <DrawingImage>
+                                        <DrawingImage.Drawing>
+                                            <DrawingGroup ClipGeometry="M0,0 V26 H26 V0 H0 Z">
+                                                <GeometryDrawing Brush="#FF333333" Geometry="F1 M26,26z M0,0z M0,13C0,20.18 5.82,26 13,26 20.18,26 26,20.18 26,13 26,5.82 20.18,0 13,0 5.82,0 0,5.82 0,13" />
+                                                <GeometryDrawing Brush="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}" Geometry="F1 M26,26z M0,0z M24,13C24,19.07 19.065,24 13,24 6.935,24 2,19.065 2,13 2,6.935 6.935,2 13,2 19.065,2 24,6.935 24,13" />
+                                            </DrawingGroup>
+                                        </DrawingImage.Drawing>
+                                    </DrawingImage>
+                                </Image.Source>
+                            </Image>
+                        </Button>
+                        <Button x:Name="btnAbrir" Style="{DynamicResource ButtonStyle1}" Content="Abrir" HorizontalAlignment="Left" Margin="205,10,0,0" VerticalAlignment="Top" Click="Archivo_Click" Height="40" Width="82" />
                     </Grid>
                 </TabItem>
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Inicio" Name="ti_inicio" Height="19" VerticalAlignment="Center" HorizontalAlignment="Right" Width="45">

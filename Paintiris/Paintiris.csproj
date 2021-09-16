@@ -6,4 +6,35 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\cargar.ico" />
+    <None Remove="Resources\guardar-archivos.png" />
+    <None Remove="Resources\guardar.ico" />
+    <None Remove="Resources\nuevo.ico" />
+    <None Remove="Resources\save.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\cargar.ico" />
+    <Resource Include="Resources\guardar-archivos.png" />
+    <Resource Include="Resources\guardar.ico" />
+    <Resource Include="Resources\nuevo.ico" />
+    <Resource Include="Resources\save.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
