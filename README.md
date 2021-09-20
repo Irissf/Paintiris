@@ -93,3 +93,7 @@
 ## Dia 15
 > 14/09/2021
 - Colocado un scroll para el canvas por si cambia el tamaño de la pantalla, y lo centre en pantalla adecuadamente mediante el código axml, a parte eliminé una división del grid donde está en inkcanvas que era innecesario.
+
+## Dia 16
+> 16/09/2021
+- Modos de poner imágenes en los iconos, o bien mediante una geometría o una imagen descargada, pero este último su calidad no se ve óptima
