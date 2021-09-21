@@ -7,23 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\cargar.ico" />
-    <None Remove="Resources\guardar-archivos.png" />
-    <None Remove="Resources\guardar.ico" />
-    <None Remove="Resources\nuevo.ico" />
-    <None Remove="Resources\save.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\cargar.ico" />
-    <Resource Include="Resources\guardar-archivos.png" />
-    <Resource Include="Resources\guardar.ico" />
-    <Resource Include="Resources\nuevo.ico" />
-    <Resource Include="Resources\save.ico" />
   </ItemGroup>
 
   <ItemGroup>

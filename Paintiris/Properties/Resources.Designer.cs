@@ -59,55 +59,5 @@ namespace Paintiris.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] cargar {
-            get {
-                object obj = ResourceManager.GetObject("cargar", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] guardar {
-            get {
-                object obj = ResourceManager.GetObject("guardar", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] guardar_archivos {
-            get {
-                object obj = ResourceManager.GetObject("guardar_archivos", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] nuevo {
-            get {
-                object obj = ResourceManager.GetObject("nuevo", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] save {
-            get {
-                object obj = ResourceManager.GetObject("save", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }
