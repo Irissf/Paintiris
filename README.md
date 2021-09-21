@@ -97,3 +97,7 @@
 ## Dia 16
 > 16/09/2021
 - Modos de poner imágenes en los iconos, o bien mediante una geometría o una imagen descargada, pero este último su calidad no se ve óptima
+
+## Dia 17
+> 21/09/2021
+- Trabajando en mejorar la parte gráfica de los pinceles, añadiendo botones para el tamaño de los pinceles.
