@@ -101,3 +101,10 @@
 ## Dia 17
 > 21/09/2021
 - Trabajando en mejorar la parte gráfica de los pinceles, añadiendo botones para el tamaño de los pinceles.
+
+## Dia 18
+> 22/09/2021
+- Programados los botones de los tamaños de los pinceles, luego tengo que mandar a una función la gestión de pintar para que no se repita tanto código cada vez que se hace un cambio en el pincel
+- Programados los botones de pincel o lápiz, con lápiz, el ancho y alto son iguales, pero con pincel el ancho es la mitad del alto para simular un óvalo.
+- Arreglado el error del que al cambiar el color cambie el tamaño del pincel con unas variables comunes, puesto que las tenia dentro de la función no compartían los datos.
+- Solucionado un error que aparecia al pulsar el lápiz o el pincel puesto que partía con un valor nulo, lo solucioné poniendo un valor inicial a las variables de un px
