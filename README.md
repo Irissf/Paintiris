@@ -108,3 +108,12 @@
 - Programados los botones de pincel o lápiz, con lápiz, el ancho y alto son iguales, pero con pincel el ancho es la mitad del alto para simular un óvalo.
 - Arreglado el error del que al cambiar el color cambie el tamaño del pincel con unas variables comunes, puesto que las tenia dentro de la función no compartían los datos.
 - Solucionado un error que aparecia al pulsar el lápiz o el pincel puesto que partía con un valor nulo, lo solucioné poniendo un valor inicial a las variables de un px
+
+
+## Dia 19
+> 24/09/2021
+- Gestionados los tamaños de un botón, de forma que no estén activados si no está una herramienta de dibujo seleccionada.
+- Cambiar la forma de coger el tamaño del pincel, quitamos el switch-case y lo hacemos mediante el tag del componente.
+- Cambiamos de nuevo el tamaño por defecto del pincel y controlamos que el valor nunca sea menor de uno. Eliminamos una excepción de tipo ArgumentOutOfRangeException, la cual aparecia con el pincel de tamaño 1, puesto que la mitad es 0.5 y al redondear en int, mandaba el valor de 0, lo controlamos mediante un if que indica que si un valor es menor a uno lo ponemos a uno.
+- Colocados los cambas de la paleta de colores.
+- Programados los canvas de la paleta de colores, de forma que si das click derecho cambias el color del mismo, y con click izquierdo lo seleccionas para usar el color.
