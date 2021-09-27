@@ -41,7 +41,8 @@ namespace Paintiris
 
         //Gestionar el color
         SolidColorBrush colorPintar = new SolidColorBrush(Color.FromArgb(255,0,0,0));
-        Color colorPin;
+        Rectangle paraQuitarBorde;
+        bool primerRectangleGuardado = false;
 
         //Clase gestión pinceles
         Pinceles pinceles;
@@ -160,15 +161,26 @@ namespace Paintiris
         /// <param name="e"></param>
         private void ElegirColor_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Canvas canvas = (Canvas)sender;
+            Rectangle rec = (Rectangle)sender;
+            if (primerRectangleGuardado)
+            {
+                paraQuitarBorde.StrokeThickness = 0;
+            }
+
+            rec.Stroke = new SolidColorBrush(Colors.Black);
+            rec.StrokeThickness = 2;
+
+
+            paraQuitarBorde = (Rectangle)sender;
+            primerRectangleGuardado = true;
 
             //si el pincel está seleccionado, volvemos a crearlo o no se actualizará el nuevo color
             if (pintarActivado)
             {
                 //hacemos esta conversión para poder meter el color del canvas en el pincel, primero lo pasamos a brush y luego a colorSolidBrush
-                Brush colorDelCanvas = canvas.Background;
+                Brush colorDelCanvas = rec.Fill;
                 colorPintar = (SolidColorBrush)colorDelCanvas;
-                
+
                 Trace.WriteLine("entro");
                 Pintar();
             }
