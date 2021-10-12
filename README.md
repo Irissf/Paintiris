@@ -116,4 +116,8 @@
 - Cambiar la forma de coger el tamaño del pincel, quitamos el switch-case y lo hacemos mediante el tag del componente.
 - Cambiamos de nuevo el tamaño por defecto del pincel y controlamos que el valor nunca sea menor de uno. Eliminamos una excepción de tipo ArgumentOutOfRangeException, la cual aparecia con el pincel de tamaño 1, puesto que la mitad es 0.5 y al redondear en int, mandaba el valor de 0, lo controlamos mediante un if que indica que si un valor es menor a uno lo ponemos a uno.
 - Colocados los cambas de la paleta de colores.
-- Programados los canvas de la paleta de colores, de forma que si das click derecho cambias el color del mismo, y con click izquierdo lo seleccionas para usar el color.
+
+## Dia 19
+> 27/09/2021
+- Cambio los canvas de los colores por Rectangle, para hacer uso de su propiedad Stroke, que me permite poner un borde, con canvas habria que poner un componente Border conteniendo al canvas
+- Preparar el Combobox en el que se mostrarán las diferentes paletas de colores con la base de datos.
