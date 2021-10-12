@@ -121,3 +121,19 @@
 > 27/09/2021
 - Cambio los canvas de los colores por Rectangle, para hacer uso de su propiedad Stroke, que me permite poner un borde, con canvas habria que poner un componente Border conteniendo al canvas
 - Preparar el Combobox en el que se mostrarán las diferentes paletas de colores con la base de datos.
+
+## Dia 20
+> 01/10/2021
+- Colocación de los toggleButton para los tamaños de la goma
+- Meto por código algunos datos de prueba para el ComboBox
+
+## Dia 21
+> 12/10/2021
+- Base de datos SQLite
+- Creamos un directorio en el proyecto para almacenar la base de datos SQLite
+- Creamos la base de datos PaintirisBD con tres tablas, colores, paletas y paleta_colores que será la tabla relacional de las otras dos, que contendrán las claves foraneas
+- Añadimos algunos registros para probar
+- Cambiamos algunas propiedades del Paintiris.bd, como son la acción de compilación que la pasamos a "Contenido" y la copia en el directorio de salida que la ponemos como "Copiar si es posterior"
+- Agregamos el app.config pulsando con el botón derecho sobre el proyecto/agregar/nuevo elementos/archivos de configuarión de aplicaciones y añadimos la cadena de texto con la que nos conectaremos a la base de datos.
+- Instalamos el paquete Nuguet de SQLite 
+- Programamos un poco de la clase BaseDatos para probar que se conecta, si lo hace ;D
