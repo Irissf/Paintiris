@@ -40,6 +40,7 @@
                         <Button x:Name="btnAbrir" ToolTip="Cargar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40">
                             <fa:ImageAwesome Icon="FolderOpen" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
+                        <Button Content="Bse datos prueba" HorizontalAlignment="Left" Margin="872,36,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
                     </Grid>
                 </TabItem>
@@ -78,7 +79,6 @@
                         <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="180,0,0,0"></Rectangle>
 
                         <!--Prueba-->
-                        <ToggleButton x:Name = "tbtn_borrar" Content="borrar"  HorizontalAlignment="Left" Width="82" Margin="1281,14,0,18" Height="39" RenderTransformOrigin="0.5,0.463" Checked="tbs_Checked"/>
                         <ToggleButton x:Name = "tbtn_selec" Content="selec"  HorizontalAlignment="Left" Width="82" Margin="1387,16,0,16" Height="39" RenderTransformOrigin="0.5,0.463"  Checked="tbs_Checked"/>
 
                         <!-- ****************************** Gestión de los colores *************************************-->
@@ -100,16 +100,34 @@
                         <Rectangle x:Name="paleta10" Width="20" Height="20" HorizontalAlignment="Left" Margin="370,30,0,0" Fill="#a2d167" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
                         <Rectangle x:Name="paleta11" Width="20" Height="20" HorizontalAlignment="Left" Margin="400,30,0,0" Fill="#ed3a8c" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
                         <Rectangle x:Name="paleta12" Width="20" Height="20" HorizontalAlignment="Left" Margin="430,30,0,0" Fill="#fdf45b" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" />
-                        <ComboBox Width="100" Height="20" HorizontalAlignment="Left" Margin="480,0,0,0">
-                            <!--Luego lo conectaremos con la base de datos para sacar las paletas-->
-                            <ComboBoxItem>aaaa</ComboBoxItem>
-                            <ComboBoxItem>bbbb</ComboBoxItem>
-                            <ComboBoxItem>cccc</ComboBoxItem>
+                        <ComboBox x:Name="cb_palette" Width="100" Height="20" HorizontalAlignment="Left" Margin="480,0,0,0">
                         </ComboBox>
 
                         <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="600,0,0,0"></Rectangle>
-                     
+                        
+                        <!-- ****************************** Zona de goma *************************************-->
 
+                        <ToggleButton x:Name="tbtn_goma1px"  HorizontalAlignment="Left"  Margin="660,0,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="1" IsEnabled="false">
+                            <fa:ImageAwesome Icon="Circle" Width="1" Height="1" ></fa:ImageAwesome>
+                        </ToggleButton>
+                        <ToggleButton x:Name="tbtn_goma3px" HorizontalAlignment="Left"  Margin="680,0,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="3" IsEnabled="false">
+                            <fa:ImageAwesome Icon="Circle" Width="3" Height="3" ></fa:ImageAwesome>
+                        </ToggleButton>
+                        <ToggleButton x:Name="tbtn_gomal6px" HorizontalAlignment="Left"  Margin="700,0,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="6" IsEnabled="false">
+                            <fa:ImageAwesome Icon="Circle" Width="6" Height="6" ></fa:ImageAwesome>
+                        </ToggleButton>
+                        <ToggleButton x:Name="tbtn_goma10px" HorizontalAlignment="Left" Margin="720,0,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="10" IsEnabled="false">
+                            <fa:ImageAwesome Icon="Circle" Width="10" Height="10" ></fa:ImageAwesome>
+                        </ToggleButton>
+                        <ToggleButton x:Name="tbtn_goma13px" HorizontalAlignment="Left" Margin="740,0,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="13" IsEnabled="false">
+                            <fa:ImageAwesome Icon="Circle" Width="13" Height="13" ></fa:ImageAwesome>
+                        </ToggleButton>
+                        <TextBox HorizontalAlignment="Left" Margin="780,0,0,0" Text="TextBox" TextWrapping="Wrap" Width="40" Height="20" FontSize="15"/>
+                        
+                        <!--Icono de la goma-->
+                        <ToggleButton x:Name="tbtn_borrar" HorizontalAlignment="Left" Margin="620,0,0,0" Height="30" Width="30" Checked="tbs_Checked">
+                            <fa:ImageAwesome Icon="Eraser" Width="13" Height="13" ></fa:ImageAwesome>
+                        </ToggleButton>
 
                     </Grid>
                 </TabItem>

@@ -1,4 +1,5 @@
-﻿using Paintiris.Inicio;
+﻿using Paintiris.Clases;
+using Paintiris.Inicio;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -162,15 +163,20 @@ namespace Paintiris
         private void ElegirColor_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Rectangle rec = (Rectangle)sender;
+
+            //si ya se guardó un componente, le ponemos el borde a 0 para que no se vea
+            //De esta manera conseguimos el efecto radioButton en los Rectangle
             if (primerRectangleGuardado)
             {
                 paraQuitarBorde.StrokeThickness = 0;
             }
 
+            //le ponemos un borde al Rectangle seleccionado
             rec.Stroke = new SolidColorBrush(Colors.Black);
             rec.StrokeThickness = 2;
 
-
+            //guardamos el componente actual, para al dar a otro, quitarle el borde a este
+            //y ponemos a true la booleana para que no de un error
             paraQuitarBorde = (Rectangle)sender;
             primerRectangleGuardado = true;
 
@@ -313,6 +319,14 @@ namespace Paintiris
 
             herramienta.Add(tbtn_lapiz);
             herramienta.Add(tbtn_pincel);
+
+            cb_palette.Items.Add("DarkAcademia");
+            cb_palette.Items.Add("Sailor Moon");
+            cb_palette.Items.Add("Desert");
+            cb_palette.Items.Add("Primavera Fria");
+            cb_palette.Items.Add("Otoño tranquilo");
+            cb_palette.Items.Add("Cold Day");
+
         }
 
         /// <summary>
@@ -351,6 +365,11 @@ namespace Paintiris
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            BaseDatos bd = new BaseDatos();
+            bd.Conexion();
+        }
     }
 
 
