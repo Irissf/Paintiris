@@ -137,3 +137,7 @@
 - Agregamos el app.config pulsando con el botón derecho sobre el proyecto/agregar/nuevo elementos/archivos de configuarión de aplicaciones y añadimos la cadena de texto con la que nos conectaremos a la base de datos.
 - Instalamos el paquete Nuguet de SQLite 
 - Programamos un poco de la clase BaseDatos para probar que se conecta, si lo hace ;D
+
+## Día 22
+> 14/10/2021
+- Código programado para pasar de color hex a rgb y viceversa para que el usuario decida que método le es más cómodo para poner un colo. Ahora queda implemetarlo a los Color Dialog.
