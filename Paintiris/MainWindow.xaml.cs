@@ -140,7 +140,7 @@ namespace Paintiris
         /// <param name="e"></param>
         private void CambioColor_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Canvas color = (Canvas)sender;
+            Rectangle color = (Rectangle)sender;
 
             //le mandamos al dialog el color que tenemos en el canvas al inicio
             ColorDialog miColor = new ColorDialog(colorPintar.Color);
@@ -149,7 +149,7 @@ namespace Paintiris
             if (miColor.DialogResult == true)
             {
                 colorPintar = new SolidColorBrush(miColor.color);
-                color.Background = colorPintar;
+                color.Fill = colorPintar;
                 Pintar();
             }
         }

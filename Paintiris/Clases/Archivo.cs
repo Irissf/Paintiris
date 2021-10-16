@@ -41,7 +41,6 @@ namespace Paintiris.Inicio
             RenderTargetBitmap renderBitmap = new RenderTargetBitmap(
             (int)canvas.ActualWidth, (int)canvas.ActualHeight,
              dpi, dpi, PixelFormats.Default);
-            //el fallo es que captura todo el programa, la zona que le digo, tengo que dirigirme hasta la zona......
 
 
             renderBitmap.Render(ModificarZonaVisualImagen(canvas));

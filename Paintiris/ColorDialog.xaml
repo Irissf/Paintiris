@@ -11,23 +11,23 @@
         <!--Los sliders-->
 
         <Label Height="30" Width="40" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,305" Content="Rojo"/>
-        <Slider x:Name="slColorRojo" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Left" Margin="50,0,0,305" VerticalAlignment="Bottom" Width="220" ValueChanged="slColorRojo_ValueChanged" Height="30" />
-        <TextBox x:Name="txtColorRojo" Height="30" Width="30" HorizontalAlignment="Right" Margin="0,0,10,305" VerticalAlignment="Bottom" Text="{Binding Value, ElementName=slColorRojo, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtColor_TextChanged" />
+        <Slider x:Name="slColorRojo" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Left" Margin="50,0,0,305" VerticalAlignment="Bottom" Width="220" ValueChanged="SlColor_ValueChanged" Height="30" />
+        <TextBox x:Name="txtColorRojo" Height="30" Width="30" HorizontalAlignment="Right" Margin="0,0,10,305" VerticalAlignment="Bottom" Text="{Binding Value, ElementName=slColorRojo, UpdateSourceTrigger=PropertyChanged}" TextChanged="TxtColor_TextChanged" />
 
         <Label Height="30" Width="40" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,265" Content="Verde"/>
-        <Slider x:Name="slColorVerde" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Left" Margin="50,0,0,265" VerticalAlignment="Bottom" Width="220" ValueChanged="slColorRojo_ValueChanged" Height="30" />
-        <TextBox x:Name="txtColorVerde" Height="30" Width="30" HorizontalAlignment="Right" Margin="0,0,10,265" VerticalAlignment="Bottom" Text="{Binding Value, ElementName=slColorVerde, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtColor_TextChanged" />
+        <Slider x:Name="slColorVerde" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Left" Margin="50,0,0,265" VerticalAlignment="Bottom" Width="220" ValueChanged="SlColor_ValueChanged" Height="30" />
+        <TextBox x:Name="txtColorVerde" Height="30" Width="30" HorizontalAlignment="Right" Margin="0,0,10,265" VerticalAlignment="Bottom" Text="{Binding Value, ElementName=slColorVerde, UpdateSourceTrigger=PropertyChanged}" TextChanged="TxtColor_TextChanged" />
 
         <Label Height="30" Width="40" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,225" Content="Azul"/>
-        <Slider x:Name="slColorAzul" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Left" Margin="50,0,0,225" VerticalAlignment="Bottom" Width="220" ValueChanged="slColorRojo_ValueChanged" Height="30" />
-        <TextBox x:Name="txtColorAzul"  Height="30" Width="30" HorizontalAlignment="Right" Margin="0,0,10,225" VerticalAlignment="Bottom" Text="{Binding Value, ElementName=slColorAzul, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtColor_TextChanged" />
+        <Slider x:Name="slColorAzul" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Left" Margin="50,0,0,225" VerticalAlignment="Bottom" Width="220" ValueChanged="SlColor_ValueChanged" Height="30" />
+        <TextBox x:Name="txtColorAzul"  Height="30" Width="30" HorizontalAlignment="Right" Margin="0,0,10,225" VerticalAlignment="Bottom" Text="{Binding Value, ElementName=slColorAzul, UpdateSourceTrigger=PropertyChanged}" TextChanged="TxtColor_TextChanged" />
 
         <Label Height="30" Width="40" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,185" Content="Trans"/>
-        <Slider x:Name="sltransparencia" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Left" Margin="50,0,0,185" VerticalAlignment="Bottom" Width="220" ValueChanged="slColorRojo_ValueChanged" Height="30" />
-        <TextBox x:Name="txttransparencia" Height="30" Width="30" HorizontalAlignment="Right" Margin="0,0,10,185" VerticalAlignment="Bottom" Text="{Binding Value, ElementName=sltransparencia, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtColor_TextChanged"/>
+        <Slider x:Name="sltransparencia" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Left" Margin="50,0,0,185" VerticalAlignment="Bottom" Width="220" ValueChanged="SlColor_ValueChanged" Height="30" />
+        <TextBox x:Name="txttransparencia" Height="30" Width="30" HorizontalAlignment="Right" Margin="0,0,10,185" VerticalAlignment="Bottom" Text="{Binding Value, ElementName=sltransparencia, UpdateSourceTrigger=PropertyChanged}" TextChanged="TxtColor_TextChanged"/>
 
         <!--Para el código hex-->
-        <TextBox  Margin="0,0,10,135" Text="000000" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Height="25" FontSize="16" />
+        <TextBox x:Name="txtHex" MaxLength="6" Margin="0,0,10,135" Text="000000" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Height="25" FontSize="16" TextChanged="TextBox_TextChanged" UndoLimit="100" />
         <Label Height="25" Width="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,70,135" Content="#" FontSize="16"/>
         
         <Canvas x:Name="cv_colorMuetra" Margin="10,0,0,50" Height="80" Width="290" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>

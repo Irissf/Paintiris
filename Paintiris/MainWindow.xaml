@@ -79,7 +79,7 @@
                         <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="180,0,0,0"></Rectangle>
 
                         <!--Prueba-->
-                        <ToggleButton x:Name = "tbtn_selec" Content="selec"  HorizontalAlignment="Left" Width="82" Margin="1387,16,0,16" Height="39" RenderTransformOrigin="0.5,0.463"  Checked="tbs_Checked"/>
+                        <ToggleButton x:Name = "tbtn_selec" Content="selec"  HorizontalAlignment="Left" Width="82" Margin="880,0,0,0" Height="39" RenderTransformOrigin="0.5,0.463"  Checked="tbs_Checked"/>
 
                         <!-- ****************************** Gestión de los colores *************************************-->
                         <Rectangle x:Name="paletaBasico1" Width="40" Height="40" HorizontalAlignment="Left" Margin="200,0,0,20" Fill="White" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
@@ -104,7 +104,7 @@
                         </ComboBox>
 
                         <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="600,0,0,0"></Rectangle>
-                        
+
                         <!-- ****************************** Zona de goma *************************************-->
 
                         <ToggleButton x:Name="tbtn_goma1px"  HorizontalAlignment="Left"  Margin="660,0,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="1" IsEnabled="false">
@@ -123,11 +123,12 @@
                             <fa:ImageAwesome Icon="Circle" Width="13" Height="13" ></fa:ImageAwesome>
                         </ToggleButton>
                         <TextBox HorizontalAlignment="Left" Margin="780,0,0,0" Text="TextBox" TextWrapping="Wrap" Width="40" Height="20" FontSize="15"/>
-                        
+
                         <!--Icono de la goma-->
                         <ToggleButton x:Name="tbtn_borrar" HorizontalAlignment="Left" Margin="620,0,0,0" Height="30" Width="30" Checked="tbs_Checked">
                             <fa:ImageAwesome Icon="Eraser" Width="13" Height="13" ></fa:ImageAwesome>
                         </ToggleButton>
+                        <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="850,0,0,0"/>
 
                     </Grid>
                 </TabItem>
