@@ -27,8 +27,8 @@
         <TextBox x:Name="txttransparencia" Height="30" Width="30" HorizontalAlignment="Right" Margin="0,0,10,185" VerticalAlignment="Bottom" Text="{Binding Value, ElementName=sltransparencia, UpdateSourceTrigger=PropertyChanged}" TextChanged="TxtColor_TextChanged"/>
 
         <!--Para el código hex-->
-        <TextBox x:Name="txtHex" MaxLength="6" Margin="0,0,10,135" Text="000000" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Height="25" FontSize="16" TextChanged="TextBox_TextChanged" UndoLimit="100" />
-        <Label Height="25" Width="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,70,135" Content="#" FontSize="16"/>
+        <TextBox x:Name="txtHex" Margin="0,0,10,135" MaxLength="6" Text="000000" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="80" Height="25" FontSize="16" TextChanged="TextBox_TextChanged" UndoLimit="100" />
+        <Label Height="25" Width="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,90,135" Content="#" FontSize="16"/>
         
         <Canvas x:Name="cv_colorMuetra" Margin="10,0,0,50" Height="80" Width="290" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         

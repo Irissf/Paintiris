@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Paintiris.Clases
 {
@@ -16,6 +17,11 @@ namespace Paintiris.Clases
             //Console.WriteLine("#" + generateHEX(224) + "" + generateHEX(143) + "" + generateHEX(98));
         }
 
+        /// <summary>
+        /// Recibe un color en hexadecimal y lo transforma a rgb
+        /// </summary>
+        /// <param name="colorHex"></param>
+        /// <returns></returns>
         public int[] generarGRBA(string colorHex)
         {
             int[] rgb = new int[3];
@@ -30,17 +36,23 @@ namespace Paintiris.Clases
                 rgb[1] = Convert.ToInt16(color.G);
                 rgb[2] = Convert.ToInt16(color.B);
             }
-            catch
+            catch (Exception e)
             {
-
+                MessageBox.Show("Error" +e.Message);
             }
             return rgb;
+
         }
 
+        /// <summary>
+        /// Recibe un número en decimal y lo pasa a hexadecimal
+        /// </summary>
+        /// <param name="numero"></param>
+        /// <returns></returns>
         public string generaHEX(int numero)
         {
             double residuo = 0;
-            string resultado = "0";
+            string resultado = "";
             do
             {
                 residuo = ((double)(numero)) / 16; /*realizamos la división de rojo entre 16 y guardamos el residuo en "residuo". 
@@ -75,6 +87,8 @@ namespace Paintiris.Clases
                 }
 
             } while (numero != 0);
+            //necesitamos poner así, si solo tiene un digito, pondrá un 0 a la izquierda para tener dos dígitos
+            resultado = resultado.ToString().PadLeft(2, '0');
             return resultado;
         }
 

@@ -1,21 +1,16 @@
-﻿using Paintiris.Clases;
+﻿
+
+using Paintiris.Clases;
 using Paintiris.Inicio;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Paintiris
@@ -26,12 +21,7 @@ namespace Paintiris
     public partial class MainWindow : Window
     {
 
-        //********************************************************************************************
-                    /*  ___  ____ ____ ___  _ ____ ___  ____ ___  ____ ____ 
-                        |__] |__/ |  | |__] | |___ |  \ |__| |  \ |___ [__  
-                        |    |  \ |__| |    | |___ |__/ |  | |__/ |___ ___] */
-
-        //********************************************************************************************
+        #region PROPIEDADES
 
         //Control del dibujo por parte de la clase pincel
         public InkCanvas lienzo; //el area de dibujo
@@ -57,12 +47,12 @@ namespace Paintiris
         List<ToggleButton> pincelColor = new List<ToggleButton>();
         List<ToggleButton> herramienta = new List<ToggleButton>();
 
-        //********************************************************************************************
-                    /*  ____ ____ _  _ ____ ___ ____ _  _ ____ ___ ____ ____ 
-                        |    |  | |\ | [__   |  |__/ |  | |     |  |  | |__/ 
-                        |___ |__| | \| ___]  |  |  \ |__| |___  |  |__| |  \ */
+        //para las paletas de colores prueba
+        List<Rectangle> cuadrosColores = new List<Rectangle>();
+        Conversor transfromar = new Conversor();
 
-        //********************************************************************************************
+        #endregion
+
         public MainWindow()
         {
             InitializeComponent();
@@ -79,12 +69,7 @@ namespace Paintiris
 
         }
 
-        //********************************************************************************************
-        /*  ____ _  _ ____ _  _ ___ ____ ____    ___  ____    ____ ____ _  _ ___  ____ _  _ ____ _  _ ___ ____ 
-            |___ |  | |___ |\ |  |  |  | [__     |  \ |___    |    |  | |\/| |__] |  | |\ | |___ |\ |  |  |___ 
-            |___  \/  |___ | \|  |  |__| ___]    |__/ |___    |___ |__| |  | |    |__| | \| |___ | \|  |  |___  */
-
-        //********************************************************************************************
+        #region EVENTOS COMPONENTE
 
         //BOTONES GESTIÓN__________________________________________________________________
 
@@ -296,13 +281,9 @@ namespace Paintiris
             Pintar();
 
         }
+        #endregion
 
-        //********************************************************************************************
-                        /*  ____ _  _ _  _ ____ _ ____ _  _ ____ ____ 
-                            |___ |  | |\ | |    | |  | |\ | |___ [__  
-                            |    |__| | \| |___ | |__| | \| |___ ___]  */
-
-        //********************************************************************************************
+        #region FUNCIONES
 
         //trasladarlas luego
         //LLENAR Colecciones__________________________________________________________________
@@ -326,6 +307,20 @@ namespace Paintiris
             cb_palette.Items.Add("Primavera Fria");
             cb_palette.Items.Add("Otoño tranquilo");
             cb_palette.Items.Add("Cold Day");
+
+            cuadrosColores.Add(paleta1);
+            cuadrosColores.Add(paleta2);
+            cuadrosColores.Add(paleta3);
+            cuadrosColores.Add(paleta4);
+            cuadrosColores.Add(paleta5);
+            cuadrosColores.Add(paleta6);
+            cuadrosColores.Add(paleta7);
+            cuadrosColores.Add(paleta8);
+            cuadrosColores.Add(paleta9);
+            cuadrosColores.Add(paleta10);
+            cuadrosColores.Add(paleta11);
+            cuadrosColores.Add(paleta12);
+
 
         }
 
@@ -365,13 +360,22 @@ namespace Paintiris
             }
         }
 
+        //PRUEBA BASE DATOS
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             BaseDatos bd = new BaseDatos();
             bd.Conexion();
+            List<string> colores = bd.CogerColores("");
+            for (int i = 0; i < cuadrosColores.Count; i++)
+            {
+                int[] rgb = transfromar.generarGRBA(colores[i]);
+                colorPintar = new SolidColorBrush(Color.FromRgb(Convert.ToByte(rgb[0]), Convert.ToByte(rgb[1]), Convert.ToByte(rgb[2])));
+                cuadrosColores[i].Fill = colorPintar;
+            }
+            bd.CerrarConexion();
         }
     }
-
+    #endregion
 
 }
 

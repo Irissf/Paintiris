@@ -22,24 +22,52 @@ namespace Paintiris.Clases
         public int azul;    //colores
         public int IdPaleta;//paletas
 
+        SQLiteConnection connexion;
+
         public void Conexion()
         {
             //nos coge la cadena de conexión que está en app.config con el nombre de cadena
             string cadena = ConfigurationManager.ConnectionStrings["cadena"].ConnectionString;
-            SQLiteConnection connexion = new SQLiteConnection(cadena);
+            connexion = new SQLiteConnection(cadena);
 
             try
             {
                 connexion.Open();
                 MessageBox.Show("conectado");
+                CogerColores("");
 
             }
             catch (Exception e)
             {
 
-                MessageBox.Show(e.Message);
+                MessageBox.Show("error "+e.Message);
             }
 
+        }
+
+        public List<string> CogerColores(string paleta)
+        {
+            MessageBox.Show("consulta");
+            List<string> colores = new List<string>();
+            //tendrá que ser un innerjoin, para coger los colores que tienen el nombre de la tabla que pasamos???
+            using (SQLiteCommand fmd = new SQLiteCommand(connexion))
+            {
+                fmd.CommandText = @"select colorHex from paletas_colores;";
+                using (SQLiteDataReader dr = fmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        //MessageBox.Show("color"+dr.GetString(0));
+                        colores.Add(dr.GetString(0));
+                    }
+                }
+            }
+            return colores;
+        }
+
+        public void CerrarConexion()
+        {
+            connexion.Close();
         }
     }
 }
