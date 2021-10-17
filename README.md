@@ -141,3 +141,15 @@
 ## Día 22
 > 14/10/2021
 - Código programado para pasar de color hex a rgb y viceversa para que el usuario decida que método le es más cómodo para poner un colo. Ahora queda implemetarlo a los Color Dialog.
+
+## Día 23
+> 16/10/2021
+- Creación de la clase Conversor para poner las operaciones de cambio de RGB a HEX y viceversa.
+- Programado el ColorDialog, al poner el Hex ahora cambia el texbox y el slider en RGB
+- Programado también que cuando cambies un textbox o slider del rgb se actualice el hex.
+
+## Día 24
+> 17/10/2021
+- Varios cambios entre el Hex y RGB, puesto que al mover uno cambiaba el otro, pero se volvia a enviar ese cambio y creaba conflicto dejando todo a 0 al final, ahora cada componente manda cambios en el otro solo cuando tenemos el foco en él, para evitar el conflicto.
+- Arreglado el fallo de que se generase un número de más al cambiar de rgb a Hex
+- Programado el select de prueba de la base de datos para cambiar la paleta de colores y aprlicado en los rectagles donde se muestran los colores.
