@@ -153,3 +153,7 @@
 - Varios cambios entre el Hex y RGB, puesto que al mover uno cambiaba el otro, pero se volvia a enviar ese cambio y creaba conflicto dejando todo a 0 al final, ahora cada componente manda cambios en el otro solo cuando tenemos el foco en él, para evitar el conflicto.
 - Arreglado el fallo de que se generase un número de más al cambiar de rgb a Hex
 - Programado el select de prueba de la base de datos para cambiar la paleta de colores y aprlicado en los rectagles donde se muestran los colores.
+
+## Día 24
+> 19/10/2021
+- Peleando con la subconsulta y el método del selectedChanged del comboBox sin llegar a absolutamente a nada
