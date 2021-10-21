@@ -157,3 +157,7 @@
 ## Día 24
 > 19/10/2021
 - Peleando con la subconsulta y el método del selectedChanged del comboBox sin llegar a absolutamente a nada
+
+## Día 25
+> 21/10/2021
+- Ya hace la consulta correctamente, pero hay un error con la segunda variable de la paleta, que ya no da resultados, el problema debe ser un string que todavía no encuentro.
