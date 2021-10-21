@@ -100,7 +100,7 @@
                         <Rectangle x:Name="paleta10" Width="20" Height="20" HorizontalAlignment="Left" Margin="370,30,0,0" Fill="#a2d167" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
                         <Rectangle x:Name="paleta11" Width="20" Height="20" HorizontalAlignment="Left" Margin="400,30,0,0" Fill="#ed3a8c" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
                         <Rectangle x:Name="paleta12" Width="20" Height="20" HorizontalAlignment="Left" Margin="430,30,0,0" Fill="#fdf45b" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" />
-                        <ComboBox x:Name="cb_palette" Width="100" Height="20" HorizontalAlignment="Left" Margin="480,0,0,0">
+                        <ComboBox x:Name="cb_palette" Width="100" Height="20" HorizontalAlignment="Left" Margin="480,0,0,0" SelectionChanged="cb_palette_SelectionChanged">
                         </ComboBox>
 
                         <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="600,0,0,0"></Rectangle>

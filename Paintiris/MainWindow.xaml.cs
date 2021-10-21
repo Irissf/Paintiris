@@ -31,7 +31,7 @@ namespace Paintiris
         int anchoPincel = 2; //ancho del pincel
 
         //Gestionar el color
-        SolidColorBrush colorPintar = new SolidColorBrush(Color.FromArgb(255,0,0,0));
+        SolidColorBrush colorPintar = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
         Rectangle paraQuitarBorde;
         bool primerRectangleGuardado = false;
 
@@ -116,7 +116,7 @@ namespace Paintiris
             }
         }
 
-        //BOTONES COLOR__________________________________________________________________
+        #region BOTONES COLOR
 
         /// <summary>
         /// Con el botón derecho del ratón cambiamos el color que se encuentra en ese recuadro
@@ -214,9 +214,10 @@ namespace Paintiris
                     break;
             }
         }
+        #endregion
 
-        //TAMAÑO PINCEL__________________________________________________________________
-        
+        #region TAMAÑO PINCEL
+
         /// <summary>
         /// Determinamos el tamño del pincel
         /// </summary>
@@ -225,7 +226,7 @@ namespace Paintiris
         private void pintar_checked(object sender, RoutedEventArgs e)
         {
             ToggleButton tbtn = (ToggleButton)sender;
-           
+
 
             foreach (ToggleButton boton in pincelTamano)
             {
@@ -240,10 +241,11 @@ namespace Paintiris
 
             //si está marcado que es un pincel, dividimos el alto entre dos para hacerlo de forma ovalada
             Trace.WriteLine(siPincel);
-            
+
 
             Pintar();
         }
+
 
         /// <summary>
         /// Elegimos si queremos lápiz, igual ancho que alto o el pincel
@@ -258,12 +260,12 @@ namespace Paintiris
             //activamos los tamaños
             foreach (ToggleButton boton in pincelTamano)
             {
-                
+
                 boton.IsEnabled = true;
             }
 
             // si le da a uno los otros los desmarcamos
-            ActivasDesactivar(tbtn, herramienta);
+            ActivasDesactivar(tbtn);
 
             //activamos que estamos dibujando
             pintarActivado = true;
@@ -275,13 +277,36 @@ namespace Paintiris
             }
             else
             {
-               siPincel = false;
+                siPincel = false;
             }
-           
+
             Pintar();
 
         }
         #endregion
+
+
+
+        private void cb_palette_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string seleccionado = cb_palette.SelectedValue.ToString();
+            BaseDatos bd = new BaseDatos();
+            bd.Conexion();
+            List<string> colores = bd.CogerColores(seleccionado);
+            if (colores.Count > 0)
+            {
+                for (int i = 0; i < cuadrosColores.Count; i++)
+                {
+                    int[] rgb = transfromar.generarGRBA(colores[i]);
+                    colorPintar = new SolidColorBrush(Color.FromRgb(Convert.ToByte(rgb[0]), Convert.ToByte(rgb[1]), Convert.ToByte(rgb[2])));
+                    cuadrosColores[i].Fill = colorPintar;
+                }
+            }
+            bd.CerrarConexion();
+        }
+
+        #endregion
+
 
         #region FUNCIONES
 
@@ -301,7 +326,7 @@ namespace Paintiris
             herramienta.Add(tbtn_lapiz);
             herramienta.Add(tbtn_pincel);
 
-            cb_palette.Items.Add("DarkAcademia");
+            cb_palette.Items.Add("Dark Academia");
             cb_palette.Items.Add("Sailor Moon");
             cb_palette.Items.Add("Desert");
             cb_palette.Items.Add("Primavera Fria");
@@ -345,11 +370,11 @@ namespace Paintiris
             }
 
             lienzo.EditingMode = InkCanvasEditingMode.Ink;
-            
+
             lienzo.DefaultDrawingAttributes = pinceles.PintarPincel(altoPincel, anchoPincel, colorPintar.Color);
         }
 
-        private void ActivasDesactivar(ToggleButton boton, List<ToggleButton> lista)
+        private void ActivasDesactivar(ToggleButton boton)
         {
             foreach (ToggleButton botonElemento in herramienta)
             {
@@ -374,6 +399,7 @@ namespace Paintiris
             }
             bd.CerrarConexion();
         }
+
     }
     #endregion
 

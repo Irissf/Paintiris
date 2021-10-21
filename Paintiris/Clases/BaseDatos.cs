@@ -33,7 +33,7 @@ namespace Paintiris.Clases
             try
             {
                 connexion.Open();
-                MessageBox.Show("conectado");
+                //MessageBox.Show("conectado");
                 CogerColores("");
 
             }
@@ -45,23 +45,31 @@ namespace Paintiris.Clases
 
         }
 
+        //select colorHex from paletas_colores where paletaId = (select id from Paletas where nombre like 'Dark Academia')
         public List<string> CogerColores(string paleta)
         {
-            MessageBox.Show("consulta");
+            MessageBox.Show(paleta);
+            string consulta = string.Format("select colorHex from paletas_colores where paletaId = (select id from Paletas where nombre = '{0}');",paleta);
             List<string> colores = new List<string>();
-            //tendrá que ser un innerjoin, para coger los colores que tienen el nombre de la tabla que pasamos???
-            using (SQLiteCommand fmd = new SQLiteCommand(connexion))
+            try
             {
-                fmd.CommandText = @"select colorHex from paletas_colores;";
-                using (SQLiteDataReader dr = fmd.ExecuteReader())
+                using (SQLiteCommand fmd = new SQLiteCommand(connexion))
                 {
-                    while (dr.Read())
+                    fmd.CommandText = consulta;//"select colorHex from paletas_colores where paletaId = (select id from Paletas where nombre = 'Dark Academia');";
+                    using (SQLiteDataReader dr = fmd.ExecuteReader())
                     {
-                        //MessageBox.Show("color"+dr.GetString(0));
-                        colores.Add(dr.GetString(0));
+                        while (dr.Read())
+                        {
+                            colores.Add(dr.GetString(0));
+                        }
                     }
                 }
             }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            MessageBox.Show("tamaño de "+paleta +" "+colores.Count);
             return colores;
         }
 
