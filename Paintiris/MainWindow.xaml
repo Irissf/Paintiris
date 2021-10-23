@@ -40,7 +40,6 @@
                         <Button x:Name="btnAbrir" ToolTip="Cargar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40">
                             <fa:ImageAwesome Icon="FolderOpen" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
-                        <Button Content="Bse datos prueba" HorizontalAlignment="Left" Margin="872,36,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
                     </Grid>
                 </TabItem>
@@ -49,92 +48,98 @@
                 el componente que eligen, y lo gestionamos imitando a un radiobutton-->
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Inicio" Name="ti_inicio" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="45">
                     <Grid Background="MistyRose">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="68*"/>
+                            <ColumnDefinition Width="679*"/>
+                        </Grid.ColumnDefinitions>
 
                         <!--Lápiz o pincel, que es para escritura, el alto/2-->
-                        <ToggleButton x:Name="tbtn_lapiz" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" Height="30" Width="30" Checked="pincelOlapiz_Checked">
+                        <ToggleButton x:Name="tbtn_lapiz" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" Height="30" Width="30"  Checked="pincelOlapiz_Checked" Style="{DynamicResource ToggleButtonStyle}" >
                             <fa:ImageAwesome Icon="Pencil" Width="13" Height="13" ></fa:ImageAwesome>
                         </ToggleButton>
-                        <ToggleButton x:Name="tbtn_pincel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,35,0,0" Height="30" Width="30" Checked="pincelOlapiz_Checked">
+                        <ToggleButton x:Name="tbtn_pincel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,35,0,0" Height="30" Width="30" Checked="pincelOlapiz_Checked" Style="{DynamicResource ToggleButtonStyle}" >
                             <fa:ImageAwesome Icon="PaintBrush" Width="13" Height="13" ></fa:ImageAwesome>
                         </ToggleButton>
 
                         <!-- ****************************** Gestión de los tamaños del pincel *************************************-->
-                        <ToggleButton x:Name="tbtn_pincel1px"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,15,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="1" IsEnabled="false">
+                        <ToggleButton x:Name="tbtn_pincel1px"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,15,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="1" IsEnabled="false" Style="{DynamicResource ToggleButtonStyle}">
                             <fa:ImageAwesome Icon="Circle" Width="1" Height="1" ></fa:ImageAwesome>
                         </ToggleButton>
-                        <ToggleButton x:Name="tbtn_pincel3px" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,15,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="3" IsEnabled="false">
+                        <ToggleButton x:Name="tbtn_pincel3px" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,15,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="3" IsEnabled="false" Style="{DynamicResource ToggleButtonStyle}">
                             <fa:ImageAwesome Icon="Circle" Width="3" Height="3" ></fa:ImageAwesome>
                         </ToggleButton>
-                        <ToggleButton x:Name="tbtn_pincel6px" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,15,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="6" IsEnabled="false">
+                        <ToggleButton x:Name="tbtn_pincel6px" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,15,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="6" IsEnabled="false" Style="{DynamicResource ToggleButtonStyle}">
                             <fa:ImageAwesome Icon="Circle" Width="6" Height="6" ></fa:ImageAwesome>
                         </ToggleButton>
-                        <ToggleButton x:Name="tbtn_pincel10px" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,15,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="10" IsEnabled="false">
+                        <ToggleButton x:Name="tbtn_pincel10px" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,15,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="10" IsEnabled="false" Grid.ColumnSpan="2" Style="{DynamicResource ToggleButtonStyle}">
                             <fa:ImageAwesome Icon="Circle" Width="10" Height="10" ></fa:ImageAwesome>
                         </ToggleButton>
-                        <ToggleButton x:Name="tbtn_pincel13px" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,15,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="13" IsEnabled="false">
+                        <ToggleButton x:Name="tbtn_pincel13px" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,15,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="13" IsEnabled="false" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}">
                             <fa:ImageAwesome Icon="Circle" Width="13" Height="13" ></fa:ImageAwesome>
                         </ToggleButton>
-                        <TextBox HorizontalAlignment="Left" Margin="80,40,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" Height="20" FontSize="15"/>
-                        <Label Content="px" HorizontalAlignment="Left" Margin="120,40,0,0" VerticalAlignment="Top"/>
-                        <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="180,0,0,0"></Rectangle>
+                        <TextBox x:Name="txtTamanoPincel" HorizontalAlignment="Left" Margin="80,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" Height="20" FontSize="15" TextChanged="txtChanged"/>
+                        <Label Content="px" HorizontalAlignment="Left" Margin="120,40,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                        <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="44,0,0,0" Grid.Column="1"></Rectangle>
 
                         <!--Prueba-->
-                        <ToggleButton x:Name = "tbtn_selec" Content="selec"  HorizontalAlignment="Left" Width="82" Margin="880,0,0,0" Height="39" RenderTransformOrigin="0.5,0.463"  Checked="tbs_Checked"/>
+                        <ToggleButton x:Name = "tbtn_selec" Content="selec"  HorizontalAlignment="Left" Width="82" Margin="744,16,0,16" Height="39" RenderTransformOrigin="0.5,0.463"  Checked="tbs_Checked" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}"/>
 
                         <!-- ****************************** Gestión de los colores *************************************-->
-                        <Rectangle x:Name="paletaBasico1" Width="40" Height="40" HorizontalAlignment="Left" Margin="200,0,0,20" Fill="White" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
-                        <Rectangle x:Name="paletaBasico2" Width="40" Height="40" HorizontalAlignment="Left" Margin="220,20,0,0" Fill="Black" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
+                        <Rectangle x:Name="paletaBasico1" Width="40" Height="40" HorizontalAlignment="Left" Margin="64,6,0,26" Fill="White" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
+                        <Rectangle x:Name="paletaBasico2" Width="40" Height="40" HorizontalAlignment="Left" Margin="84,26,0,6" Fill="Black" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
 
 
-                        <Rectangle x:Name="paleta1" Width="20" Height="20" HorizontalAlignment="Left" Margin="280,0,0,30" Fill="#c16359" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
-                        <Rectangle x:Name="paleta2" Width="20" Height="20" HorizontalAlignment="Left" Margin="310,0,0,30" Fill="#48cbf7" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
-                        <Rectangle x:Name="paleta3" Width="20" Height="20" HorizontalAlignment="Left" Margin="340,0,0,30" Fill="#838ac1" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
-                        <Rectangle x:Name="paleta4" Width="20" Height="20" HorizontalAlignment="Left" Margin="370,0,0,30" Fill="#f44b48" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
-                        <Rectangle x:Name="paleta5" Width="20" Height="20" HorizontalAlignment="Left" Margin="400,0,0,30" Fill="#d47d3a" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
-                        <Rectangle x:Name="paleta6" Width="20" Height="20" HorizontalAlignment="Left" Margin="430,0,0,30" Fill="#369c52" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
+                        <Rectangle x:Name="paleta1" Width="20" Height="20" HorizontalAlignment="Left" Margin="144,11,0,41" Fill="#c16359" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
+                        <Rectangle x:Name="paleta2" Width="20" Height="20" HorizontalAlignment="Left" Margin="174,11,0,41" Fill="#48cbf7" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
+                        <Rectangle x:Name="paleta3" Width="20" Height="20" HorizontalAlignment="Left" Margin="204,11,0,41" Fill="#838ac1" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
+                        <Rectangle x:Name="paleta4" Width="20" Height="20" HorizontalAlignment="Left" Margin="234,11,0,41" Fill="#f44b48" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
+                        <Rectangle x:Name="paleta5" Width="20" Height="20" HorizontalAlignment="Left" Margin="264,11,0,41" Fill="#d47d3a" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
+                        <Rectangle x:Name="paleta6" Width="20" Height="20" HorizontalAlignment="Left" Margin="294,11,0,41" Fill="#369c52" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
 
 
-                        <Rectangle x:Name="paleta7" Width="20" Height="20" HorizontalAlignment="Left" Margin="280,30,0,0" Fill="#b87296" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
-                        <Rectangle x:Name="paleta8" Width="20" Height="20" HorizontalAlignment="Left" Margin="310,30,0,0" Fill="#f39438" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
-                        <Rectangle x:Name="paleta9" Width="20" Height="20" HorizontalAlignment="Left" Margin="340,30,0,0" Fill="#0497da" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
-                        <Rectangle x:Name="paleta10" Width="20" Height="20" HorizontalAlignment="Left" Margin="370,30,0,0" Fill="#a2d167" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
-                        <Rectangle x:Name="paleta11" Width="20" Height="20" HorizontalAlignment="Left" Margin="400,30,0,0" Fill="#ed3a8c" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown"/>
-                        <Rectangle x:Name="paleta12" Width="20" Height="20" HorizontalAlignment="Left" Margin="430,30,0,0" Fill="#fdf45b" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" />
-                        <ComboBox x:Name="cb_palette" Width="100" Height="20" HorizontalAlignment="Left" Margin="480,0,0,0" SelectionChanged="cb_palette_SelectionChanged">
+                        <Rectangle x:Name="paleta7" Width="20" Height="20" HorizontalAlignment="Left" Margin="144,41,0,11" Fill="#b87296" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
+                        <Rectangle x:Name="paleta8" Width="20" Height="20" HorizontalAlignment="Left" Margin="174,41,0,11" Fill="#f39438" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
+                        <Rectangle x:Name="paleta9" Width="20" Height="20" HorizontalAlignment="Left" Margin="204,41,0,11" Fill="#0497da" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
+                        <Rectangle x:Name="paleta10" Width="20" Height="20" HorizontalAlignment="Left" Margin="234,41,0,11" Fill="#a2d167" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
+                        <Rectangle x:Name="paleta11" Width="20" Height="20" HorizontalAlignment="Left" Margin="264,41,0,11" Fill="#ed3a8c" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
+                        <Rectangle x:Name="paleta12" Width="20" Height="20" HorizontalAlignment="Left" Margin="294,41,0,11" Fill="#fdf45b" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1" />
+                        <ComboBox x:Name="cb_palette" Width="100" Height="20" HorizontalAlignment="Left" Margin="344,26,0,26" SelectionChanged="cb_palette_SelectionChanged" Grid.Column="1">
                         </ComboBox>
 
-                        <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="600,0,0,0"></Rectangle>
+                        <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="464,0,0,0" Grid.Column="1"></Rectangle>
 
                         <!-- ****************************** Zona de goma *************************************-->
 
-                        <ToggleButton x:Name="tbtn_goma1px"  HorizontalAlignment="Left"  Margin="660,0,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="1" IsEnabled="false">
+                        <ToggleButton x:Name="tbtn_goma1px"  HorizontalAlignment="Left"  Margin="524,26,0,26" Height="20" Width="20" Checked="pintar_checked" Tag="1" IsEnabled="false" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}">
                             <fa:ImageAwesome Icon="Circle" Width="1" Height="1" ></fa:ImageAwesome>
                         </ToggleButton>
-                        <ToggleButton x:Name="tbtn_goma3px" HorizontalAlignment="Left"  Margin="680,0,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="3" IsEnabled="false">
+                        <ToggleButton x:Name="tbtn_goma3px" HorizontalAlignment="Left"  Margin="544,26,0,26" Height="20" Width="20" Checked="pintar_checked" Tag="3" IsEnabled="false" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}">
                             <fa:ImageAwesome Icon="Circle" Width="3" Height="3" ></fa:ImageAwesome>
                         </ToggleButton>
-                        <ToggleButton x:Name="tbtn_gomal6px" HorizontalAlignment="Left"  Margin="700,0,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="6" IsEnabled="false">
+                        <ToggleButton x:Name="tbtn_gomal6px" HorizontalAlignment="Left"  Margin="564,26,0,26" Height="20" Width="20" Checked="pintar_checked" Tag="6" IsEnabled="false" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}">
                             <fa:ImageAwesome Icon="Circle" Width="6" Height="6" ></fa:ImageAwesome>
                         </ToggleButton>
-                        <ToggleButton x:Name="tbtn_goma10px" HorizontalAlignment="Left" Margin="720,0,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="10" IsEnabled="false">
+                        <ToggleButton x:Name="tbtn_goma10px" HorizontalAlignment="Left" Margin="584,26,0,26" Height="20" Width="20" Checked="pintar_checked" Tag="10" IsEnabled="false" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}">
                             <fa:ImageAwesome Icon="Circle" Width="10" Height="10" ></fa:ImageAwesome>
                         </ToggleButton>
-                        <ToggleButton x:Name="tbtn_goma13px" HorizontalAlignment="Left" Margin="740,0,0,0" Height="20" Width="20" Checked="pintar_checked" Tag="13" IsEnabled="false">
+                        <ToggleButton x:Name="tbtn_goma13px" HorizontalAlignment="Left" Margin="604,26,0,26" Height="20" Width="20" Checked="pintar_checked" Tag="13" IsEnabled="false" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}">
                             <fa:ImageAwesome Icon="Circle" Width="13" Height="13" ></fa:ImageAwesome>
                         </ToggleButton>
-                        <TextBox HorizontalAlignment="Left" Margin="780,0,0,0" Text="TextBox" TextWrapping="Wrap" Width="40" Height="20" FontSize="15"/>
+                        <TextBox HorizontalAlignment="Left" Margin="644,26,0,26" TextWrapping="Wrap" Width="40" Height="20" FontSize="15" Grid.Column="1"/>
 
                         <!--Icono de la goma-->
-                        <ToggleButton x:Name="tbtn_borrar" HorizontalAlignment="Left" Margin="620,0,0,0" Height="30" Width="30" Checked="tbs_Checked">
+                        <ToggleButton x:Name="tbtn_borrar" HorizontalAlignment="Left" Margin="484,21,0,21" Height="30" Width="30" Checked="tbs_Checked" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}">
                             <fa:ImageAwesome Icon="Eraser" Width="13" Height="13" ></fa:ImageAwesome>
                         </ToggleButton>
-                        <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="850,0,0,0"/>
+                        <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="714,0,0,0" Grid.Column="1"/>
 
                     </Grid>
                 </TabItem>
 
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Estudio" Name="ti_estudio">
-                    <Grid Background="MistyRose"/>
+                    <Grid Background="MistyRose">
+                        <ToggleButton Width="50" Height="50" Content="Aa" Style="{DynamicResource ToggleButtonStyle}"></ToggleButton>
+                    </Grid>
                 </TabItem>
 
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Ver" Name="ti_ver">

@@ -48,8 +48,7 @@ namespace Paintiris.Clases
         //select colorHex from paletas_colores where paletaId = (select id from Paletas where nombre like 'Dark Academia')
         public List<string> CogerColores(string paleta)
         {
-            MessageBox.Show(paleta);
-            string consulta = string.Format("select colorHex from paletas_colores where paletaId = (select id from Paletas where nombre = '{0}');",paleta);
+            string consulta = string.Format("select colorHex from paletas_colores where paletaId = (select id from Paletas where nombre = '{0}');",paleta.Trim());
             List<string> colores = new List<string>();
             try
             {
@@ -69,7 +68,6 @@ namespace Paintiris.Clases
             {
                 MessageBox.Show(e.Message);
             }
-            MessageBox.Show("tamaño de "+paleta +" "+colores.Count);
             return colores;
         }
 

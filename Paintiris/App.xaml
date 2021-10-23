@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="Dictionaries\TabControl.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Dictionaries\TabItem.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Dictionaries\Boton.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Dictionaries\ToggleButton.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -31,7 +31,7 @@ namespace Paintiris
         int anchoPincel = 2; //ancho del pincel
 
         //Gestionar el color
-        SolidColorBrush colorPintar = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+        SolidColorBrush colorPintar;
         Rectangle paraQuitarBorde;
         bool primerRectangleGuardado = false;
 
@@ -42,9 +42,7 @@ namespace Paintiris
         Archivo archi;
 
         //Para guardar por grupos los ToggleButton
-        List<ToggleButton> prueba = new List<ToggleButton>();
         List<ToggleButton> pincelTamano = new List<ToggleButton>();
-        List<ToggleButton> pincelColor = new List<ToggleButton>();
         List<ToggleButton> herramienta = new List<ToggleButton>();
 
         //para las paletas de colores prueba
@@ -53,6 +51,7 @@ namespace Paintiris
 
         #endregion
 
+        //CONSTRUCTOR
         public MainWindow()
         {
             InitializeComponent();
@@ -65,6 +64,10 @@ namespace Paintiris
 
             //llenamos colecciones para que al activar uno se desactiven todos
             LlenarColecciones();
+            cb_palette.SelectedIndex = 0;
+
+            //Indicamos el color del pincel hasta que se seleccione otro color
+            colorPintar = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
 
 
         }
@@ -90,7 +93,6 @@ namespace Paintiris
                     nuevoCanvas.ShowDialog();
                     if (nuevoCanvas.DialogResult == true)
                     {
-
                         //pasamos de color a brush
                         SolidColorBrush brush = new SolidColorBrush(nuevoCanvas.colorCanvas);
                         lienzo.Strokes.Clear();
@@ -98,7 +100,6 @@ namespace Paintiris
                         lienzo.Height = nuevoCanvas.altoCanvas;
                         lienzo.Width = nuevoCanvas.anchoCanvas;
                         lblInfo.Content = "Nombre del documento: " + nuevoCanvas.nombreCanvas;
-
                     }
                     break;
                 case "btnGuardar":
@@ -106,10 +107,16 @@ namespace Paintiris
                     break;
                 case "btnAbrir":
                     ImageBrush imagen = archi.CargarImagenIncKanvas();
-                    lienzo.Strokes.Clear();
-                    lienzo.Height = imagen.ImageSource.Height;
-                    lienzo.Width = imagen.ImageSource.Height;
-                    lienzo.Background = imagen;
+                    //controlamos que venga una imagen, ya que si no lo hacemos, nos sale un nullreferenceexception
+                    if (imagen.ImageSource != null)
+                    {
+                        lienzo.Strokes.Clear();
+                        lienzo.Height = imagen.ImageSource.Height;
+                        lienzo.Width = imagen.ImageSource.Height;
+                        lienzo.Background = imagen;
+                    }
+
+
                     break;
                 default:
                     break;
@@ -169,8 +176,8 @@ namespace Paintiris
             if (pintarActivado)
             {
                 //hacemos esta conversión para poder meter el color del canvas en el pincel, primero lo pasamos a brush y luego a colorSolidBrush
-                Brush colorDelCanvas = rec.Fill;
-                colorPintar = (SolidColorBrush)colorDelCanvas;
+                Brush colorDelRect = rec.Fill;
+                colorPintar = (SolidColorBrush)colorDelRect;
 
                 Trace.WriteLine("entro");
                 Pintar();
@@ -183,14 +190,9 @@ namespace Paintiris
         private void tbs_Checked(object sender, RoutedEventArgs e)
         {
             ToggleButton tbtn = (ToggleButton)sender;
+
             // si le da a uno los otros los desmarcamos
-            foreach (ToggleButton boton in prueba)
-            {
-                if (boton.Name != tbtn.Name)
-                {
-                    boton.IsChecked = false;
-                }
-            }
+            ActivasDesactivar(tbtn);
 
             switch (tbtn.Name)
             {
@@ -236,6 +238,7 @@ namespace Paintiris
                 }
             }
             altoPincel = Convert.ToInt16(tbtn.Tag);
+            txtTamanoPincel.Text = "" + tbtn.Tag;
 
             pintarActivado = true;
 
@@ -260,7 +263,6 @@ namespace Paintiris
             //activamos los tamaños
             foreach (ToggleButton boton in pincelTamano)
             {
-
                 boton.IsEnabled = true;
             }
 
@@ -272,7 +274,6 @@ namespace Paintiris
 
             if (tbtn.Name == "tbtn_pincel")
             {
-
                 siPincel = true;
             }
             else
@@ -286,7 +287,11 @@ namespace Paintiris
         #endregion
 
 
-
+        /// <summary>
+        /// Cambiar la paleta de colores
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cb_palette_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string seleccionado = cb_palette.SelectedValue.ToString();
@@ -314,8 +319,6 @@ namespace Paintiris
         //LLENAR Colecciones__________________________________________________________________
         private void LlenarColecciones()
         {
-            prueba.Add(tbtn_borrar);
-            prueba.Add(tbtn_selec);
 
             pincelTamano.Add(tbtn_pincel1px);
             pincelTamano.Add(tbtn_pincel3px);
@@ -325,7 +328,10 @@ namespace Paintiris
 
             herramienta.Add(tbtn_lapiz);
             herramienta.Add(tbtn_pincel);
+            herramienta.Add(tbtn_borrar);
+            herramienta.Add(tbtn_selec);
 
+            cb_palette.Items.Add("Basic");
             cb_palette.Items.Add("Dark Academia");
             cb_palette.Items.Add("Sailor Moon");
             cb_palette.Items.Add("Desert");
@@ -400,6 +406,25 @@ namespace Paintiris
             bd.CerrarConexion();
         }
 
+        private void txtChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+
+            try
+            {
+                int combrobarNum= Convert.ToInt32(txt.Text);
+                if (combrobarNum > 0)
+                {
+                    altoPincel = Convert.ToInt16(txt.Text);
+                }
+            }
+            catch (FormatException)
+            {
+                altoPincel = 1;
+            }
+
+            Pintar();
+        }
     }
     #endregion
 
