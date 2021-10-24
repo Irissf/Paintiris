@@ -29,6 +29,7 @@ namespace Paintiris
         public bool pintarActivado; //marcamos si está activado un pincel para el cambio de color
         int altoPincel = 2; //alto del pincel
         int anchoPincel = 2; //ancho del pincel
+        int gomaTam = 2;
 
         //Gestionar el color
         SolidColorBrush colorPintar;
@@ -44,6 +45,9 @@ namespace Paintiris
         //Para guardar por grupos los ToggleButton
         List<ToggleButton> pincelTamano = new List<ToggleButton>();
         List<ToggleButton> herramienta = new List<ToggleButton>();
+        List<ToggleButton> gomaTamano = new List<ToggleButton>();
+
+
 
         //para las paletas de colores prueba
         List<Rectangle> cuadrosColores = new List<Rectangle>();
@@ -172,12 +176,13 @@ namespace Paintiris
             paraQuitarBorde = (Rectangle)sender;
             primerRectangleGuardado = true;
 
+            //hacemos esta conversión para poder meter el color del canvas en el pincel, primero lo pasamos a brush y luego a colorSolidBrush
+            Brush colorDelRect = rec.Fill;
+            colorPintar = (SolidColorBrush)colorDelRect;
+
             //si el pincel está seleccionado, volvemos a crearlo o no se actualizará el nuevo color
             if (pintarActivado)
             {
-                //hacemos esta conversión para poder meter el color del canvas en el pincel, primero lo pasamos a brush y luego a colorSolidBrush
-                Brush colorDelRect = rec.Fill;
-                colorPintar = (SolidColorBrush)colorDelRect;
 
                 Trace.WriteLine("entro");
                 Pintar();
@@ -198,14 +203,20 @@ namespace Paintiris
             {
                 case "tbtn_borrar":
                     Trace.WriteLine("borrar");
+                    txtGoma.Text = ""+gomaTam;
+                    //desactivamos los tamños de pintar
                     foreach (ToggleButton boton in pincelTamano)
                     {
                         boton.IsEnabled = false;
                     }
-                    lienzo.EditingMode = InkCanvasEditingMode.EraseByPoint;
-                    //propiedades de la goma
-                    lienzo.EraserShape = new EllipseStylusShape(1, 1);
-                    pintarActivado = false;
+
+                    //activamos los taños de la goma
+                    foreach (ToggleButton tamano in gomaTamano)
+                    {
+                        tamano.IsEnabled = true;
+                    }
+
+                    Borrar();
                     break;
                 case "tbtn_selec":
                     lienzo.EditingMode = InkCanvasEditingMode.Select;
@@ -225,28 +236,49 @@ namespace Paintiris
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void pintar_checked(object sender, RoutedEventArgs e)
+        private void tamanoPincel_checked(object sender, RoutedEventArgs e)
         {
             ToggleButton tbtn = (ToggleButton)sender;
 
-
-            foreach (ToggleButton boton in pincelTamano)
-            {
-                if (boton.Name != tbtn.Name)
-                {
-                    boton.IsChecked = false;
-                }
-            }
+            //cogemos el tamño del pincel del tag del mismo
             altoPincel = Convert.ToInt16(tbtn.Tag);
-            txtTamanoPincel.Text = "" + tbtn.Tag;
 
-            pintarActivado = true;
+            if (!pintarActivado)
+            {
+                //si está la goma activada
+                foreach (ToggleButton boton in gomaTamano)
+                {
+                    if (boton.Name != tbtn.Name)
+                    {
+                        boton.IsChecked = false;
+                    }
+                }
+                txtGoma.Text = ""+tbtn.Tag;
+                Borrar();
+            }
+            else
+            {
 
-            //si está marcado que es un pincel, dividimos el alto entre dos para hacerlo de forma ovalada
-            Trace.WriteLine(siPincel);
+                //recorremos el array de los tamaños del pincel
+                foreach (ToggleButton boton in pincelTamano)
+                {
+                    if (boton.Name != tbtn.Name)
+                    {
+                        boton.IsChecked = false;
+                    }
+                }
+
+                txtTamanoPincel.Text = "" + tbtn.Tag; //y lo mostramos en el textbox del tamaño
+                //pintarActivado = true;
+
+                //si está marcado que es un pincel, dividimos el alto entre dos para hacerlo de forma ovalada
+                Trace.WriteLine(siPincel);
+
+                Pintar();
+            }
 
 
-            Pintar();
+
         }
 
 
@@ -264,6 +296,12 @@ namespace Paintiris
             foreach (ToggleButton boton in pincelTamano)
             {
                 boton.IsEnabled = true;
+            }
+
+            //desactivamos los taños de la goma
+            foreach (ToggleButton tamano in gomaTamano)
+            {
+                tamano.IsEnabled = false;
             }
 
             // si le da a uno los otros los desmarcamos
@@ -326,6 +364,12 @@ namespace Paintiris
             pincelTamano.Add(tbtn_pincel10px);
             pincelTamano.Add(tbtn_pincel13px);
 
+            gomaTamano.Add(tbtn_goma1px);
+            gomaTamano.Add(tbtn_goma3px);
+            gomaTamano.Add(tbtn_gomal6px);
+            gomaTamano.Add(tbtn_goma10px);
+            gomaTamano.Add(tbtn_goma13px);
+
             herramienta.Add(tbtn_lapiz);
             herramienta.Add(tbtn_pincel);
             herramienta.Add(tbtn_borrar);
@@ -380,6 +424,10 @@ namespace Paintiris
             lienzo.DefaultDrawingAttributes = pinceles.PintarPincel(altoPincel, anchoPincel, colorPintar.Color);
         }
 
+        /// <summary>
+        /// Para desactivar los tooglebutton que no está seleccionados y generar efecto radioBox
+        /// </summary>
+        /// <param name="boton"></param>
         private void ActivasDesactivar(ToggleButton boton)
         {
             foreach (ToggleButton botonElemento in herramienta)
@@ -409,13 +457,22 @@ namespace Paintiris
         private void txtChanged(object sender, TextChangedEventArgs e)
         {
             TextBox txt = (TextBox)sender;
-
             try
             {
-                int combrobarNum= Convert.ToInt32(txt.Text);
+                int combrobarNum = Convert.ToInt32(txt.Text);
                 if (combrobarNum > 0)
                 {
-                    altoPincel = Convert.ToInt16(txt.Text);
+
+                    if (pintarActivado)
+                    {
+                        altoPincel = Convert.ToInt16(txt.Text);
+                        Pintar();
+                    }
+                    else
+                    {
+                        gomaTam = Convert.ToInt16(txt.Text);
+                        Borrar();
+                    }
                 }
             }
             catch (FormatException)
@@ -423,7 +480,18 @@ namespace Paintiris
                 altoPincel = 1;
             }
 
-            Pintar();
+        }
+
+        private void Borrar()
+        {
+            //ponemos a none, ya que la forma del pincel no se actualiza hasta el cambio de editar del inkCanvas
+            lienzo.EditingMode = InkCanvasEditingMode.None;
+
+            //activamos la goma
+            pintarActivado = false;
+            lienzo.EraserShape = new EllipseStylusShape(gomaTam, gomaTam); //le damos el tamaño
+            lienzo.EditingMode = InkCanvasEditingMode.EraseByPoint; //poenemos el cambas en modo de goma
+            //propiedades de la goma
         }
     }
     #endregion
