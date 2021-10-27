@@ -107,8 +107,11 @@ namespace Paintiris
                     }
                     break;
                 case "btnGuardar":
-                    archi.GuardarImagenInkCanvas(lienzo, "D:/Users/Usuario/Desktop/logo1.png");
+                    archi.GuardarImagenInkCanvas(lienzo);
                     break;
+                case "btnGuardarComo":
+                    archi.ElegirRuta();
+                    goto case "btnGuardar";
                 case "btnAbrir":
                     ImageBrush imagen = archi.CargarImagenIncKanvas();
                     //controlamos que venga una imagen, ya que si no lo hacemos, nos sale un nullreferenceexception

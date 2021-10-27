@@ -18,6 +18,9 @@ namespace Paintiris.Inicio
         InkCanvas lienzo;
         int alto;
         int ancho;
+        string rutaGuardado = "D:/Users/Usuario/Desktop/logo1.png";
+
+
 
         public Archivo(InkCanvas lienzo)
         {
@@ -33,7 +36,18 @@ namespace Paintiris.Inicio
         Este valor se refiere al número de puntos que se imprimen por pulgada. */
         private double dpi = 96.0;
 
-        public void GuardarImagenInkCanvas(InkCanvas canvas, string ruta)
+        public void ElegirRuta()
+        {
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                this.rutaGuardado = saveFileDialog.FileName;
+            }
+                
+        }
+
+        public void GuardarImagenInkCanvas(InkCanvas canvas)
         {
             
 
@@ -45,7 +59,7 @@ namespace Paintiris.Inicio
 
             renderBitmap.Render(ModificarZonaVisualImagen(canvas));
 
-            using (FileStream file = new FileStream(ruta, FileMode.Create))
+            using (FileStream file = new FileStream(rutaGuardado, FileMode.Create))
             {
                 JpegBitmapEncoder encoder = new JpegBitmapEncoder();
                 //PngBitmapEncoder encoder = new PngBitmapEncoder();
@@ -67,6 +81,7 @@ namespace Paintiris.Inicio
 
             if (imagenCargar.ShowDialog() == true)
             {
+                rutaGuardado = imagenCargar.FileName;
                 /*Como se mencionó, una ImageBrush pinta un área con un ImageSource .
                  * El tipo más común de ImageSource que se utiliza con ImageBrush es un BitmapImage */
                 image.ImageSource = new BitmapImage(new Uri(imagenCargar.FileName, UriKind.Relative));

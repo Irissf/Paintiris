@@ -37,7 +37,11 @@
                             <fa:ImageAwesome Icon="Save" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
 
-                        <Button x:Name="btnAbrir" ToolTip="Cargar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40">
+                        <Button x:Name="btnGuardarComo" ToolTip="Cargar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40">
+                            <fa:ImageAwesome Icon="LifeSaver" Width="30" Height="30" ></fa:ImageAwesome>
+                        </Button>
+
+                        <Button x:Name="btnAbrir" ToolTip="Cargar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="280,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40">
                             <fa:ImageAwesome Icon="FolderOpen" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
 
