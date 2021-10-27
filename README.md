@@ -162,11 +162,11 @@
 > 21/10/2021
 - Ya hace la consulta correctamente, pero hay un error con la segunda variable de la paleta, que ya no da resultados, el problema debe ser un string que todavía no encuentro.
 
-## Día 25
+## Día 26
 > 22/10/2021
 - Ya funcionan las diferentes paletas, el problema resultó estar en la base de datos que no se habían guardado correctamente
 
-## Día 25
+## Día 27
 > 23/10/2021
 - Diccionario de recursos del ToggleButton.
 - Ajustada los estilos de los botones y toggleButton
@@ -174,4 +174,11 @@
 - Arreglado lo de que al pulsar pincel, pintase en un color que no fuese el negro.
 - Arreglado que botón de pincel y goma se activasen a la vez.
 - Programado el textbox del cambio de tamaño de pincel
-- 
+
+## Día 28
+> 24/10/2021
+- Arreglado que el color sea negro al activar el pincel a pesar de tener un color seleccionado.
+- Tamaños de la goma
+- textbox de la goma
+- Arreglado el cruce de tamaños entre la goma y el pincel separando las variables.
+
