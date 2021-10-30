@@ -194,7 +194,11 @@ namespace Paintiris
 
 
 
-        //prueba a botones como radio button
+        /// <summary>
+        /// BORRAR Y SELECCIONAR
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbs_Checked(object sender, RoutedEventArgs e)
         {
             ToggleButton tbtn = (ToggleButton)sender;
@@ -301,7 +305,7 @@ namespace Paintiris
                 boton.IsEnabled = true;
             }
 
-            //desactivamos los taños de la goma
+            //desactivamos los tamaños de la goma
             foreach (ToggleButton tamano in gomaTamano)
             {
                 tamano.IsEnabled = false;

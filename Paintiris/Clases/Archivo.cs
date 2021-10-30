@@ -19,6 +19,7 @@ namespace Paintiris.Inicio
         int alto;
         int ancho;
         string rutaGuardado = "D:/Users/Usuario/Desktop/logo1.png";
+        bool esJpg = true;
 
 
 
@@ -30,23 +31,44 @@ namespace Paintiris.Inicio
 
 
         }
+
         //******************************* GUARDAR **********************************
 
         /*En el campo de la impresión, "DPI" es la abreviatura de "Puntos por pulgada".
         Este valor se refiere al número de puntos que se imprimen por pulgada. */
         private double dpi = 96.0;
 
+        /// <summary>
+        /// Elegimos la ruta donde queremos guardar el dibujo
+        /// </summary>
         public void ElegirRuta()
         {
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "jpg files (*.jpg)|*.jpg|png files (*.png)|*.png|All files (*.*)|*.*";
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.RestoreDirectory = true;
             if (saveFileDialog.ShowDialog() == true)
             {
                 this.rutaGuardado = saveFileDialog.FileName;
+
+                //vemos si es jpg o png pues tendrá un guardado diferente
+                if (saveFileDialog.Filter.Equals("jpg"))
+                {
+                    esJpg = true;
+                }
+                else
+                {
+                    esJpg = false;
+                }
             }
                 
         }
 
+        /// <summary>
+        /// Función para guardar un archivo
+        /// </summary>
+        /// <param name="canvas"></param>
         public void GuardarImagenInkCanvas(InkCanvas canvas)
         {
             
@@ -61,14 +83,27 @@ namespace Paintiris.Inicio
 
             using (FileStream file = new FileStream(rutaGuardado, FileMode.Create))
             {
-                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                //PngBitmapEncoder encoder = new PngBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
-                encoder.Save(file);
+                if (esJpg)
+                {
+                    JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+                    encoder.Save(file);
+                }
+                else
+                {
+                    PngBitmapEncoder encoder = new PngBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+                    encoder.Save(file);
+                }
+               
             }
 
         }
 
+        /// <summary>
+        /// Función para cargar una imagen del equipo
+        /// </summary>
+        /// <returns></returns>
         public ImageBrush CargarImagenIncKanvas()
         {
             ImageBrush image = new ImageBrush(); 

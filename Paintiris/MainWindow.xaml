@@ -37,8 +37,8 @@
                             <fa:ImageAwesome Icon="Save" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
 
-                        <Button x:Name="btnGuardarComo" ToolTip="Cargar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40">
-                            <fa:ImageAwesome Icon="LifeSaver" Width="30" Height="30" ></fa:ImageAwesome>
+                        <Button x:Name="btnGuardarComo" ToolTip="Guardar Como" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40">
+                            <fa:ImageAwesome Icon="folder" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
 
                         <Button x:Name="btnAbrir" ToolTip="Cargar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="280,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40">
@@ -58,10 +58,10 @@
                         </Grid.ColumnDefinitions>
 
                         <!--Lápiz o pincel, que es para escritura, el alto/2-->
-                        <ToggleButton x:Name="tbtn_lapiz" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" Height="30" Width="30"  Checked="pincelOlapiz_Checked" Style="{DynamicResource ToggleButtonStyle}" >
+                        <ToggleButton x:Name="tbtn_lapiz" ToolTip="Lápiz" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" Height="30" Width="30"  Checked="pincelOlapiz_Checked" Style="{DynamicResource ToggleButtonStyle}" >
                             <fa:ImageAwesome Icon="Pencil" Width="13" Height="13" ></fa:ImageAwesome>
                         </ToggleButton>
-                        <ToggleButton x:Name="tbtn_pincel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,35,0,0" Height="30" Width="30" Checked="pincelOlapiz_Checked" Style="{DynamicResource ToggleButtonStyle}" >
+                        <ToggleButton x:Name="tbtn_pincel" ToolTip="Pincel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,35,0,0" Height="30" Width="30" Checked="pincelOlapiz_Checked" Style="{DynamicResource ToggleButtonStyle}" >
                             <fa:ImageAwesome Icon="PaintBrush" Width="13" Height="13" ></fa:ImageAwesome>
                         </ToggleButton>
 
@@ -86,7 +86,7 @@
                         <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="44,0,0,0" Grid.Column="1"></Rectangle>
 
                         <!--Prueba-->
-                        <ToggleButton x:Name = "tbtn_selec" Content="selec"  HorizontalAlignment="Left" Width="82" Margin="744,16,0,16" Height="39" RenderTransformOrigin="0.5,0.463"  Checked="tbs_Checked" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}"/>
+                        <ToggleButton x:Name = "tbtn_selec" Content="seleccionar"  HorizontalAlignment="Left" Width="82" Margin="744,16,0,16" Height="39" RenderTransformOrigin="0.5,0.463"  Checked="tbs_Checked" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}"/>
 
                         <!-- ****************************** Gestión de los colores *************************************-->
                         <Rectangle x:Name="paletaBasico1" Width="40" Height="40" HorizontalAlignment="Left" Margin="64,6,0,26" Fill="White" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
@@ -132,7 +132,7 @@
                         <TextBox x:Name="txtGoma" HorizontalAlignment="Left" Margin="644,26,0,26" TextWrapping="Wrap" Width="40" Height="20" FontSize="15" Grid.Column="1" TextChanged="txtChanged"/>
 
                         <!--Icono de la goma-->
-                        <ToggleButton x:Name="tbtn_borrar" HorizontalAlignment="Left" Margin="484,21,0,21" Height="30" Width="30" Checked="tbs_Checked" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}">
+                        <ToggleButton x:Name="tbtn_borrar" ToolTip="Goma" HorizontalAlignment="Left" Margin="484,21,0,21" Height="30" Width="30" Checked="tbs_Checked" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}">
                             <fa:ImageAwesome Icon="Eraser" Width="13" Height="13" ></fa:ImageAwesome>
                         </ToggleButton>
                         <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="714,0,0,0" Grid.Column="1"/>
