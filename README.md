@@ -182,3 +182,19 @@
 - textbox de la goma
 - Arreglado el cruce de tamaños entre la goma y el pincel separando las variables.
 
+## Día 29
+> 27/10/2021
+- Programado el botón de guardar como, eligiendo la ruta donde se guardará el dibujo.
+
+## Día 30
+> 30/10/2021
+- Añadido para guardar el archivo en png.
+- Metidos los filtros de png y jpg en el SaveFileDialog.
+- Buscando como poder hacer zoom y rotar el lienzo
+
+## Día 31
+> 1/11/2021
+- Programada la función para la carga de los folios predefinidos para estudiar.
+- Encontrado como hacer zoom al inkCanvas, y programado un botón de prueba
+- Todavía buscando para rotarlo.
+
