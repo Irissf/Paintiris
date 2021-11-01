@@ -87,6 +87,7 @@
 
                         <!--Prueba-->
                         <ToggleButton x:Name = "tbtn_selec" Content="seleccionar"  HorizontalAlignment="Left" Width="82" Margin="744,16,0,16" Height="39" RenderTransformOrigin="0.5,0.463"  Checked="tbs_Checked" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}"/>
+                        <ToggleButton x:Name = "tbtn_zoom" Content="zoom"  HorizontalAlignment="Left" Width="82" Margin="850,16,0,16" Height="39" RenderTransformOrigin="0.5,0.463"  Checked="tbs_Zoom" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}"/>
 
                         <!-- ****************************** Gestión de los colores *************************************-->
                         <Rectangle x:Name="paletaBasico1" Width="40" Height="40" HorizontalAlignment="Left" Margin="64,6,0,26" Fill="White" MouseRightButtonDown="CambioColor_MouseDown" MouseLeftButtonDown="ElegirColor_MouseLeftButtonDown" Grid.Column="1"/>
@@ -142,7 +143,7 @@
 
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Estudio" Name="ti_estudio">
                     <Grid Background="MistyRose">
-                        <ToggleButton Width="50" Height="50" Content="Aa" Style="{DynamicResource ToggleButtonStyle}"></ToggleButton>
+                        <ToggleButton Width="50" Height="50" Tag="chino2.jpg"  Content="Aa" Style="{DynamicResource ToggleButtonStyle}" Click="EstudioHoja"></ToggleButton>
                     </Grid>
                 </TabItem>
 
@@ -154,11 +155,9 @@
         </Grid>
 
         <Grid Grid.Row="1" Name="gr_folio" Background="Gainsboro">
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="scroll">
                 <InkCanvas x:Name="lienzoPorDefecto" Width="1200" Height="600" Background="White" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </ScrollViewer>
-
-
         </Grid>
 
         <Grid Grid.Row="2" Name="gr_menuInferior" Background="RosyBrown">

@@ -11,6 +11,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Paintiris
@@ -72,7 +73,6 @@ namespace Paintiris
 
             //Indicamos el color del pincel hasta que se seleccione otro color
             colorPintar = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
-
 
         }
 
@@ -355,6 +355,36 @@ namespace Paintiris
             bd.CerrarConexion();
         }
 
+
+        /// <summary>
+        /// elegir las hojas de estudio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EstudioHoja(object sender, RoutedEventArgs e)
+        {
+            ToggleButton tgb = (ToggleButton)sender;
+            ImageBrush image = new ImageBrush();
+            image.ImageSource = new BitmapImage(new Uri(@"..\..\..\Recursos\folios\" + tgb.Tag, UriKind.Relative));
+
+            lienzo.Strokes.Clear();
+            lienzo.Height = image.ImageSource.Height;
+            lienzo.Width = image.ImageSource.Width;
+            lienzo.Background = image;
+
+        }
+
+        /// <summary>
+        /// Zoom
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbs_Zoom(object sender, RoutedEventArgs e)
+        {
+            ScaleTransform scaler = lienzo.LayoutTransform as ScaleTransform;
+            lienzo.LayoutTransform = new ScaleTransform(1.5, 1.5);
+        }
+
         #endregion
 
 
@@ -500,6 +530,7 @@ namespace Paintiris
             lienzo.EditingMode = InkCanvasEditingMode.EraseByPoint; //poenemos el cambas en modo de goma
             //propiedades de la goma
         }
+
     }
     #endregion
 

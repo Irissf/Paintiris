@@ -110,7 +110,7 @@ namespace Paintiris.Inicio
 
             OpenFileDialog imagenCargar = new OpenFileDialog
             {
-                Filter = "Image Files (*.jpg)|*.jpg|Image Files (*.png)|*.png|Image Files (*.bmp)|*.bmp",
+                Filter = "Image Files (*.jpg)|*.jpg|Image Files (*.png)|*.png",
                 Title = "Abrir imagen"
             };
 
