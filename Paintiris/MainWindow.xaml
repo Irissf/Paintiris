@@ -144,6 +144,18 @@
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Estudio" Name="ti_estudio">
                     <Grid Background="MistyRose">
                         <ToggleButton Width="50" Height="50" Tag="chino2.jpg"  Content="Aa" Style="{DynamicResource ToggleButtonStyle}" Click="EstudioHoja"></ToggleButton>
+                        <Button Name="cuadrosG" HorizontalAlignment="Left" Margin="10,0,0,0" Width="50" Height="50" Style="{DynamicResource ButtonStyle1}">
+                            <Image Source="Recursos\icons\cudrosGrandeIco.png"></Image>
+                        </Button>
+                        <Button Name="cuadroP" HorizontalAlignment="Left" Margin="70,0,0,0" Width="50" Height="50" Style="{DynamicResource ButtonStyle1}">
+                            <Image Source="Recursos\icons\cudrosPequeIco.png"></Image>
+                        </Button>
+                        <Button Name="cuadroRG" HorizontalAlignment="Left" Margin="130,0,0,0" Width="50" Height="50" Style="{DynamicResource ButtonStyle1}">
+                            <Image Source="Recursos\icons\cudrosGrandeRosaIco.png"></Image>
+                        </Button>
+                        <Button Name="cuadroRP" HorizontalAlignment="Left" Margin="190,0,0,0" Width="50" Height="50" Style="{DynamicResource ButtonStyle1}">
+                            <Image Source="Recursos\icons\cudrosPequeRosaIco.png"></Image>
+                        </Button>
                     </Grid>
                 </TabItem>
 

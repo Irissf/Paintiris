@@ -8,6 +8,10 @@
 
   <ItemGroup>
     <None Remove="BaseDatos\PaintirisBD.db" />
+    <None Remove="Recursos\icons\cudrosGrandeIco.png" />
+    <None Remove="Recursos\icons\cudrosGrandeRosaIco.png" />
+    <None Remove="Recursos\icons\cudrosPequeIco.png" />
+    <None Remove="Recursos\icons\cudrosPequeRosaIco.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +23,13 @@
   <ItemGroup>
     <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.115" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Recursos\icons\cudrosGrandeIco.png" />
+    <Resource Include="Recursos\icons\cudrosGrandeRosaIco.png" />
+    <Resource Include="Recursos\icons\cudrosPequeIco.png" />
+    <Resource Include="Recursos\icons\cudrosPequeRosaIco.png" />
   </ItemGroup>
 
   <ItemGroup>
