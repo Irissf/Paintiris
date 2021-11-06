@@ -80,55 +80,7 @@ namespace Paintiris
 
         //BOTONES GESTIÓN__________________________________________________________________
 
-        /// <summary>
-        /// Click de los elementos de archivo => NUEVO, GUARDAR, GUARDARCOMO, ABRIR
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Archivo_Click(object sender, RoutedEventArgs e)
-        {
-            Button btn = (Button)sender;
-
-            //Gestionamos el evento de los click de los botones mediande un switch ya que son muchos
-            switch (btn.Name)
-            {
-                case "btnNuevo":
-                    NuevoDoc nuevoCanvas = new NuevoDoc();
-                    nuevoCanvas.ShowDialog();
-                    if (nuevoCanvas.DialogResult == true)
-                    {
-                        //pasamos de color a brush
-                        SolidColorBrush brush = new SolidColorBrush(nuevoCanvas.colorCanvas);
-                        lienzo.Strokes.Clear();
-                        lienzo.Background = brush;
-                        lienzo.Height = nuevoCanvas.altoCanvas;
-                        lienzo.Width = nuevoCanvas.anchoCanvas;
-                        lblInfo.Content = "Nombre del documento: " + nuevoCanvas.nombreCanvas;
-                    }
-                    break;
-                case "btnGuardar":
-                    archi.GuardarImagenInkCanvas(lienzo);
-                    break;
-                case "btnGuardarComo":
-                    archi.ElegirRuta();
-                    goto case "btnGuardar";
-                case "btnAbrir":
-                    ImageBrush imagen = archi.CargarImagenIncKanvas();
-                    //controlamos que venga una imagen, ya que si no lo hacemos, nos sale un nullreferenceexception
-                    if (imagen.ImageSource != null)
-                    {
-                        lienzo.Strokes.Clear();
-                        lienzo.Height = imagen.ImageSource.Height;
-                        lienzo.Width = imagen.ImageSource.Height;
-                        lienzo.Background = imagen;
-                    }
-
-
-                    break;
-                default:
-                    break;
-            }
-        }
+       
 
         #region BOTONES COLOR
 
@@ -329,8 +281,42 @@ namespace Paintiris
             Pintar();
 
         }
+
+        /// <summary>
+        /// El textbox del tamaño de los pinceles
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+            try
+            {
+                int combrobarNum = Convert.ToInt32(txt.Text);
+                if (combrobarNum > 0)
+                {
+
+                    if (pintarActivado)
+                    {
+                        altoPincel = Convert.ToInt16(txt.Text);
+                        Pintar();
+                    }
+                    else
+                    {
+                        gomaTam = Convert.ToInt16(txt.Text);
+                        Borrar();
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                altoPincel = 1;
+            }
+
+        }
         #endregion
 
+        #region OTRAS
 
         /// <summary>
         /// Cambiar la paleta de colores
@@ -357,13 +343,13 @@ namespace Paintiris
 
 
         /// <summary>
-        /// elegir las hojas de estudio
+        /// Folios de estudio
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EstudioHoja(object sender, RoutedEventArgs e)
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ToggleButton tgb = (ToggleButton)sender;
+            Image tgb = (Image)sender;
             ImageBrush image = new ImageBrush();
             image.ImageSource = new BitmapImage(new Uri(@"..\..\..\Recursos\folios\" + tgb.Tag, UriKind.Relative));
 
@@ -385,12 +371,71 @@ namespace Paintiris
             lienzo.LayoutTransform = new ScaleTransform(1.5, 1.5);
         }
 
+        /// <summary>
+        /// Click de los elementos de archivo => NUEVO, GUARDAR, GUARDARCOMO, ABRIR
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Archivo_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            //Gestionamos el evento de los click de los botones mediande un switch ya que son muchos
+            switch (btn.Name)
+            {
+                case "btnNuevo":
+                    NuevoDoc nuevoCanvas = new NuevoDoc();
+                    nuevoCanvas.ShowDialog();
+                    if (nuevoCanvas.DialogResult == true)
+                    {
+                        //pasamos de color a brush
+                        SolidColorBrush brush = new SolidColorBrush(nuevoCanvas.colorCanvas);
+                        lienzo.Strokes.Clear();
+                        lienzo.Background = brush;
+                        lienzo.Height = nuevoCanvas.altoCanvas;
+                        lienzo.Width = nuevoCanvas.anchoCanvas;
+                        lblInfo.Content = "Nombre del documento: " + nuevoCanvas.nombreCanvas;
+                    }
+                    break;
+                case "btnGuardar":
+                    archi.GuardarImagenInkCanvas(lienzo);
+                    break;
+                case "btnGuardarComo":
+                    archi.ElegirRuta();
+                    goto case "btnGuardar";
+                case "btnAbrir":
+                    ImageBrush imagen = archi.CargarImagenIncKanvas();
+                    //controlamos que venga una imagen, ya que si no lo hacemos, nos sale un nullreferenceexception
+                    if (imagen.ImageSource != null)
+                    {
+                        lienzo.Strokes.Clear();
+                        lienzo.Height = imagen.ImageSource.Height;
+                        lienzo.Width = imagen.ImageSource.Height;
+                        lienzo.Background = imagen;
+                    }
+
+
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// ZOOM
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Slider_ValueChanged_ZOOM(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+        }
+        #endregion
+
         #endregion
 
 
         #region FUNCIONES
 
-        //trasladarlas luego
         //LLENAR Colecciones__________________________________________________________________
         private void LlenarColecciones()
         {
@@ -476,49 +521,6 @@ namespace Paintiris
             }
         }
 
-        //PRUEBA BASE DATOS
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            BaseDatos bd = new BaseDatos();
-            bd.Conexion();
-            List<string> colores = bd.CogerColores("");
-            for (int i = 0; i < cuadrosColores.Count; i++)
-            {
-                int[] rgb = transfromar.generarGRBA(colores[i]);
-                colorPintar = new SolidColorBrush(Color.FromRgb(Convert.ToByte(rgb[0]), Convert.ToByte(rgb[1]), Convert.ToByte(rgb[2])));
-                cuadrosColores[i].Fill = colorPintar;
-            }
-            bd.CerrarConexion();
-        }
-
-        private void txtChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox txt = (TextBox)sender;
-            try
-            {
-                int combrobarNum = Convert.ToInt32(txt.Text);
-                if (combrobarNum > 0)
-                {
-
-                    if (pintarActivado)
-                    {
-                        altoPincel = Convert.ToInt16(txt.Text);
-                        Pintar();
-                    }
-                    else
-                    {
-                        gomaTam = Convert.ToInt16(txt.Text);
-                        Borrar();
-                    }
-                }
-            }
-            catch (FormatException)
-            {
-                altoPincel = 1;
-            }
-
-        }
-
         private void Borrar()
         {
             //ponemos a none, ya que la forma del pincel no se actualiza hasta el cambio de editar del inkCanvas
@@ -531,8 +533,10 @@ namespace Paintiris
             //propiedades de la goma
         }
 
+       
     }
     #endregion
+    
 
 }
 

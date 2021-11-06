@@ -20,6 +20,13 @@ namespace Paintiris.Inicio
             this.win = win;
         }
         
+        /// <summary>
+        /// Propiedades del pincel para pintar con el
+        /// </summary>
+        /// <param name="alto"></param>
+        /// <param name="ancho"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
         public DrawingAttributes PintarPincel(int alto, int ancho, Color color )
         {
             DrawingAttributes inkDA = new DrawingAttributes();
@@ -30,20 +37,6 @@ namespace Paintiris.Inicio
             //inkCanvas.DefaultDrawingAttributes = inkDA;
         }
 
-        public Rectangle Rectangulo()
-        {
-            Rectangle myRect = new Rectangle();
-            myRect.Stroke = Brushes.Black;
-            //myRect.Fill = Brushes.SkyBlue;
-            myRect.HorizontalAlignment = HorizontalAlignment.Left;
-            myRect.VerticalAlignment = VerticalAlignment.Center;
-            myRect.Height = 150;
-            myRect.Width = 150;
-            return myRect;
-        }
-
-        // prueba arrastrar rectángulo
-        
 
     }
 }

@@ -29,19 +29,19 @@
                         <!--Usamos de las fuente https://fontawesome.com/ con su repositorio de iconos
                             Para que funcione tenemos que añadir xmlns:fa="http://schemas.fontawesome.io/icons/" a nuestro proyecto
                             y haberlo instalado en el administador de paquetes Nuget en nuestro proyecto-->
-                        <Button x:Name="btnNuevo" ToolTip="Nuevo" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="35" Width="35" >
+                        <Button x:Name="btnNuevo" ToolTip="Nuevo" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="36" Width="35" >
                             <fa:ImageAwesome Icon="file" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
 
-                        <Button x:Name="btnGuardar" ToolTip="Guardar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40">
+                        <Button x:Name="btnGuardar" ToolTip="Guardar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="39,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40" Grid.Column="1">
                             <fa:ImageAwesome Icon="Save" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
 
-                        <Button x:Name="btnGuardarComo" ToolTip="Guardar Como" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40">
+                        <Button x:Name="btnGuardarComo" ToolTip="Guardar Como" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="119,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40" Grid.Column="1">
                             <fa:ImageAwesome Icon="folder" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
 
-                        <Button x:Name="btnAbrir" ToolTip="Cargar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="280,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40">
+                        <Button x:Name="btnAbrir" ToolTip="Cargar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="199,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40" Grid.Column="1">
                             <fa:ImageAwesome Icon="FolderOpen" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
 
@@ -137,24 +137,24 @@
                             <fa:ImageAwesome Icon="Eraser" Width="13" Height="13" ></fa:ImageAwesome>
                         </ToggleButton>
                         <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="714,0,0,0" Grid.Column="1"/>
+                        <Slider Grid.Column="1" TickFrequency="1" HorizontalAlignment="Left" Margin="1037,0,0,0" VerticalAlignment="Center" Width="120" ValueChanged="Slider_ValueChanged_ZOOM" Minimum="5" Value="5"/>
 
                     </Grid>
                 </TabItem>
 
                 <TabItem Style="{DynamicResource TabItemStyle1}" Header="Estudio" Name="ti_estudio">
                     <Grid Background="MistyRose">
-                        <ToggleButton Width="50" Height="50" Tag="chino2.jpg"  Content="Aa" Style="{DynamicResource ToggleButtonStyle}" Click="EstudioHoja"></ToggleButton>
                         <Button Name="cuadrosG" HorizontalAlignment="Left" Margin="10,0,0,0" Width="50" Height="50" Style="{DynamicResource ButtonStyle1}">
-                            <Image Source="Recursos\icons\cudrosGrandeIco.png"></Image>
+                            <Image Source="Recursos\icons\cudrosGrandeIco.png" MouseDown="Image_MouseDown" Tag="cudrosGrande.jpg"></Image>
                         </Button>
                         <Button Name="cuadroP" HorizontalAlignment="Left" Margin="70,0,0,0" Width="50" Height="50" Style="{DynamicResource ButtonStyle1}">
-                            <Image Source="Recursos\icons\cudrosPequeIco.png"></Image>
+                            <Image Source="Recursos\icons\cudrosPequeIco.png" MouseDown="Image_MouseDown" Tag="cudrosPeque.jpg"></Image>
                         </Button>
                         <Button Name="cuadroRG" HorizontalAlignment="Left" Margin="130,0,0,0" Width="50" Height="50" Style="{DynamicResource ButtonStyle1}">
-                            <Image Source="Recursos\icons\cudrosGrandeRosaIco.png"></Image>
+                            <Image Source="Recursos\icons\cudrosGrandeRosaIco.png" MouseDown="Image_MouseDown" Tag="cudrosGrandeRosa.jpg"></Image>
                         </Button>
                         <Button Name="cuadroRP" HorizontalAlignment="Left" Margin="190,0,0,0" Width="50" Height="50" Style="{DynamicResource ButtonStyle1}">
-                            <Image Source="Recursos\icons\cudrosPequeRosaIco.png"></Image>
+                            <Image Source="Recursos\icons\cudrosPequeRosaIco.png" MouseDown="Image_MouseDown" Tag="cudrosPequeRosa.jpg"></Image>
                         </Button>
                     </Grid>
                 </TabItem>
