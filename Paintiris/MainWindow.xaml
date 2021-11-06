@@ -33,15 +33,15 @@
                             <fa:ImageAwesome Icon="file" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
 
-                        <Button x:Name="btnGuardar" ToolTip="Guardar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="39,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40" Grid.Column="1">
+                        <Button x:Name="btnGuardar" ToolTip="Guardar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40" Grid.Column="1">
                             <fa:ImageAwesome Icon="Save" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
 
-                        <Button x:Name="btnGuardarComo" ToolTip="Guardar Como" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="119,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40" Grid.Column="1">
+                        <Button x:Name="btnGuardarComo" ToolTip="Guardar Como" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="160,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40" Grid.Column="1">
                             <fa:ImageAwesome Icon="folder" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
 
-                        <Button x:Name="btnAbrir" ToolTip="Cargar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="199,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40" Grid.Column="1">
+                        <Button x:Name="btnAbrir" ToolTip="Cargar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="220,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40" Grid.Column="1">
                             <fa:ImageAwesome Icon="FolderOpen" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
 
@@ -137,7 +137,7 @@
                             <fa:ImageAwesome Icon="Eraser" Width="13" Height="13" ></fa:ImageAwesome>
                         </ToggleButton>
                         <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="714,0,0,0" Grid.Column="1"/>
-                        <Slider Grid.Column="1" TickFrequency="1" HorizontalAlignment="Left" Margin="1037,0,0,0" VerticalAlignment="Center" Width="120" ValueChanged="Slider_ValueChanged_ZOOM" Minimum="5" Value="5"/>
+                        <Slider x:Name="zoom" Grid.Column="1" HorizontalAlignment="Left" Margin="1037,0,0,0" VerticalAlignment="Center" Width="120" ValueChanged="Slider_ValueChanged_ZOOM" Maximum="5"  />
 
                     </Grid>
                 </TabItem>

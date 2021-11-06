@@ -74,6 +74,8 @@ namespace Paintiris
             //Indicamos el color del pincel hasta que se seleccione otro color
             colorPintar = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
 
+            //zoom
+            zoom.Value = 1;
         }
 
         #region EVENTOS COMPONENTE
@@ -360,16 +362,7 @@ namespace Paintiris
 
         }
 
-        /// <summary>
-        /// Zoom
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tbs_Zoom(object sender, RoutedEventArgs e)
-        {
-            ScaleTransform scaler = lienzo.LayoutTransform as ScaleTransform;
-            lienzo.LayoutTransform = new ScaleTransform(1.5, 1.5);
-        }
+     
 
         /// <summary>
         /// Click de los elementos de archivo => NUEVO, GUARDAR, GUARDARCOMO, ABRIR
@@ -422,12 +415,30 @@ namespace Paintiris
         }
 
         /// <summary>
-        /// ZOOM
+        /// slider para cambiar el zoom del lienzo
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Slider_ValueChanged_ZOOM(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            //ponemos un tope del mínimo del zoom
+            if(zoom.Value > 0.5)
+            {
+                ScaleTransform scaler = lienzo.LayoutTransform as ScaleTransform;
+                lienzo.LayoutTransform = new ScaleTransform(zoom.Value, zoom.Value);
+            }
+  
+        }
+
+        /// <summary>
+        /// Zoom volver a tamaño original
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbs_Zoom(object sender, RoutedEventArgs e)
+        {
+            ScaleTransform scaler = lienzo.LayoutTransform as ScaleTransform;
+            lienzo.LayoutTransform = new ScaleTransform(1, 1);
         }
         #endregion
 
