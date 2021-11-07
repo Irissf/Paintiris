@@ -60,7 +60,7 @@
             <Label Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">Color:</Label>
             <Border BorderThickness="1" BorderBrush="#ECB7B7" HorizontalAlignment="Left" Height="26" Margin="100,209,0,0" VerticalAlignment="Top" Width="300" Background="MistyRose"></Border>
             <Canvas x:Name="cvColor" HorizontalAlignment="Left" Height="26" Margin="100,209,0,0" VerticalAlignment="Top" Width="300" Background="Transparent" />
-            <CheckBox x:Name="chColor" Content="Color Personalizado" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox x:Name="chColor" Content="Color Personalizado" HorizontalAlignment="center" Margin="0,180,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
 
 
         </Grid>

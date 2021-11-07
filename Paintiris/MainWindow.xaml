@@ -156,6 +156,15 @@
                         <Button Name="cuadroRP" HorizontalAlignment="Left" Margin="190,0,0,0" Width="50" Height="50" Style="{DynamicResource ButtonStyle1}">
                             <Image Source="Recursos\icons\cudrosPequeRosaIco.png" MouseDown="Image_MouseDown" Tag="cudrosPequeRosa.jpg"></Image>
                         </Button>
+                        <Button Name="chinoNueva" HorizontalAlignment="Left" Margin="250,0,0,0" Width="50" Height="50" Style="{DynamicResource ButtonStyle1}">
+                            <Image Source="Recursos\icons\chinoPalabraNuevaIco.png" MouseDown="Image_MouseDown" Tag="chinoPalabraNueva.jpg"></Image>
+                        </Button>
+                        <Button Name="cuadroPalabras" HorizontalAlignment="Left" Margin="310,0,0,0" Width="50" Height="50" Style="{DynamicResource ButtonStyle1}">
+                            <Image Source="Recursos\icons\chinoPalabrasIco.png" MouseDown="Image_MouseDown" Tag="chinoPalabras.jpg"></Image>
+                        </Button>
+                        <Button Name="cuadroPractica" HorizontalAlignment="Left" Margin="370,0,0,0" Width="50" Height="50" Style="{DynamicResource ButtonStyle1}">
+                            <Image Source="Recursos\icons\chinoPracticaIco.png" MouseDown="Image_MouseDown" Tag="chinoPractica.jpg"></Image>
+                        </Button>
                     </Grid>
                 </TabItem>
 
