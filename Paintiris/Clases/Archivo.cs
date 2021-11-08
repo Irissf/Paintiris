@@ -18,7 +18,7 @@ namespace Paintiris.Inicio
         InkCanvas lienzo;
         int alto;
         int ancho;
-        string rutaGuardado = "D:/Users/Usuario/Desktop/logo1.png";
+        string rutaGuardado = "";
         bool esJpg = true;
 
 
@@ -41,7 +41,7 @@ namespace Paintiris.Inicio
         /// <summary>
         /// Elegimos la ruta donde queremos guardar el dibujo
         /// </summary>
-        public void ElegirRuta()
+        public bool ElegirRuta()
         {
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -61,8 +61,13 @@ namespace Paintiris.Inicio
                 {
                     esJpg = false;
                 }
+                return true;
             }
-                
+            else
+            {
+                return false;
+            }
+
         }
 
         /// <summary>
@@ -71,31 +76,35 @@ namespace Paintiris.Inicio
         /// <param name="canvas"></param>
         public void GuardarImagenInkCanvas(InkCanvas canvas)
         {
-            
-
             //RenderTargetBitmap Convierte un objeto Visual en un mapa de bits.
             RenderTargetBitmap renderBitmap = new RenderTargetBitmap(
             (int)canvas.ActualWidth, (int)canvas.ActualHeight,
              dpi, dpi, PixelFormats.Default);
 
-
             renderBitmap.Render(ModificarZonaVisualImagen(canvas));
-
-            using (FileStream file = new FileStream(rutaGuardado, FileMode.Create))
+            try
             {
-                if (esJpg)
+                using (FileStream file = new FileStream(rutaGuardado, FileMode.Create))
                 {
-                    JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                    encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
-                    encoder.Save(file);
+                    if (esJpg)
+                    {
+                        JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                        encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+                        encoder.Save(file);
+                    }
+                    else
+                    {
+                        PngBitmapEncoder encoder = new PngBitmapEncoder();
+                        encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+                        encoder.Save(file);
+                    }
+
                 }
-                else
-                {
-                    PngBitmapEncoder encoder = new PngBitmapEncoder();
-                    encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
-                    encoder.Save(file);
-                }
-               
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
 
         }
@@ -106,7 +115,7 @@ namespace Paintiris.Inicio
         /// <returns></returns>
         public ImageBrush CargarImagenIncKanvas()
         {
-            ImageBrush image = new ImageBrush(); 
+            ImageBrush image = new ImageBrush();
 
             OpenFileDialog imagenCargar = new OpenFileDialog
             {
@@ -119,7 +128,14 @@ namespace Paintiris.Inicio
                 rutaGuardado = imagenCargar.FileName;
                 /*Como se mencionó, una ImageBrush pinta un área con un ImageSource .
                  * El tipo más común de ImageSource que se utiliza con ImageBrush es un BitmapImage */
-                image.ImageSource = new BitmapImage(new Uri(imagenCargar.FileName, UriKind.Relative));
+                //BitmapImage imagen = new BitmapImage(new Uri(imagenCargar.FileName, UriKind.Relative));
+                var imagen = new BitmapImage();
+                imagen.BeginInit();
+                imagen.CacheOption = BitmapCacheOption.OnLoad;
+                imagen.UriSource = new Uri(imagenCargar.FileName);
+                imagen.EndInit();
+                imagen.Freeze();
+                image.ImageSource = imagen;
             }
             return image;
         }
@@ -146,10 +162,6 @@ namespace Paintiris.Inicio
 
             return dv;
         }
-
-
-
-
 
 
     }

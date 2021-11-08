@@ -392,10 +392,18 @@ namespace Paintiris
                     break;
                 case "btnGuardar":
                     archi.GuardarImagenInkCanvas(lienzo);
+                    btnGuardar.IsEnabled = true;
                     break;
                 case "btnGuardarComo":
-                    archi.ElegirRuta();
-                    goto case "btnGuardar";
+                    bool rutaOk = archi.ElegirRuta(); //si guardo una ruta ya activamos el camino para guardar y activar el botón de guardar
+                    if (rutaOk)
+                    {
+                        goto case "btnGuardar";
+                    }
+                    else
+                    {
+                        break;
+                    }
                 case "btnAbrir":
                     ImageBrush imagen = archi.CargarImagenIncKanvas();
                     //controlamos que venga una imagen, ya que si no lo hacemos, nos sale un nullreferenceexception
@@ -403,8 +411,9 @@ namespace Paintiris
                     {
                         lienzo.Strokes.Clear();
                         lienzo.Height = imagen.ImageSource.Height;
-                        lienzo.Width = imagen.ImageSource.Height;
+                        lienzo.Width = imagen.ImageSource.Width;
                         lienzo.Background = imagen;
+                        btnGuardar.IsEnabled = true;
                     }
 
 

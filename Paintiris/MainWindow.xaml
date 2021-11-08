@@ -33,7 +33,7 @@
                             <fa:ImageAwesome Icon="file" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
 
-                        <Button x:Name="btnGuardar" ToolTip="Guardar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40" Grid.Column="1">
+                        <Button x:Name="btnGuardar" IsEnabled="False" ToolTip="Guardar" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Center" Click="Archivo_Click" Height="40" Width="40" Grid.Column="1">
                             <fa:ImageAwesome Icon="Save" Width="30" Height="30" ></fa:ImageAwesome>
                         </Button>
 
