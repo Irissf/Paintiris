@@ -129,12 +129,16 @@ namespace Paintiris.Inicio
                 /*Como se mencionó, una ImageBrush pinta un área con un ImageSource .
                  * El tipo más común de ImageSource que se utiliza con ImageBrush es un BitmapImage */
                 //BitmapImage imagen = new BitmapImage(new Uri(imagenCargar.FileName, UriKind.Relative));
-                var imagen = new BitmapImage();
+
+                BitmapImage imagen = new BitmapImage();
+
+                //Lo que hacemos a continuación, es para evitar el error de no poder guardar por usar el mismo proceso
                 imagen.BeginInit();
                 imagen.CacheOption = BitmapCacheOption.OnLoad;
                 imagen.UriSource = new Uri(imagenCargar.FileName);
                 imagen.EndInit();
                 imagen.Freeze();
+
                 image.ImageSource = imagen;
             }
             return image;
