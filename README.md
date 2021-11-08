@@ -198,3 +198,25 @@
 - Encontrado como hacer zoom al inkCanvas, y programado un botón de prueba
 - Todavía buscando para rotarlo.
 
+## Día 32
+> 3/11/2021
+- Preparación de hojas e iconoes en Photoshop e Illustrator.
+- Colocoación en el programa de los iconos de las hojas
+
+## Día 33
+> 6/11/2021
+- Metidas las hojas de cuadricula.
+- Programado el slider para el zoom, y el botón para regresar al tamaño original
+
+## Día 34
+> 7/11/2021
+- Añadidas las hojas y los iconos de estudio.
+- Lo que queda a mayores es ir probando y arreglando errores que aparezcan.
+
+## Día 35
+> 8/11/2021
+- Controlado un error en el botón de "guardar como" cuando no se seleccionaba ninguna ruta.
+- Anulado el botón de guardar, si primero no se ha cargada o guadado como.
+- Solucionado el problema que daba cargar y luego guardar, ya que indicaba que estaban ocupando el mismo proceso.
+- Arreglado un error de la carga de imagen, que cogia la altura tanto para el ancho como para el alto.
+
