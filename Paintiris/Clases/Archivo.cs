@@ -76,37 +76,41 @@ namespace Paintiris.Inicio
         /// <param name="canvas"></param>
         public void GuardarImagenInkCanvas(InkCanvas canvas)
         {
-            //RenderTargetBitmap Convierte un objeto Visual en un mapa de bits.
-            RenderTargetBitmap renderBitmap = new RenderTargetBitmap(
-            (int)canvas.ActualWidth, (int)canvas.ActualHeight,
-             dpi, dpi, PixelFormats.Default);
-
-            renderBitmap.Render(ModificarZonaVisualImagen(canvas));
-            try
+            //Preguntamos al usuario si quiere sobreescribir, lo pongo siempre para evitar ese guardado sin querer
+            MessageBoxResult result = MessageBox.Show("¿Seguro que quieres guardar el archivo?", "Guardado", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
             {
-                using (FileStream file = new FileStream(rutaGuardado, FileMode.Create))
+                //RenderTargetBitmap Convierte un objeto Visual en un mapa de bits.
+                RenderTargetBitmap renderBitmap = new RenderTargetBitmap(
+                (int)canvas.ActualWidth, (int)canvas.ActualHeight,
+                 dpi, dpi, PixelFormats.Default);
+
+                renderBitmap.Render(ModificarZonaVisualImagen(canvas));
+                try
                 {
-                    if (esJpg)
+                    using (FileStream file = new FileStream(rutaGuardado, FileMode.Create))
                     {
-                        JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                        encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
-                        encoder.Save(file);
-                    }
-                    else
-                    {
-                        PngBitmapEncoder encoder = new PngBitmapEncoder();
-                        encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
-                        encoder.Save(file);
+                        if (esJpg)
+                        {
+                            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                            encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+                            encoder.Save(file);
+                        }
+                        else
+                        {
+                            PngBitmapEncoder encoder = new PngBitmapEncoder();
+                            encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+                            encoder.Save(file);
+                        }
+
                     }
 
                 }
-
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
             }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-
         }
 
         /// <summary>

@@ -50,7 +50,7 @@
 
                 <!--El segundo item del tabcontrol es para la gestión de los pinceles, utilizamos ToggleButton para que se quede presionado
                 el componente que eligen, y lo gestionamos imitando a un radiobutton-->
-                <TabItem Style="{DynamicResource TabItemStyle1}" Header="Inicio" Name="ti_inicio" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="45">
+                <TabItem Style="{DynamicResource TabItemStyle1}" Header="Inicio" Name="ti_inicio" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right" Width="45">
                     <Grid Background="MistyRose">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="68*"/>
@@ -128,7 +128,7 @@
                             <fa:ImageAwesome Icon="Circle" Width="10" Height="10" ></fa:ImageAwesome>
                         </ToggleButton>
                         <ToggleButton x:Name="tbtn_goma13px" HorizontalAlignment="Left" Margin="604,26,0,26" Height="20" Width="20" Checked="tamanoPincel_checked" Tag="13" IsEnabled="false" Grid.Column="1" Style="{DynamicResource ToggleButtonStyle}">
-                            <fa:ImageAwesome Icon="Circle" Width="13" Height="13" ></fa:ImageAwesome>
+                            <fa:ImageAwesome Icon="Circle"  Width="13" Height="13" ></fa:ImageAwesome>
                         </ToggleButton>
                         <TextBox x:Name="txtGoma" HorizontalAlignment="Left" Margin="644,26,0,26" TextWrapping="Wrap" Width="40" Height="20" FontSize="15" Grid.Column="1" TextChanged="txtChanged"/>
 

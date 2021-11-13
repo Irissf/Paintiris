@@ -36,6 +36,8 @@ namespace Paintiris
             txtColorAzul.Text = "" + color.B;
             txtColorRojo.Text = "" + color.R;
             txtColorVerde.Text = "" + color.G;
+            txtHex.Text = "" + conversor.generaHEX(color.R) + conversor.generaHEX(color.G)
+                                    + conversor.generaHEX(color.B);
 
         }
 
@@ -113,8 +115,22 @@ namespace Paintiris
             string textoHex = "";
 
             // lo ponemos así para cuando cambie por el movimiento de rgb no se ejecute este código
-            if (txt.IsFocused)
+            if (txt.IsFocused && codigoHexTamano <= 6)
             {
+                //aqui ponemos el switch case para el código de la libreata
+
+                string caracteres = "0123456789ABCDEF";
+
+                for (int i = 0; i < txtHex.Text.Length; i++)
+                {
+                    if (!caracteres.Contains(txtHex.Text[i]))
+                    {
+                        //si la letra no es del códio hex la cambiamos por f 
+                        txtHex.Text = txtHex.Text.Replace(txtHex.Text[i], 'f');
+                        txtHex.Select(txtHex.Text.Length, 0); //situamos el cursor al final del texbox
+                    }
+                }
+
                 //mediante el switch controlamos que cuando borre y empiece a escribri, los cambios se hagan en el rgb correcto
                 switch (codigoHexTamano)
                 {
@@ -142,13 +158,12 @@ namespace Paintiris
                     default:
                         break;
                 }
+                
 
-                //aqui ponemos el switch case para el código de la libreata
                 int[] rgb = conversor.generarGRBA(textoHex);
                 txtColorRojo.Text = "" + rgb[0];
                 txtColorVerde.Text = "" + rgb[1];
                 txtColorAzul.Text = "" + rgb[2];
-
             }
 
         }
@@ -169,5 +184,11 @@ namespace Paintiris
         }
         #endregion
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            //y cerramos la ventana modal
+            this.Close();
+        }
     }
 }

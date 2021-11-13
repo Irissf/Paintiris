@@ -37,6 +37,9 @@ namespace Paintiris
 
 
         //Para construir el canvas
+        public int minTamano = 0;
+        public int maxtamano = 10000;
+
         public int anchoCanvas = 800;
         public int altoCanvas = 600;
         public Color colorCanvas = Color.FromRgb(255,255,255);
@@ -142,8 +145,37 @@ namespace Paintiris
             {
                 colorCanvas = Color.FromRgb(Convert.ToByte(txtColorRojo.Text), Convert.ToByte(txtColorVerde.Text), Convert.ToByte(txtColorAzul.Text));
             }
-            anchoCanvas = Convert.ToInt32(txtAncho.Text);
-            altoCanvas = Convert.ToInt32(txtAlto.Text);
+            try
+            {
+                anchoCanvas = Convert.ToInt32(txtAncho.Text);
+                altoCanvas = Convert.ToInt32(txtAlto.Text);
+
+                //controlamos el tamaño del canvas con un mim y un máximo, que podemos cambiar
+                if (anchoCanvas < minTamano || anchoCanvas> maxtamano)
+                {
+                    anchoCanvas = 800;
+                }
+                if (altoCanvas < minTamano || altoCanvas > maxtamano)
+                {
+                    altoCanvas = 600;
+                }
+            }
+            catch (FormatException)
+            {
+                //si pone un tipo de dato incorrecto coloca los que tenia por defecto
+                anchoCanvas = 800;
+                altoCanvas = 600;
+            }
+            catch (OverflowException)
+            {
+                //si pone un tipo de dato demasiado grande
+                anchoCanvas = 800;
+                altoCanvas = 600;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message);
+            }
             nombreCanvas = txtNombre.Text;
 
             this.Close();

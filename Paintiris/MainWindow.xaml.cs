@@ -96,7 +96,9 @@ namespace Paintiris
             Rectangle color = (Rectangle)sender;
 
             //le mandamos al dialog el color que tenemos en el canvas al inicio
-            ColorDialog miColor = new ColorDialog(colorPintar.Color);
+            Brush deBrushAColor = color.Fill;
+            SolidColorBrush deBrushAColor2 = (SolidColorBrush)deBrushAColor;
+            ColorDialog miColor = new ColorDialog(deBrushAColor2.Color);
             miColor.ShowDialog();
 
             if (miColor.DialogResult == true)
@@ -214,7 +216,7 @@ namespace Paintiris
                         boton.IsChecked = false;
                     }
                 }
-                txtGoma.Text = ""+tbtn.Tag;
+                txtGoma.Text = "" + tbtn.Tag;
                 Borrar();
             }
             else
@@ -297,24 +299,31 @@ namespace Paintiris
                 int combrobarNum = Convert.ToInt32(txt.Text);
                 if (combrobarNum > 0)
                 {
-
+                    int num = combrobarNum > 300 ? 300 : altoPincel = combrobarNum;
                     if (pintarActivado)
                     {
-                        altoPincel = Convert.ToInt16(txt.Text);
+                        altoPincel = num;
                         Pintar();
                     }
                     else
                     {
-                        gomaTam = Convert.ToInt16(txt.Text);
+                        gomaTam = num;
                         Borrar();
+
                     }
+                    txt.Text = "" + num;
                 }
+            }
+            catch (OverflowException)
+            {
+                altoPincel = 1;
+                txt.Text = " ";
             }
             catch (FormatException)
             {
                 altoPincel = 1;
+                txt.Text = " ";
             }
-
         }
         #endregion
 

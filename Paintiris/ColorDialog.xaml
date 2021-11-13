@@ -36,6 +36,6 @@
         
         
         <Button Content="Aceptar" Margin="10,0,0,10" Width="140" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Click"/>
-        <Button Content="Cancelar" Margin="160,0,0,10" Width="140" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <Button Content="Cancelar" Margin="160,0,0,10" Width="140" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Click_1"/>
     </Grid>
 </Window>
