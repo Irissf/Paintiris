@@ -21,12 +21,15 @@ namespace Paintiris
     /// </summary>
     public partial class ColorDialog : Window
     {
+        #region VARIABLE
         public Color color;
         Conversor conversor = new Conversor();
 
         //voy a generar un control, apra que solo se inicie cuando se hallan ejecutado todos por primera vez
         bool cambiarColor = false;
         int i = 0;  //para el control de los cuatro text
+        #endregion
+
         public ColorDialog(Color color)
         {
             InitializeComponent();
@@ -42,7 +45,7 @@ namespace Paintiris
         }
 
         #region CAMBIO COLOR
-        private void TxtColor_TextChanged(object sender, TextChangedEventArgs e)
+        private void CambioColorTextBoxRGB(object sender, TextChangedEventArgs e)
         {
             TextBox colores = (TextBox)sender;
             try
@@ -76,7 +79,7 @@ namespace Paintiris
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SlColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void CambioValorEnSliders(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             Slider slider = (Slider)sender;
             Color color = Color.FromArgb((byte)sltransparencia.Value, (byte)slColorRojo.Value, (byte)slColorVerde.Value, (byte)slColorAzul.Value);
@@ -107,8 +110,7 @@ namespace Paintiris
         }
 
 
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void CambioColorTextBoxHexColor(object sender, TextChangedEventArgs e)
         {
             TextBox txt = (TextBox)sender;
             int codigoHexTamano = txtHex.Text.Length;
@@ -170,12 +172,18 @@ namespace Paintiris
         #endregion
 
         #region BOTONES 
+        private void Boton_Cancelar(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            //y cerramos la ventana modal
+            this.Close();
+        }
         /// <summary>
         /// Botón de aceptar
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Boton_Aceptar(object sender, RoutedEventArgs e)
         {
             //Le indicamos el resultado del formulario modal, para actuar en consonancia con él
             DialogResult = true;
@@ -184,11 +192,6 @@ namespace Paintiris
         }
         #endregion
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            DialogResult = false;
-            //y cerramos la ventana modal
-            this.Close();
-        }
+       
     }
 }

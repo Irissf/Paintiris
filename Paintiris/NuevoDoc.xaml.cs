@@ -22,7 +22,7 @@ namespace Paintiris
     public partial class NuevoDoc : Window
     {
 
-        // ************************************************ PROPIEDADES *****************************************************
+        #region PROPIEDADES 
 
         private List<string> medidas = new List<string>() {
             "Píxeles",
@@ -44,10 +44,7 @@ namespace Paintiris
         public int altoCanvas = 600;
         public Color colorCanvas = Color.FromRgb(255,255,255);
         public string nombreCanvas = "sin titulo-1";
-
-
-        // ************************************************ CONTRUCTOR *****************************************************
-
+        #endregion
 
         public NuevoDoc()
         {
@@ -56,12 +53,6 @@ namespace Paintiris
 
         }
 
-
-
-        // ************************************************ MÉTODOS *****************************************************
-
-
-        //TODO controlar que el valor introducido sea número entre 0-255
 
         private void LlenarComponentes()
         {
@@ -81,7 +72,7 @@ namespace Paintiris
         }
 
 
-        // ************************************************ EVENTOS DE LOS COMPONENTES *****************************************************
+        #region EVENTOS COMPONENTES
 
 
         /// <summary>
@@ -89,7 +80,7 @@ namespace Paintiris
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void slColorRojo_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void CambiarColorCanvasMuestrario(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             Color color = Color.FromRgb((byte)slColorRojo.Value, (byte)slColorVerde.Value, (byte)slColorAzul.Value);
             cvColor.Background = new SolidColorBrush(color);
@@ -120,7 +111,7 @@ namespace Paintiris
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Boton_Cancelar(object sender, RoutedEventArgs e)
         {
             //Le indicamos el resultado del formulario modal, para actuar en consonancia con él
             DialogResult = false;
@@ -134,7 +125,7 @@ namespace Paintiris
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Boton_Aceptar(object sender, RoutedEventArgs e)
         {
             //Le indicamos el resultado del formulario modal, para actuar en consonancia con él
             DialogResult = true;
@@ -229,5 +220,7 @@ namespace Paintiris
             txtColorRojo.IsEnabled = false;
             txtColorVerde.IsEnabled = false;
         }
+
+        #endregion
     }
 }

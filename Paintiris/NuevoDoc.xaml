@@ -46,15 +46,15 @@
             TickFrecuency = 1, para que se ajuste a ellos de uno en uno, podemos poner 5 por ejemplo e iría de 5 en 5
             En el textBox pillamos el valor de la barra que le indicamos dentro del {Binding(puente)}-->
             <Label Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,149">Rojo</Label>
-            <Slider x:Name="slColorRojo" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" Width="250" ValueChanged="slColorRojo_ValueChanged" IsEnabled="False" />
+            <Slider x:Name="slColorRojo" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" Width="250" ValueChanged="CambiarColorCanvasMuestrario" IsEnabled="False" />
             <TextBox x:Name="txtColorRojo" Height="20" Width="40" HorizontalAlignment="Left" Margin="370,260,0,0" VerticalAlignment="Top" Text="{Binding ElementName=slColorRojo, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtColor_TextChanged" IsEnabled="False"></TextBox>
 
             <Label Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,99">Verde</Label>
-            <Slider x:Name="slColorVerde" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Center" Margin="0,310,0,0" VerticalAlignment="Top" Width="250" ValueChanged="slColorRojo_ValueChanged" IsEnabled="False" />
+            <Slider x:Name="slColorVerde" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Center" Margin="0,310,0,0" VerticalAlignment="Top" Width="250" ValueChanged="CambiarColorCanvasMuestrario" IsEnabled="False" />
             <TextBox x:Name="txtColorVerde" Height="20" Width="40" HorizontalAlignment="Left" Margin="370,310,0,0" VerticalAlignment="Top" Text="{Binding ElementName=slColorVerde, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtColor_TextChanged" IsEnabled="False"></TextBox>
 
             <Label Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,49">Azul</Label>
-            <Slider x:Name="slColorAzul" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Center" Margin="0,360,0,0" VerticalAlignment="Top" Width="250" ValueChanged="slColorRojo_ValueChanged" IsEnabled="False" />
+            <Slider x:Name="slColorAzul" IsSnapToTickEnabled="True" TickFrequency="1" Maximum="255" HorizontalAlignment="Center" Margin="0,360,0,0" VerticalAlignment="Top" Width="250" ValueChanged="CambiarColorCanvasMuestrario" IsEnabled="False" />
             <TextBox x:Name="txtColorAzul" Height="20" Width="40" HorizontalAlignment="Left" Margin="370,360,0,0" VerticalAlignment="Top" Text="{Binding ElementName=slColorAzul, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtColor_TextChanged" IsEnabled="False"></TextBox>
 
             <Label Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">Color:</Label>
@@ -72,9 +72,9 @@
                 <RowDefinition Height="132*"/>
             </Grid.RowDefinitions>
             <Button Content="Ok" Margin="0,10,20,0" 
-                HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="130" Click="Button_Click_1"/>
+                HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="130" Click="Boton_Aceptar"/>
             <Button Content="Cancelar" Margin="0,50,20,0"
-                HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="130" Click="Button_Click"/>
+                HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="130" Click="Boton_Cancelar"/>
         </Grid>
     </Grid>
 </Window>
