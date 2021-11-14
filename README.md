@@ -1,5 +1,8 @@
 # Paintiris
 > Aplicación imitando al paint 
+
+![image](https://user-images.githubusercontent.com/64013862/141691827-f0875ffc-e055-44f1-b3e8-5f2af156a2cc.png)
+
 ## Día 1  
 > 11/08/2021 
 - División del formulario principal en 3 zonas, la del menú, la central para el dibujo y la inferior para información.
@@ -220,3 +223,21 @@
 - Solucionado el problema que daba cargar y luego guardar, ya que indicaba que estaban ocupando el mismo proceso.
 - Arreglado un error de la carga de imagen, que cogia la altura tanto para el ancho como para el alto.
 
+## Día 36
+> 13/11/2021
+- Controlada la excepción formatException y OverFlowException de los textbox de crear nuevo documento.
+- Controlada también las mismas excepciones de los texbox del tamaño del pincel y de la goma.
+- Preguntar al ususario si quiere guardar el archivo.
+- Arreglado un fallo del textbox del color hex para que los datos que colocoa el usuario sean los correctos.
+- Arreglado que el cursor del textbox del color del hex, al arreglar el dato del ususario, colocaba el cursor antes del caracter nuevo.
+- Arreglado que al cambiar de color con click derecho sobre el color no se pasaba el color.
+- Botón de cancelar de ColorDialog.
+
+## Día 37
+> 14/11/2021
+- Preguntar antes de salir
+- Añadir a select y zoom que no estén activados a la vez que otros.
+- Preguntar antes de cargar las hojas prefabricadas de estudio.
+- El label de abajo ya muestra el nombre del archivo.
+- Creación y colocación del icono de la aplicación.
+- Botón "acerca de".
