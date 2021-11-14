@@ -137,7 +137,7 @@
                             <fa:ImageAwesome Icon="Eraser" Width="13" Height="13" ></fa:ImageAwesome>
                         </ToggleButton>
                         <Rectangle Fill="RosyBrown" Width="2" HorizontalAlignment="Left" Margin="714,0,0,0" Grid.Column="1"/>
-                        <Slider x:Name="zoom" Grid.Column="1" HorizontalAlignment="Left" Margin="1037,0,0,0" VerticalAlignment="Center" Width="120" ValueChanged="Slider_CambiarTamanoZOOM" Maximum="5"  />
+                        <Slider x:Name="zoom" Grid.Column="1" HorizontalAlignment="Left" Margin="950,0,0,0" VerticalAlignment="Center" Width="120" ValueChanged="Slider_CambiarTamanoZOOM" Maximum="5"  />
 
                     </Grid>
                 </TabItem>
