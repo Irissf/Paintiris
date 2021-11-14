@@ -64,7 +64,7 @@ namespace Paintiris
             lienzo.EditingMode = InkCanvasEditingMode.None;
 
             //inicializar clases
-            archi = new Archivo(lienzo);
+            archi = new Archivo();
             pinceles = new Pinceles(this);
 
             //llenamos colecciones para que al activar uno se desactiven todos
@@ -76,13 +76,17 @@ namespace Paintiris
 
             //zoom
             zoom.Value = 1;
+
+            //nombre_archivo
+            lblInfo.Content = "Nombre del documento: sin titulo-1";
+
         }
 
         #region EVENTOS COMPONENTE
 
         //BOTONES GESTIÓN__________________________________________________________________
 
-       
+
 
         #region BOTONES COLOR
 
@@ -150,46 +154,7 @@ namespace Paintiris
 
 
 
-        /// <summary>
-        /// BORRAR Y SELECCIONAR
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tbs_Checked(object sender, RoutedEventArgs e)
-        {
-            ToggleButton tbtn = (ToggleButton)sender;
-
-            // si le da a uno los otros los desmarcamos
-            ActivasDesactivar(tbtn);
-
-            switch (tbtn.Name)
-            {
-                case "tbtn_borrar":
-                    Trace.WriteLine("borrar");
-                    txtGoma.Text = ""+gomaTam;
-                    //desactivamos los tamños de pintar
-                    foreach (ToggleButton boton in pincelTamano)
-                    {
-                        boton.IsEnabled = false;
-                    }
-
-                    //activamos los taños de la goma
-                    foreach (ToggleButton tamano in gomaTamano)
-                    {
-                        tamano.IsEnabled = true;
-                    }
-
-                    Borrar();
-                    break;
-                case "tbtn_selec":
-                    lienzo.EditingMode = InkCanvasEditingMode.Select;
-                    pintarActivado = false;
-                    break;
-
-                default:
-                    break;
-            }
-        }
+      
         #endregion
 
         #region TAMAÑO PINCEL
@@ -330,11 +295,52 @@ namespace Paintiris
         #region OTRAS
 
         /// <summary>
+        /// BORRAR Y SELECCIONAR
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Tbs_Checked(object sender, RoutedEventArgs e)
+        {
+            ToggleButton tbtn = (ToggleButton)sender;
+
+            // si le da a uno los otros los desmarcamos
+            ActivasDesactivar(tbtn);
+
+            switch (tbtn.Name)
+            {
+                case "tbtn_borrar":
+                    Trace.WriteLine("borrar");
+                    txtGoma.Text = "" + gomaTam;
+                    //desactivamos los tamños de pintar
+                    foreach (ToggleButton boton in pincelTamano)
+                    {
+                        boton.IsEnabled = false;
+                    }
+
+                    //activamos los taños de la goma
+                    foreach (ToggleButton tamano in gomaTamano)
+                    {
+                        tamano.IsEnabled = true;
+                    }
+
+                    Borrar();
+                    break;
+                case "tbtn_selec":
+                    lienzo.EditingMode = InkCanvasEditingMode.Select;
+                    pintarActivado = false;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
         /// Cambiar la paleta de colores
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cb_palette_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CambiarPaletaColores(object sender, SelectionChangedEventArgs e)
         {
             string seleccionado = cb_palette.SelectedValue.ToString();
             BaseDatos bd = new BaseDatos();
@@ -352,26 +358,28 @@ namespace Paintiris
             bd.CerrarConexion();
         }
 
-
         /// <summary>
         /// Folios de estudio
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        private void CargaFoliosEstudio(object sender, MouseButtonEventArgs e)
         {
-            Image tgb = (Image)sender;
-            ImageBrush image = new ImageBrush();
-            image.ImageSource = new BitmapImage(new Uri(@"..\..\..\Recursos\folios\" + tgb.Tag, UriKind.Relative));
+            MessageBoxResult result = MessageBox.Show("¿Quieres cargar la hoja de estudio?", "Cargar", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                Image tgb = (Image)sender;
+                ImageBrush image = new ImageBrush();
+                image.ImageSource = new BitmapImage(new Uri(@"..\..\..\Recursos\folios\" + tgb.Tag, UriKind.Relative));
 
-            lienzo.Strokes.Clear();
-            lienzo.Height = image.ImageSource.Height;
-            lienzo.Width = image.ImageSource.Width;
-            lienzo.Background = image;
+                lienzo.Strokes.Clear();
+                lienzo.Height = image.ImageSource.Height;
+                lienzo.Width = image.ImageSource.Width;
+                lienzo.Background = image;
 
+            }
+            
         }
-
-     
 
         /// <summary>
         /// Click de los elementos de archivo => NUEVO, GUARDAR, GUARDARCOMO, ABRIR
@@ -407,6 +415,7 @@ namespace Paintiris
                     bool rutaOk = archi.ElegirRuta(); //si guardo una ruta ya activamos el camino para guardar y activar el botón de guardar
                     if (rutaOk)
                     {
+                        lblInfo.Content = "Nombre del documento: " + archi.nombreLienzo;
                         goto case "btnGuardar";
                     }
                     else
@@ -422,6 +431,7 @@ namespace Paintiris
                         lienzo.Height = imagen.ImageSource.Height;
                         lienzo.Width = imagen.ImageSource.Width;
                         lienzo.Background = imagen;
+                        lblInfo.Content = "Nombre del documento: " + archi.nombreLienzo;
                         btnGuardar.IsEnabled = true;
                     }
 
@@ -437,7 +447,7 @@ namespace Paintiris
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Slider_ValueChanged_ZOOM(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void Slider_CambiarTamanoZOOM(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             //ponemos un tope del mínimo del zoom
             if(zoom.Value > 0.5)
@@ -453,15 +463,33 @@ namespace Paintiris
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tbs_Zoom(object sender, RoutedEventArgs e)
+        private void Boton_VolverTamanoZoom(object sender, RoutedEventArgs e)
         {
-            ScaleTransform scaler = lienzo.LayoutTransform as ScaleTransform;
+            ToggleButton tbtn = (ToggleButton)sender;
+            ActivasDesactivar(tbtn);
+
             lienzo.LayoutTransform = new ScaleTransform(1, 1);
         }
-        #endregion
 
+        /// <summary>
+        /// Pregunto antes de cerrar para que el ususario tenga tiempo de cancelar y guardar si no lo hizo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CerrarAplicacion(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("¿Seguro que quieres salir?", "Salir", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
         #endregion
-
+        #endregion
 
         #region FUNCIONES
 
@@ -485,13 +513,14 @@ namespace Paintiris
             herramienta.Add(tbtn_pincel);
             herramienta.Add(tbtn_borrar);
             herramienta.Add(tbtn_selec);
+            herramienta.Add(tbtn_zoom);
 
             cb_palette.Items.Add("Basic");
             cb_palette.Items.Add("Dark Academia");
             cb_palette.Items.Add("Sailor Moon");
             cb_palette.Items.Add("Desert");
             cb_palette.Items.Add("Primavera Fria");
-            cb_palette.Items.Add("Otoño tranquilo");
+            cb_palette.Items.Add("Otoño Tranquilo");
             cb_palette.Items.Add("Cold Day");
 
             cuadrosColores.Add(paleta1);
@@ -562,10 +591,17 @@ namespace Paintiris
             //propiedades de la goma
         }
 
-       
+        private void AcercaDe(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Creación, diseño y programación de Iris Seijo Fernández\nEl icono de los botones es de : Fontawesome."
+                             , "Acerca de"
+                             , MessageBoxButton.OK
+                             , MessageBoxImage.Information);
+        }
     }
     #endregion
     
+   
 
 }
 

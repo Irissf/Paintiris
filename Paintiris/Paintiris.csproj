@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="BaseDatos\PaintirisBD.db" />
+    <None Remove="icono.png" />
     <None Remove="Recursos\icons\chinoPalabraNuevaIco.png" />
     <None Remove="Recursos\icons\chinoPalabrasIco.png" />
     <None Remove="Recursos\icons\chinoPracticaIco.png" />
@@ -15,6 +16,7 @@
     <None Remove="Recursos\icons\cudrosGrandeRosaIco.png" />
     <None Remove="Recursos\icons\cudrosPequeIco.png" />
     <None Remove="Recursos\icons\cudrosPequeRosaIco.png" />
+    <None Remove="Recursos\icons\iconoApp.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="icono.png" />
     <Resource Include="Recursos\icons\chinoPalabraNuevaIco.png" />
     <Resource Include="Recursos\icons\chinoPalabrasIco.png" />
     <Resource Include="Recursos\icons\chinoPracticaIco.png" />
@@ -36,6 +39,7 @@
     <Resource Include="Recursos\icons\cudrosGrandeRosaIco.png" />
     <Resource Include="Recursos\icons\cudrosPequeIco.png" />
     <Resource Include="Recursos\icons\cudrosPequeRosaIco.png" />
+    <Resource Include="Recursos\icons\iconoApp.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -15,19 +15,17 @@ namespace Paintiris.Inicio
 {
     class Archivo
     {
-        InkCanvas lienzo;
-        int alto;
-        int ancho;
         string rutaGuardado = "";
         bool esJpg = true;
+        public string nombreLienzo = "";
 
 
 
-        public Archivo(InkCanvas lienzo)
+        public Archivo()
         {
-            this.lienzo = lienzo;
-            this.alto = (int)this.lienzo.RenderSize.Height;
-            this.ancho = (int)this.lienzo.RenderSize.Width;
+            //this.lienzo = lienzo;
+            //this.alto = (int)this.lienzo.RenderSize.Height;
+            //this.ancho = (int)this.lienzo.RenderSize.Width;
 
 
         }
@@ -102,7 +100,7 @@ namespace Paintiris.Inicio
                             encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
                             encoder.Save(file);
                         }
-
+                        nombreLienzo = file.Name;
                     }
 
                 }
@@ -130,6 +128,7 @@ namespace Paintiris.Inicio
             if (imagenCargar.ShowDialog() == true)
             {
                 rutaGuardado = imagenCargar.FileName;
+                nombreLienzo = Path.GetFileName(imagenCargar.FileName); //extraemos nombre para la label de abajo informativa
                 /*Como se mencionó, una ImageBrush pinta un área con un ImageSource .
                  * El tipo más común de ImageSource que se utiliza con ImageBrush es un BitmapImage */
                 //BitmapImage imagen = new BitmapImage(new Uri(imagenCargar.FileName, UriKind.Relative));
