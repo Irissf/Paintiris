@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paintiris"
         mc:Ignorable="d"
-        Title="ColorDialog" Height="460" Width="325" Background="MistyRose" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="ColorDialog" Height="460" Width="325" Background="MistyRose" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Recursos/icons/iconoApp.png">
     <Grid>
 
         <!--Los sliders-->
